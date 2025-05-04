@@ -18,6 +18,7 @@ import bpy
 
 Ctrl + Shift + P: Blender: Start
 Ctrl + Shift + P: Blender: Run Script (Not Run & Debug)
+Alt + R: Reload active text file
 
 Note that print statements from the script will appear in the terminal, but not from the python REPL in Blender.
 
