@@ -19,6 +19,8 @@ import bpy
 - `Ctrl + Shift + P`: Blender: Start
 - `Ctrl + Shift + P`: Blender: Run Script (Not Run & Debug)
 - `Alt + R`: Reload active text file
+- `Preferences > General > Developer Extras (geometric data)`
+- Use `simplescreenrecorder` to record with fast encoding system audio
 
 Note that print statements from the script will appear in the terminal, but not from the python REPL in Blender.
 
@@ -26,3 +28,4 @@ https://marketplace.visualstudio.com/items/?itemName=ms-python.autopep8
 https://marketplace.visualstudio.com/items/?itemName=JacquesLucke.blender-development
 
 ![Debugger Example](./04_vscode_python/debugger.png)
+![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./04_vscode_python/status_bar_config.png)
