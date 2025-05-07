@@ -5,6 +5,7 @@ import math
 
 GRID_SIZE = 2
 RENDER_SIZE = 2160
+USE_CYCLES = False
 
 
 def create_blend_file() -> None:
@@ -54,20 +55,32 @@ def create_layer(size, layer_z):
 
 
 def setup_scene():
-    scene = bpy.context.scene
-    scene.render.resolution_x = int(RENDER_SIZE * 16 / 9)
-    scene.render.resolution_y = RENDER_SIZE
-    bpy.data.worlds["World"].node_tree.nodes["Background"].inputs['Color'].default_value = (
-        0.03, 0.02, 0.05, 1)
+
+    # set up camera
     bpy.ops.object.camera_add(
         location=(14, 14, 17), rotation=(math.pi / 4, 0, 3 * math.pi / 4))
-    camera = bpy.context.active_object
+
+    # set up light
+    bpy.data.worlds["World"].node_tree.nodes["Background"].inputs['Color'].default_value = (
+        0.03, 0.02, 0.05, 1)
     bpy.ops.object.light_add(type="SUN", location=(
         0, 0, 10), rotation=(0, math.pi / 4, 5 * math.pi / 3))
     light = bpy.context.active_object
     light.data.color = (1, .5, 0)
     light.data.energy = 2
     light.data.angle = (2 * math.pi / 360) * 50
+
+    # render settings
+    scene = bpy.context.scene
+    scene.render.resolution_x = int(RENDER_SIZE * 16 / 9)
+    scene.render.resolution_y = RENDER_SIZE
+    scene.render.filepath = os.path.dirname(__file__) + '/render'
+    if USE_CYCLES:
+        scene.render.engine = 'CYCLES'
+        scene.cycles.device = 'GPU'
+        scene.cycles.adaptive_threshhold = 0.2
+    else:
+        scene.render.engine = 'BLENDER_EEVEE_NEXT'
 
 
 def main():
@@ -78,8 +91,7 @@ def main():
         create_layer(GRID_SIZE, z)
 
     setup_scene()
-
-    bpy.context.scene.render.filepath = os.path.dirname(__file__) + '/render'
+    print('rendering...')
     bpy.ops.render.render(write_still=True)
 
     print('reached end of script!')
