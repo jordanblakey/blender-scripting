@@ -2,12 +2,15 @@ import os
 import bpy
 import random
 import math
+import time
+import colorsys
 
-fps = 24
-loop_seconds = 5
+fps = 60
+loop_seconds = 10
 frame_count = fps * loop_seconds
-render_size = 720
+render_size = 2160
 shape_count = 100
+camera_z = 15
 
 
 def create_blend_file() -> None:
@@ -39,8 +42,8 @@ def setup_camera(location, rotation, frame_count, target):
 
     camera.data.lens = 70  # focal length
     camera.data.dof.focus_object = target
-    camera.data.dof.use_dof = True
-    camera.data.dof.aperture_fstop = .35
+    # camera.data.dof.use_dof = True
+    # camera.data.dof.aperture_fstop = .35
 
     start_value = camera.data.lens
     mid_value = camera.data.lens - 10
@@ -68,8 +71,9 @@ def setup_scene(fps, frame_count, render_size):
     scene.frame_current = 1
 
     scene.render.fps = fps
-    scene.render.resolution_x = render_size
+    scene.render.resolution_x = int((render_size * 16) / 9)
     scene.render.resolution_y = render_size
+    scene.render.engine = 'BLENDER_EEVEE_NEXT'
 
     scene.render.image_settings.file_format = 'FFMPEG'
     scene.render.ffmpeg.format = 'MPEG4'
@@ -78,7 +82,8 @@ def setup_scene(fps, frame_count, render_size):
 
 
 def apply_random_color_material(obj):
-    color = (random.random(), random.random(), random.random(), 1)
+    r, g, b = colorsys.hls_to_rgb(random.random(), .5, 1)
+    color = (r, g, b, 1)
     mat = bpy.data.materials.new('random_color')
     mat.use_nodes = True
     mat.node_tree.nodes["Principled BSDF"].inputs['Base Color'].default_value = color
@@ -87,7 +92,7 @@ def apply_random_color_material(obj):
 
 
 def add_lights():
-    rotation = (math.pi / 3, 0.0, math.pi)
+    rotation = (math.degrees(90), 0.0, math.pi)
     bpy.ops.object.light_add(type="SUN", rotation=rotation)
     bpy.context.object.data.energy = 100
     bpy.context.object.data.diffuse_factor = 0.05
@@ -99,12 +104,21 @@ def add_geometry():
         bpy.ops.mesh.primitive_cylinder_add(
             vertices=5,
             depth=.1,
-            radius=1,
+            radius=1 + i * .075,
             location=(0, 0, -i * .1),
             rotation=(0, 0, 2 * math.pi * (i / shape_count)))
         bpy.ops.object.modifier_add(type='BEVEL')
         bpy.context.object.modifiers["Bevel"].width = 0.02
         active_object = bpy.context.active_object
+        active_object.keyframe_insert(data_path="rotation_euler", frame=10 + i)
+        active_object.rotation_euler.z = 2 * math.pi
+        active_object.keyframe_insert(
+            data_path="rotation_euler", frame=frame_count - 10 - i)
+        for fcurve in active_object.animation_data.action.fcurves:
+            for kf in fcurve.keyframe_points:
+                kf.interpolation = 'BACK'
+                kf.easing = 'EASE_IN_OUT'
+
         apply_random_color_material(active_object)
 
 
@@ -113,13 +127,13 @@ def main():
     clean_scene()
 
     target = create_track_target()
-    setup_camera((0, 0, 7), (0, 0, 0), frame_count, target)
+    setup_camera((0, 0, camera_z), (0, 0, 0), frame_count, target)
     setup_scene(fps, frame_count, render_size)
     add_lights()
 
     add_geometry()
 
-    # bpy.ops.render.render(animation=True)
+    bpy.ops.render.render(animation=True)
 
     print('reached end of script!')
 
