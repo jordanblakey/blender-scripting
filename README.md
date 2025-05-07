@@ -29,3 +29,4 @@ https://marketplace.visualstudio.com/items/?itemName=JacquesLucke.blender-develo
 
 ![Debugger Example](./04_vscode_python/debugger.png)
 ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./04_vscode_python/status_bar_config.png)
+![Procedural Animation Example](./08_stack_spin_animation/_renders/interface.png)
