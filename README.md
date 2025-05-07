@@ -27,6 +27,14 @@ Note that print statements from the script will appear in the terminal, but not 
 https://marketplace.visualstudio.com/items/?itemName=ms-python.autopep8
 https://marketplace.visualstudio.com/items/?itemName=JacquesLucke.blender-development
 
+Debugger Example
 ![Debugger Example](./04_vscode_python/debugger.png)
+
+Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.
 ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./04_vscode_python/status_bar_config.png)
+
+Procedural Animation Example
 ![Procedural Animation Example](./08_stack_spin_animation/_renders/interface.png)
+
+Mesh from scratch, composing and repetition
+![Mesh from scratch, composing and repetition](./09_make_meshes/render.png)
