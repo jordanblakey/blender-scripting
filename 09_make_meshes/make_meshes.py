@@ -3,6 +3,9 @@ import bpy
 import mathutils
 import math
 
+GRID_SIZE = 2
+RENDER_SIZE = 2160
+
 
 def create_blend_file() -> None:
     path, file = os.path.split(__file__)
@@ -19,65 +22,14 @@ def clean_scene():
 
 def create_geometry(loc, rot):
     mesh = bpy.data.meshes.new('mesh')
-    verts, edges, faces = [], [], []
-    verts.append((0.0, 0.0, 0.0))
-    verts.append((1.0, 0.0, 0.0))
-    verts.append((1.0, 1.0, 0.0))
-    verts.append((0.0, 1.0, 0.0))
-    verts.append((0.5, 0.5, 1.0))
-    faces.append((0, 1, 2, 3))
-    faces.append((0, 1, 4))
-    faces.append((1, 2, 4))
-    faces.append((2, 3, 4))
-    faces.append((0, 3, 4))
-    mesh.from_pydata(verts, edges, faces)
+    verts = [(0.0, 0.0, 0.0), (1.0, 0.0, 0.0), (1.0, 1.0, 0.0),
+             (0.0, 1.0, 0.0), (0.5, 0.5, 1.0)]
+    faces = [(0, 1, 2, 3), (0, 1, 4), (1, 2, 4), (2, 3, 4), (0, 3, 4)]
+    mesh.from_pydata(verts, [], faces)
     obj = bpy.data.objects.new('obj', mesh)
     obj.location = mathutils.Vector(loc)
     obj.rotation_euler = mathutils.Vector(rot)
     bpy.context.collection.objects.link(obj)
-
-    # mesh = bpy.data.meshes.new('mesh')
-    # print(mesh)
-    # mesh.vertices.add(2)
-    # v1 = mathutils.Vector()
-    # v1.x = 0.0
-    # v1.y = 0.0
-    # v1.z = 1.0
-    # v2 = mathutils.Vector((1.0, 1.0, 1.0))
-    # mesh.vertices[0].co = v1
-    # mesh.vertices[1].co = v2
-    # mesh.edges.add(1)
-
-    # # Create an edge
-    # edge = mesh.edges[0]
-    # edge.vertices[0] = 0
-    # edge.vertices[1] = 1
-
-    # # Create a face
-    # mesh.vertices.add(1)
-    # mesh.vertices[2].co = (0.0, 1.0, 0.0)
-
-    # mesh.edges.add(2)
-    # mesh.edges[1].vertices[0] = 1
-    # mesh.edges[1].vertices[1] = 2
-
-    # mesh.edges[2].vertices[0] = 2
-    # mesh.edges[2].vertices[1] = 0
-
-    # obj = bpy.data.objects.new('obj', mesh)
-    # bpy.context.collection.objects.link(obj)
-    # # for vertex in mesh.vertices:
-
-    # for vertex in mesh.vertices:
-    #     print(vertex, vertex.co)
-
-    # mesh.polygons.add(1)
-    # print(mesh.polygons[0])
-
-    # bpy.context.view_layer.objects.active = obj
-    # bpy.ops.object.editmode_toggle()
-    # bpy.ops.mesh.select_all(action='SELECT')
-    pass
 
 
 def create_matrix(size, rot, offset_x=0, offset_y=0, layer_z=0):
@@ -89,17 +41,46 @@ def create_matrix(size, rot, offset_x=0, offset_y=0, layer_z=0):
 def create_layer(size, layer_z):
     for x in range(size):
         for y in range(size):
-            create_matrix(size, (0, 0, 0), offset_x=x*(size+1),
-                          offset_y=y * (size + 1), layer_z=layer_z * 2)
-            create_matrix(size, (0, math.pi, 0), offset_x=1 +
-                          x * (size + 1), offset_y=y * (size + 1), layer_z=layer_z * 2)
+            create_matrix(size,
+                          rot=(0, 0, 0),
+                          offset_x=x*(size+1),
+                          offset_y=y * (size + 1),
+                          layer_z=layer_z * 2)
+            create_matrix(size,
+                          rot=(0, math.pi, 0),
+                          offset_x=1 + x * (size + 1),
+                          offset_y=y * (size + 1),
+                          layer_z=layer_z * 2)
+
+
+def setup_scene():
+    scene = bpy.context.scene
+    scene.render.resolution_x = int(RENDER_SIZE * 16 / 9)
+    scene.render.resolution_y = RENDER_SIZE
+    bpy.data.worlds["World"].node_tree.nodes["Background"].inputs['Color'].default_value = (
+        0.03, 0.02, 0.05, 1)
+    bpy.ops.object.camera_add(
+        location=(14, 14, 17), rotation=(math.pi / 4, 0, 3 * math.pi / 4))
+    camera = bpy.context.active_object
+    bpy.ops.object.light_add(type="SUN", location=(
+        0, 0, 10), rotation=(0, math.pi / 4, 5 * math.pi / 3))
+    light = bpy.context.active_object
+    light.data.color = (1, .5, 0)
+    light.data.energy = 2
+    light.data.angle = (2 * math.pi / 360) * 50
 
 
 def main():
     create_blend_file()
     clean_scene()
-    for z in range(2):
-        create_layer(2, z)
+
+    for z in range(GRID_SIZE):
+        create_layer(GRID_SIZE, z)
+
+    setup_scene()
+
+    bpy.context.scene.render.filepath = os.path.dirname(__file__) + '/render'
+    bpy.ops.render.render(write_still=True)
 
     print('reached end of script!')
 
