@@ -25,10 +25,4 @@ blender_utils.blend_file.create_or_open(blend_file)
 # Start Script
 ################################################################################
 
-bpy.ops.mesh.primitive_ico_sphere_add()
-ico_sphere = bpy.context.active_object
-print(ico_sphere)
-for name in dir(ico_sphere):
-    print(name, getattr(ico_sphere, name))
-
 print('end of script')

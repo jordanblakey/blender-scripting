@@ -18,17 +18,30 @@ if not modules_path in sys.path:
     sys.path.append(modules_path)
 import blender_utils  # nopep8
 
-blender_utils.scene.clean()
 blender_utils.blend_file.create_or_open(blend_file)
+blender_utils.scene.clean()
 
 ################################################################################
 # Start Script
 ################################################################################
 
+
+# add ico sphere
 bpy.ops.mesh.primitive_ico_sphere_add()
-ico_sphere = bpy.context.active_object
-print(ico_sphere)
-for name in dir(ico_sphere):
-    print(name, getattr(ico_sphere, name))
+
+# enter edit mode
+bpy.ops.object.mode_set(mode='EDIT')
+
+# deselect faces
+# get geometric data from mesh
+# iterate through faces
+# generate color
+# create a new mat
+# add mat
+# set active mat
+# select face and assign mat
+# turn off edit mode
+
+# blender_utils.blend_file.save(blend_file)
 
 print('end of script')

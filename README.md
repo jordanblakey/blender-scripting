@@ -9,6 +9,10 @@ Experiments in automating Blender with Python.
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+
+# Don't have to use the vscode extension, alt workflow:
+blender -b -P script.py  # run in background, debug python scripts.
+blender -P script.py  # Work in UI
 ```
 
 ```py
@@ -26,6 +30,37 @@ Note that print statements from the script will appear in the terminal, but not 
 
 https://marketplace.visualstudio.com/items/?itemName=ms-python.autopep8
 https://marketplace.visualstudio.com/items/?itemName=JacquesLucke.blender-development
+
+## Script template and background mode commands
+
+```sh
+# imports above..
+
+################################################################################
+# Set Up Script
+################################################################################
+
+# blender -b -P headless_mode.py  # debug scripts
+# blender -P headless_mode.py  # work in UI
+
+dirname = os.path.dirname(__file__)
+blend_file = os.path.splitext(__file__)[0] + '.blend'
+
+# Import custom modules
+modules_path = os.path.join(dirname, '..')
+if not modules_path in sys.path:
+    sys.path.append(modules_path)
+import blender_utils  # nopep8
+
+blender_utils.scene.clean()
+blender_utils.blend_file.create_or_open(blend_file)
+
+################################################################################
+# Start Script
+################################################################################
+
+# script logic below...
+```
 
 Debugger Example
 ![Debugger Example](./04_vscode_python/debugger.png)

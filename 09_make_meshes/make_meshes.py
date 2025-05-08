@@ -92,6 +92,8 @@ def main():
 
     setup_scene()
     print('rendering...')
+    print(bpy.context.scene.camera)
+    bpy.context.scene.camera = bpy.data.objects['Camera']
     bpy.ops.render.render(write_still=True)
 
     print('reached end of script!')
