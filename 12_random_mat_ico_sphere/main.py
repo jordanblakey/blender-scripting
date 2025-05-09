@@ -4,13 +4,12 @@ import os
 import random
 import bmesh
 import math
+import colorsys
 
-# ENGINE = 'CYCLES'
 ENGINE = 'BLENDER_EEVEE_NEXT'
-RENDER_SIZE_PERCENTAGE = 200
-FRAME_END = 700
+RESOLUTION_PERCENTAGE = 200
 RENDER_IMAGE = True
-RENDER_ANIMATION = False
+RENDER_ANIMATION = True
 
 ################################################################################
 # Set Up Script
@@ -51,20 +50,30 @@ def create_geometry():
     bpy.ops.mesh.select_mode(type='FACE')
     bpy.ops.mesh.select_all(action='DESELECT')
 
+    # generate materials (1 for every 25 polygons)
+    count = int(len(obj.data.polygons) / 25)
+    materials = []
+    for i in range(count):
+        # create material
+        mat = bpy.data.materials.new(name=f'random_mat_{i}')
+
+        # generate color
+        hue = random.random()
+        lightness = 0.5
+        rgb = colorsys.hls_to_rgb(hue, lightness, 1.0)
+        alpha = 1.0
+        mat.diffuse_color = (*rgb, alpha)
+        mat.metallic = 0.5
+        mat.roughness = 0.25
+
+        materials.append(mat)
+
     # iterate through faces
     ico_bmesh = bmesh.from_edit_mesh(obj.data)
     for face in ico_bmesh.faces:
 
-        # create material
-        mat = bpy.data.materials.new(name=f'face_{face.index}')
-
-        # generate color
-        red = random.random()
-        green = random.random()
-        blue = random.random()
-        alpha = 1.0
-        color = (red, green, blue, alpha)
-        mat.diffuse_color = color
+        # pick a random mat
+        mat = random.choice(materials)
 
         # add mat to object (required to add to a bmesh face)
         obj.data.materials.append(mat)
@@ -100,13 +109,15 @@ def setup_scene():
 
 
 def animate():
+    bpy.context.scene.frame_end = 250
+
     # animate light
     light = bpy.data.objects.get('Sun')
     light.rotation_euler[2] = 0 * math.pi
     light.keyframe_insert(data_path='rotation_euler', index=2, frame=1)
     light.rotation_euler[2] = 8 * math.pi
     light.keyframe_insert(
-        data_path='rotation_euler', index=2, frame=FRAME_END)
+        data_path='rotation_euler', index=2, frame=bpy.context.scene.frame_end)
 
     # animate sphere
     sphere = bpy.data.objects.get('Icosphere')
@@ -114,46 +125,22 @@ def animate():
     sphere.keyframe_insert(data_path='rotation_euler', index=2, frame=1)
     sphere.rotation_euler[2] = -1 * math.pi
     sphere.keyframe_insert(
-        data_path='rotation_euler', index=2, frame=FRAME_END)
-
-
-def render():
-    blender_utils.ui.set_view3d_shading_type('RENDERED')
-    blender_utils.ui.set_view3d_persective('CAMERA')
-
-    # set render paths
-    render_dir = os.path.join(dirname, 'renders')
-    os.makedirs(render_dir, exist_ok=True)
-    bpy.context.scene.render.filepath = os.path.join(
-        render_dir, f'render@{RENDER_SIZE_PERCENTAGE}%')
-
-    # render image
-    bpy.context.scene.render.engine = ENGINE
-    bpy.context.scene.render.resolution_percentage = RENDER_SIZE_PERCENTAGE
-    bpy.context.scene.render.image_settings.file_format = 'PNG'
-    if RENDER_IMAGE:
-        bpy.ops.render.render(write_still=True)
-
-    # render video
-    bpy.context.scene.render.fps = 60
-    bpy.context.scene.frame_end = FRAME_END
-    bpy.context.scene.render.frame_map_new = 200
-    # This is a per frame time limit for cycles
-    bpy.context.scene.cycles.time_limit = 5
-    # Skip denoising which is relatively expensive for a simple render like this
-    bpy.context.scene.cycles.use_denoising = False
-    bpy.context.scene.render.image_settings.file_format = 'FFMPEG'
-    if RENDER_ANIMATION:
-        bpy.ops.render.render(animation=True)
+        data_path='rotation_euler', index=2, frame=bpy.context.scene.frame_end)
 
 
 def main():
     create_geometry()
     setup_scene()
     animate()
-    render()
-    blender_utils.blend_file.save(blend_file)
-    print('end of script')
 
 
 main()
+blender_utils.blend_file.save(blend_file)
+blender_utils.render(
+    cwd=dirname,
+    engine=ENGINE,
+    resolution_percentage=RESOLUTION_PERCENTAGE,
+    image=RENDER_IMAGE,
+    animation=RENDER_ANIMATION)
+
+print('reached end of script')
