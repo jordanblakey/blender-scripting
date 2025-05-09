@@ -49,18 +49,22 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
-| ![Debugger Example](./04_vscode_python/debugger.png) |
-| :--------------------------------------------------: |
-|                   Debugger Example                   |
+| ![Using graph editor and camera perspective to proof and tweak an animation](./12_random_mat_ico_sphere/renders/graph_editor.png) |
+| :-------------------------------------------------------------------------------------------------------------------------------: |
+|                             Using graph editor and camera perspective to proof and tweak an animation                             |
 
-| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./04_vscode_python/status_bar_config.png) |
-| :---------------------------------------------------------------------------------------------------------------------: |
-|                       Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                        |
+| ![Mesh from scratch, composing and repetition](./09_make_meshes/render.png) |
+| :-------------------------------------------------------------------------: |
+|                 Mesh from scratch, composing and repetition                 |
 
 | ![Procedural Animation Example](./08_stack_spin_animation/_renders/interface.png) |
 | :-------------------------------------------------------------------------------: |
 |                           Procedural Animation Example                            |
 
-| ![Mesh from scratch, composing and repetition](./09_make_meshes/render.png) |
-| :-------------------------------------------------------------------------: |
-|                 Mesh from scratch, composing and repetition                 |
+| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./04_vscode_python/status_bar_config.png) |
+| :---------------------------------------------------------------------------------------------------------------------: |
+|                       Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                        |
+
+| ![Debugger Example](./04_vscode_python/debugger.png) |
+| :--------------------------------------------------: |
+|                   Debugger Example                   |

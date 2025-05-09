@@ -10,7 +10,7 @@ ENGINE = 'BLENDER_EEVEE_NEXT'
 RENDER_SIZE_PERCENTAGE = 200
 FRAME_END = 700
 RENDER_IMAGE = True
-RENDER_ANIMATION = True
+RENDER_ANIMATION = False
 
 ################################################################################
 # Set Up Script
