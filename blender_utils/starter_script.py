@@ -2,6 +2,11 @@ import bpy
 import sys
 import os
 
+ENGINE = 'BLENDER_EEVEE_NEXT'
+RESOLUTION_PERCENTAGE = 200
+RENDER_IMAGE = False
+RENDER_ANIMATION = False
+
 ################################################################################
 # Set Up Script
 ################################################################################
@@ -22,7 +27,27 @@ blender_utils.scene.clean()
 blender_utils.blend_file.create_or_open(blend_file)
 
 ################################################################################
-# Start Script
+# Define Script
 ################################################################################
 
-print('end of script')
+
+def main():
+    pass
+
+
+################################################################################
+# Run Script, Save .blend File, Render
+################################################################################
+
+print('script stage starting...')
+main()
+print('script stage complete.')
+blender_utils.blend_file.save(blend_file)
+print('render stage starting...')
+blender_utils.render(
+    cwd=dirname,
+    engine=ENGINE,
+    resolution_percentage=RESOLUTION_PERCENTAGE,
+    image=RENDER_IMAGE,
+    animation=RENDER_ANIMATION)
+print('render stage complete.')
