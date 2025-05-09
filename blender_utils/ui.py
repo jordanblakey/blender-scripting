@@ -22,3 +22,26 @@ def get_context(name):
                             'region': region
                         }
                         return context
+    raise ValueError('Couldn\'t find context for ' + name)
+
+
+def set_view3d_shading_type(shading_type='RENDERED'):
+    # Set view3d shading type to one of 'WIREFRAME', 'SOLID', 'PREVIEW', 'RENDERED'.
+    for area in bpy.context.screen.areas:
+        if area.type == 'VIEW_3D':
+            for space in area.spaces:
+                if space.type == 'VIEW_3D':
+                    space.shading.type = shading_type
+                    return True
+    return False
+
+
+def set_view3d_persective(perspective='CAMERA'):
+    # Set view3d perspective to one of 'PERSP', 'ORTHO', 'CAMERA'.
+    for area in bpy.context.screen.areas:
+        if area.type == 'VIEW_3D':
+            for space in area.spaces:
+                if space.type == 'VIEW_3D':
+                    space.region_3d.view_perspective = perspective
+                    return True
+    return False
