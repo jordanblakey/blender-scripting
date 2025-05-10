@@ -27,12 +27,22 @@ blender_utils.scene.clean()
 blender_utils.blend_file.create_or_open(blend_file)
 
 ################################################################################
-# Define Script
+# Define Functions
+################################################################################
+
+
+def add_vertex():
+    bpy.ops.object.add(type='MESH')
+    obj = bpy.context.active_object
+    obj.data.vertices.add(1)
+
+################################################################################
+# Compose Functions
 ################################################################################
 
 
 def main():
-    pass
+    add_vertex()
 
 
 ################################################################################
@@ -44,7 +54,7 @@ main()
 print('script stage complete.')
 blender_utils.blend_file.save(blend_file)
 print('render stage starting...')
-blender_utils.render(
+blender_utils.quick_render(
     cwd=dirname,
     engine=ENGINE,
     resolution_percentage=RESOLUTION_PERCENTAGE,
