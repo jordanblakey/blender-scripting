@@ -96,10 +96,11 @@ print('script stage complete.')
 blender_utils.blend_file.save(blend_file)
 
 print('render stage starting...')
-blender_utils.ui.set_view_location(location=(0, 0, 4))
+blender_utils.ui.set_view_location(location=(0, 0, 0))
 blender_utils.render.quick_render(
     cwd=dirname,
     viewport=True,
+    resolution_percentage=RESOLUTION_PERCENTAGE,
     shading_type='RENDERED',
     view3d_perspective='ORTHO')
 print('render stage complete.')

@@ -52,6 +52,10 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
+| ![Screen1](./static/images/readme/iteration.png) | ![Screen2](./static/images/readme/iteration2.png) |
+| :----------------------------------------------: | :-----------------------------------------------: |
+|           Experimenting with iteration           |      Iterating using trigonometric functions      |
+
 | ![Defining Materials with Python](./static/images/readme/cycles_render@200.png) |
 | :-----------------------------------------------------------------------------: |
 |                         Defining Materials with Python                          |
@@ -76,6 +80,6 @@ Note that print statements from the script will appear in the terminal, but not 
 | :-------------------------------------------------------------------------------------------------------------------------: |
 |                         Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                          |
 
-| ![Debugger Example](./04_vscode_python/debugger.png) |
-| :--------------------------------------------------: |
-|                   Debugger Example                   |
+| ![Debugger Example](./static/images/readme/debugger.png) |
+| :------------------------------------------------------: |
+|                     Debugger Example                     |
