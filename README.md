@@ -52,29 +52,29 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
-| ![Defining Materials with Python](./14_procedural_material/renders/cycles_render@200.png) |
-| :--------------------------------------------------------------------------------: |
-|                           Defining Materials with Python                           |
+| ![Defining Materials with Python](./static/images/readme/cycles_render@200.png) |
+| :-----------------------------------------------------------------------------: |
+|                         Defining Materials with Python                          |
 
-| ![Node Based Material Experiments](./13_node_based_material_exploration/_renders/node_mat_experiments.png) |
-| :--------------------------------------------------------------------------------------------------------: |
-|                                      Node Based Material Experiments                                       |
+| ![Node Based Material Experiments](./static/images/readme/node_mat_experiments.png) |
+| :---------------------------------------------------------------------------------: |
+|                           Node Based Material Experiments                           |
 
-| ![Using graph editor and camera perspective to proof and tweak an animation](./12_random_mat_ico_sphere/renders/graph_editor.png) |
-| :-------------------------------------------------------------------------------------------------------------------------------: |
-|                             Using graph editor and camera perspective to proof and tweak an animation                             |
+| ![Using graph editor and camera perspective to proof and tweak an animation](./static/images/readme/graph_editor.png) |
+| :-------------------------------------------------------------------------------------------------------------------: |
+|                       Using graph editor and camera perspective to proof and tweak an animation                       |
 
-| ![Mesh from scratch, composing and repetition](./09_make_meshes/render.png) |
-| :-------------------------------------------------------------------------: |
-|                 Mesh from scratch, composing and repetition                 |
-
-| ![Procedural Animation Example](./08_stack_spin_animation/_renders/interface.png) |
+| ![Mesh from scratch, composing and repetition](./static/images/readme/render.png) |
 | :-------------------------------------------------------------------------------: |
-|                           Procedural Animation Example                            |
+|                    Mesh from scratch, composing and repetition                    |
 
-| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./04_vscode_python/status_bar_config.png) |
-| :---------------------------------------------------------------------------------------------------------------------: |
-|                       Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                        |
+| ![Procedural Animation Example](./static/images/readme/interface.png) |
+| :-------------------------------------------------------------------: |
+|                     Procedural Animation Example                      |
+
+| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./static/images/readme/status_bar_config.png) |
+| :-------------------------------------------------------------------------------------------------------------------------: |
+|                         Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                          |
 
 | ![Debugger Example](./04_vscode_python/debugger.png) |
 | :--------------------------------------------------: |
