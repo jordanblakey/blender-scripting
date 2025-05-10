@@ -34,7 +34,7 @@ blender_utils.blend_file.create_or_open(blend_file)
 ################################################################################
 
 
-def create_circle(vert_count=16):
+def create_circle(vert_count=16, radius=1, z=0):
     # init params
     angle_step = math.tau / vert_count
 
@@ -49,10 +49,10 @@ def create_circle(vert_count=16):
 
         # calc coords
         theta = i * angle_step
-        x = math.cos(theta)
-        y = math.sin(theta)
+        x = radius * math.cos(theta)
+        y = radius * math.sin(theta)
 
-        bm.verts.new((x, y, 0))
+        bm.verts.new((x, y, z))
 
     # finalize bmesh data
     bm.faces.new(bm.verts)
@@ -60,15 +60,15 @@ def create_circle(vert_count=16):
     bm.free()
 
 
-def create_obj_spiral(obj_count=16):
+def create_obj_spiral(obj_count=16, radius=1, offset=1):
     angle_step = math.tau / obj_count
     for i in range(obj_count * 2):
         theta = i * angle_step
-        x = math.cos(theta)
-        y = math.sin(theta)
+        x = radius * math.cos(theta)
+        y = radius * math.sin(theta)
 
         bpy.ops.mesh.primitive_ico_sphere_add(
-            radius=0.1, location=(x, y, 2 + (i / 4)))
+            radius=0.1, location=(x, y, 2 + offset * i))
 
 
 ################################################################################
@@ -77,8 +77,11 @@ def create_obj_spiral(obj_count=16):
 
 
 def main():
-    create_circle()
-    create_obj_spiral()
+    create_circle(radius=1, z=0)
+    create_circle(radius=2, z=-3)
+    create_obj_spiral(radius=1, offset=.1)
+    create_obj_spiral(radius=3, offset=0)
+    create_obj_spiral(radius=4, offset=0)
     bpy.ops.object.light_add(type='SUN')
 
 ################################################################################
