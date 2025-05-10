@@ -1,7 +1,10 @@
 import bpy
 import bmesh
+import sys
 
 obj = bpy.context.active_object
+if not obj or not isinstance(obj.data, bpy.types.Mesh):
+    raise TypeError()
 
 bpy.ops.object.mode_set(mode='EDIT')
 bm = bmesh.from_edit_mesh(obj.data)
