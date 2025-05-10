@@ -1,0 +1,102 @@
+import os
+import sys
+import bpy
+import math
+import bmesh
+
+ENGINE = 'BLENDER_EEVEE_NEXT'
+RESOLUTION_PERCENTAGE = 200
+RENDER_IMAGE = False
+RENDER_ANIMATION = False
+RENDER_VIEWPORT = True
+
+################################################################################
+# Set Up Script
+################################################################################
+
+# blender -b -P headless_mode.py  # debug scripts
+# blender -P headless_mode.py  # work in UI
+
+dirname = os.path.dirname(__file__)
+blend_file = os.path.splitext(__file__)[0] + '.blend'
+
+# Import custom modules
+modules_path = os.path.join(dirname, '..')
+if not modules_path in sys.path:
+    sys.path.append(modules_path)
+import blender_utils  # nopep8
+
+blender_utils.scene.clean()
+blender_utils.blend_file.create_or_open(blend_file)
+
+################################################################################
+# Define Functions
+################################################################################
+
+
+def create_circle(vert_count=16):
+    # init params
+    angle_step = math.tau / vert_count
+
+    # create an empty object
+    bpy.ops.object.add(type='MESH')
+    obj = bpy.context.active_object
+    mesh = obj.data
+    bm = bmesh.new()
+
+    # create the vertices
+    for i in range(vert_count):
+
+        # calc coords
+        theta = i * angle_step
+        x = math.cos(theta)
+        y = math.sin(theta)
+
+        bm.verts.new((x, y, 0))
+
+    # finalize bmesh data
+    bm.faces.new(bm.verts)
+    bm.to_mesh(mesh)
+    bm.free()
+
+
+def create_obj_spiral(obj_count=16):
+    angle_step = math.tau / obj_count
+    for i in range(obj_count * 2):
+        theta = i * angle_step
+        x = math.cos(theta)
+        y = math.sin(theta)
+
+        bpy.ops.mesh.primitive_ico_sphere_add(
+            radius=0.1, location=(x, y, 2 + (i / 4)))
+
+
+################################################################################
+# Compose Functions
+################################################################################
+
+
+def main():
+    create_circle()
+    create_obj_spiral()
+    bpy.ops.object.light_add(type='SUN')
+
+################################################################################
+# Run Script, Save .blend File, Render
+################################################################################
+
+
+print('script stage starting...')
+main()
+print('script stage complete.')
+
+blender_utils.blend_file.save(blend_file)
+
+print('render stage starting...')
+blender_utils.ui.set_view_location(location=(0, 0, 4))
+blender_utils.render.quick_render(
+    cwd=dirname,
+    viewport=True,
+    shading_type='RENDERED',
+    view3d_perspective='ORTHO')
+print('render stage complete.')
