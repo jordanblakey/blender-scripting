@@ -1,4 +1,6 @@
 import bpy
+import mathutils
+import math
 
 
 def get_context(name):
@@ -43,5 +45,18 @@ def set_view3d_persective(perspective='CAMERA'):
             for space in area.spaces:
                 if space.type == 'VIEW_3D':
                     space.region_3d.view_perspective = perspective
+                    return True
+    return False
+
+
+def set_view_location(location=(0, 0, 0), pitch=math.pi / 4, roll=0,
+                      yaw=math.pi / 4):
+    for area in bpy.context.screen.areas:
+        if area.type == 'VIEW_3D':
+            for region in area.regions:
+                if region.type == 'WINDOW':
+                    region.data.view_location = mathutils.Vector(location)
+                    region.data.view_rotation = mathutils.Euler(
+                        (pitch, roll, yaw), 'XYZ').to_quaternion()
                     return True
     return False
