@@ -49,6 +49,10 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
+| ![Node Based Material Experiments](./13_node_based_material_exploration/_renders/node_mat_experiments.png) |
+| :--------------------------------------------------------------------------------------------------------: |
+|                                      Node Based Material Experiments                                       |
+
 | ![Using graph editor and camera perspective to proof and tweak an animation](./12_random_mat_ico_sphere/renders/graph_editor.png) |
 | :-------------------------------------------------------------------------------------------------------------------------------: |
 |                             Using graph editor and camera perspective to proof and tweak an animation                             |
