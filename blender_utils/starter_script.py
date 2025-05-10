@@ -4,6 +4,7 @@ import os
 
 ENGINE = 'BLENDER_EEVEE_NEXT'
 RESOLUTION_PERCENTAGE = 200
+RENDER_VIEWPORT = True
 RENDER_IMAGE = False
 RENDER_ANIMATION = False
 
@@ -58,6 +59,7 @@ blender_utils.quick_render(
     cwd=dirname,
     engine=ENGINE,
     resolution_percentage=RESOLUTION_PERCENTAGE,
+    viewport=RENDER_VIEWPORT,
     image=RENDER_IMAGE,
     animation=RENDER_ANIMATION)
 print('render stage complete.')
