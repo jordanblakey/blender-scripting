@@ -16,7 +16,7 @@ blender -P script.py  # Work in UI
 ```
 
 ```py
-# Now you can get autocompletion for bpy through the fake-bpy-module-latest
+# autocompletion for bpy through the fake-bpy-module-latest package
 import bpy
 ```
 
@@ -48,6 +48,10 @@ There is a deprecated [extension](https://marketplace.visualstudio.com/items/?it
 Note that print statements from the script will appear in the terminal, but not from the python REPL in Blender.
 
 ## Visual Notes, Renders
+
+| ![Defining Materials with Python](./14_procedural_material/renders/render@200.png) |
+| :--------------------------------------------------------------------------------: |
+|                           Defining Materials with Python                           |
 
 | ![Node Based Material Experiments](./13_node_based_material_exploration/_renders/node_mat_experiments.png) |
 | :--------------------------------------------------------------------------------------------------------: |

@@ -57,7 +57,6 @@ def render():
     os.makedirs(renders_dir, exist_ok=True)
 
     if RENDER_STILLS:
-        scene.render.image_settings.color_management
         scene.render.image_settings.file_format = 'PNG'
         scene.render.resolution_x = int(SIZE * 16 / 9)
         scene.render.resolution_y = SIZE
