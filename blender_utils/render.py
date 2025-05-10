@@ -4,17 +4,25 @@ from . import ui
 
 
 def quick_render(cwd, engine='BLENDER_EEVEE_NEXT', resolution_percentage=100,
-                 image=True, image_format='PNG', animation=False,
-                 animation_format='FFMPEG', fps=60):
+                 viewport=True, shading_type='SOLID',
+                 view3d_perspective='ORTHO', image=False, image_format='PNG',
+                 animation=False, animation_format='FFMPEG', fps=60):
 
-    ui.set_view3d_shading_type('RENDERED')
-    ui.set_view3d_persective('CAMERA')
-
-    config_render_paths(cwd, resolution_percentage)
     config_engine(engine)
+
+    if viewport:
+        config_render_paths(cwd, filename='opengl',
+                            resolution_percentage=resolution_percentage)
+        render_viewport(image_format, resolution_percentage,
+                        shading_type=shading_type,
+                        view_perspective=view3d_perspective)
     if image:
+        config_render_paths(cwd, filename='still',
+                            resolution_percentage=resolution_percentage)
         render_image(image_format, resolution_percentage)
     if animation:
+        config_render_paths(cwd, filename='animation',
+                            resolution_percentage=resolution_percentage)
         render_animation(animation_format, fps)
 
 
