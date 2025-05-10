@@ -1,4 +1,5 @@
 import bpy
+import math
 
 
 def clean(
@@ -48,3 +49,27 @@ def set_active_collection(name, parent=None):
         if set_active_collection(name, layer_collection):
             return True
     return False
+
+
+def setup_starter_scene(background_color=(0, 0, 0, 1), lens=55):
+    # set up world
+    world = bpy.data.worlds['World']
+    world.node_tree.nodes['Background'].inputs['Color'].default_value = background_color
+
+    # set up camera
+    bpy.ops.object.camera_add(location=(5, 5, 5))
+    camera = bpy.context.active_object
+    camera.data.lens = lens
+    bpy.context.scene.camera = bpy.context.active_object
+
+    # set up camera tracking
+    bpy.ops.object.empty_add()
+    empty_obj = bpy.context.active_object
+    empty_obj.name = "CameraTrackEmpty"
+    track_to_constraint = camera.constraints.new(type='TRACK_TO')
+    track_to_constraint.target = empty_obj
+
+    # set up light
+    bpy.ops.object.light_add(type='SUN', rotation=(0, 0, 0))
+    light = bpy.context.active_object
+    light.data.energy = 10

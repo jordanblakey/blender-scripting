@@ -3,9 +3,9 @@ import os
 from . import ui
 
 
-def render(cwd, engine='BLENDER_EEVEE_NEXT', resolution_percentage=100,
-           image=True, image_format='PNG', animation=False,
-           animation_format='FFMPEG', fps=60):
+def quick_render(cwd, engine='BLENDER_EEVEE_NEXT', resolution_percentage=100,
+                 image=True, image_format='PNG', animation=False,
+                 animation_format='FFMPEG', fps=60):
 
     ui.set_view3d_shading_type('RENDERED')
     ui.set_view3d_persective('CAMERA')
@@ -18,11 +18,11 @@ def render(cwd, engine='BLENDER_EEVEE_NEXT', resolution_percentage=100,
         render_animation(animation_format, fps)
 
 
-def config_render_paths(cwd, resolution_percentage=100):
+def config_render_paths(cwd, filename='render', resolution_percentage=100):
     render_dir = os.path.join(cwd, 'renders')
     os.makedirs(render_dir, exist_ok=True)
     bpy.context.scene.render.filepath = os.path.join(
-        render_dir, f'render@{resolution_percentage}%')
+        render_dir, f'{filename}@{resolution_percentage}')
 
 
 def config_engine(engine='BLENDER_EEVEE_NEXT', time_limit=5,
@@ -39,6 +39,20 @@ def config_engine(engine='BLENDER_EEVEE_NEXT', time_limit=5,
 
     elif engine == 'WORKBENCH':
         pass
+
+
+def render_viewport(image_format='PNG', resolution_percentage=100,
+                    shading_type="SOLID", view_perspective='ORTHO'):
+    # config viewport
+    ui.set_view3d_shading_type(shading_type)
+    ui.set_view3d_persective(view_perspective)
+
+    # config format and resolution
+    bpy.context.scene.render.resolution_percentage = resolution_percentage
+    bpy.context.scene.render.image_settings.file_format = image_format
+
+    # render
+    bpy.ops.render.opengl(write_still=True, view_context=True)
 
 
 def render_image(image_format='PNG', resolution_percentage=100):
