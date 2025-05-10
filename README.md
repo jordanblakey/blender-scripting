@@ -49,7 +49,7 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
-| ![Defining Materials with Python](./14_procedural_material/renders/render@200.png) |
+| ![Defining Materials with Python](./14_procedural_material/renders/cycles_render@200.png) |
 | :--------------------------------------------------------------------------------: |
 |                           Defining Materials with Python                           |
 
