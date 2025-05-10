@@ -5,6 +5,9 @@ Experiments in automating Blender with Python.
 ## Setup Project for VSCode
 
 ```bash
+# external deps
+sudo apt-get install dvipng texlive-latex-extra texlive-fonts-recommended
+
 # create a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
