@@ -29,9 +29,12 @@ A python module to abstract common blender scripting code.
 
 ```sh
 blender_utils/
+├── install_symlink.py  # run to symlink module to Blender scripts directory
 ├── starter_script.py  # boilerplate for scripting a blender scene
 ├── blend_file.py  # work with .blend files
 ├── scene.py  # clean scenes, work with collections
+├── mesh.py  # simplify working with meshes
+├── render.py  # simplify rendering viewport, stills, and animations
 └── ui.py  # work with the blender ui: get contexts, control viewport
 ```
 
@@ -51,6 +54,10 @@ There is a deprecated [extension](https://marketplace.visualstudio.com/items/?it
 Note that print statements from the script will appear in the terminal, but not from the python REPL in Blender.
 
 ## Visual Notes, Renders
+
+| ![Wave Texture -> Voronoi Texture -> Displacement](./static/images/readme/materal_wave-texture_voronoi_displacement.png) |
+| :----------------------------------------------------------------------------------------------------------------------: |
+|                                     Wave Texture -> Voronoi Texture -> Displacement                                      |
 
 | ![Screen1](./static/images/readme/iteration.png) | ![Screen2](./static/images/readme/iteration2.png) |
 | :----------------------------------------------: | :-----------------------------------------------: |
