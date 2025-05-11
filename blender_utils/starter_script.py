@@ -1,6 +1,9 @@
-import bpy
 import sys
 import os
+
+import bpy
+import bmesh
+import blender_utils
 
 ENGINE = 'BLENDER_EEVEE_NEXT'
 RESOLUTION_PERCENTAGE = 200
@@ -12,18 +15,11 @@ RENDER_ANIMATION = False
 # Set Up Script
 ################################################################################
 
-# blender -b -P headless_mode.py  # debug scripts
-# blender -P headless_mode.py  # work in UI
+# blender -P headless_mode.py -b  # run without UI to debug scripts
+# blender -P headless_mode.py  # run with UI to check output and work visually
 
 dirname = os.path.dirname(__file__)
 blend_file = os.path.splitext(__file__)[0] + '.blend'
-
-# Import custom modules
-modules_path = os.path.join(dirname, '..')
-if not modules_path in sys.path:
-    sys.path.append(modules_path)
-import blender_utils  # nopep8
-
 blender_utils.scene.clean()
 blender_utils.blend_file.create_or_open(blend_file)
 
@@ -35,6 +31,8 @@ blender_utils.blend_file.create_or_open(blend_file)
 def add_vertex():
     bpy.ops.object.add(type='MESH')
     obj = bpy.context.active_object
+    if not obj or not isinstance(obj.data, bpy.types.Mesh):
+        raise TypeError()
     obj.data.vertices.add(1)
 
 ################################################################################

@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import sympy as sp
 from sympy.parsing.latex import parse_latex
 
+# external deps
+# sudo apt-get install dvipng texlive-latex-extra texlive-fonts-recommended
+
 # define an equation like this, but no control over the order
 # x = sp.Symbol('x')
 # y = sp.Symbol('y')

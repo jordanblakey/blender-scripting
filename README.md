@@ -5,17 +5,17 @@ Experiments in automating Blender with Python.
 ## Setup Project for VSCode
 
 ```bash
-# external deps
-sudo apt-get install dvipng texlive-latex-extra texlive-fonts-recommended
-
 # create a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# Don't have to use the vscode extension, alt workflow:
-blender -b -P script.py  # run in background, debug python scripts.
-blender -P script.py  # Work in UI
+# install Blender_utils symlink in Blender scripts directory
+blender --background --python install_symlink.py
+
+# run Python scripts in Blender from the CLI
+blender -P headless_mode.py -b  # run without UI to debug scripts (fast)
+blender -P headless_mode.py  # run with UI to check output and work visually
 ```
 
 ```py
