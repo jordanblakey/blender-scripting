@@ -1,24 +1,26 @@
 import os
 import sys
-import bpy
+
 import bmesh
+import bpy
+
+import blender_utils
 
 dirname = os.path.dirname(__file__)
-blend_file = os.path.splitext(__file__)[0] + '.blend'
+blend_file = os.path.splitext(__file__)[0] + ".blend"
 
 # Import custom modules
-modules_path = os.path.join(dirname, '..')
-if not modules_path in sys.path:
+modules_path = os.path.join(dirname, "..")
+if modules_path not in sys.path:
     sys.path.append(modules_path)
-import blender_utils  # nopep8
 
 # method 1: using a modifier
 obj = bpy.context.active_object
 if not isinstance(obj, bpy.types.Object):
     raise TypeError()
-mod = obj.modifiers.new(name='Bevel', type='BEVEL')
+mod = obj.modifiers.new(name="Bevel", type="BEVEL")
 if isinstance(mod, bpy.types.BevelModifier):
-    mod.affect = 'EDGES'
+    mod.affect = "EDGES"
     mod.width = 0.5
 obj.location = (2, 0, 0)
 
@@ -32,12 +34,7 @@ if not obj or not isinstance(obj.data, bpy.types.Mesh):
 bm: bmesh.types.BMesh = bmesh.new()
 bm.from_mesh(obj.data)
 bmesh.ops.bevel(
-    bm,
-    geom=list(bm.edges),
-    offset=0.5,
-    segments=1,
-    affect='EDGES',
-    profile=0.5
+    bm, geom=list(bm.edges), offset=0.5, segments=1, affect="EDGES", profile=0.5
 )
 
 bm.normal_update()
@@ -52,8 +49,4 @@ obj = bpy.context.active_object
 if not obj or not isinstance(obj.data, bpy.types.Mesh):
     raise TypeError()
 with blender_utils.mesh.get_bmesh(obj) as bm:
-    bmesh.ops.bevel(
-        bm,
-        geom=list(bm.edges),
-        offset=0.5,
-        segments=1)
+    bmesh.ops.bevel(bm, geom=list(bm.edges), offset=0.5, segments=1)

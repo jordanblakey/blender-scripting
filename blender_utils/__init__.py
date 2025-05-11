@@ -1,5 +1,5 @@
-from .scene import *
-from .blend_file import *
-from .ui import *
-from .render import *
-from .mesh import *
+import blend_file
+import mesh
+import render
+import scene
+import ui
