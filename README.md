@@ -75,7 +75,7 @@ Note that print statements from the script will appear in the terminal, but not 
 | :-------------------------------------------------------------------------------------------------------------------: |
 |                       Using graph editor and camera perspective to proof and tweak an animation                       |
 
-| ![Mesh from scratch, composing and repetition](./static/images/readme/render.png) |
+| ![Mesh from scratch, composing and repetition](./static/images/readme/cycles_render_hq.png) |
 | :-------------------------------------------------------------------------------: |
 |                    Mesh from scratch, composing and repetition                    |
 
