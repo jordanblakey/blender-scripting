@@ -11,7 +11,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 # install Blender_utils symlink in Blender scripts directory
-blender --background --python install_symlink.py
+blender --background --python blender_utils/install_symlinks.py
 
 # run Python scripts in Blender from the CLI
 blender -P headless_mode.py -b  # run without UI to debug scripts (fast)
@@ -76,8 +76,8 @@ Note that print statements from the script will appear in the terminal, but not 
 |                       Using graph editor and camera perspective to proof and tweak an animation                       |
 
 | ![Mesh from scratch, composing and repetition](./static/images/readme/cycles_render_hq.png) |
-| :-------------------------------------------------------------------------------: |
-|                    Mesh from scratch, composing and repetition                    |
+| :-----------------------------------------------------------------------------------------: |
+|                         Mesh from scratch, composing and repetition                         |
 
 | ![Procedural Animation Example](./static/images/readme/interface.png) |
 | :-------------------------------------------------------------------: |
