@@ -10,8 +10,9 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# install Blender_utils symlink in Blender scripts directory
-blender --background --python blender_utils/install_symlinks.py
+# install requirements and blender_utils symlink in Blender scripts directory
+# run this every requirements.txt is updated.
+blender --background --python blender_utils/install_requirements.py
 
 # run Python scripts in Blender from the CLI
 blender -P headless_mode.py -b  # run without UI to debug scripts (fast)
