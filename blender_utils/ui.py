@@ -1,11 +1,11 @@
 import math
-from typing import Dict, Literal
+from typing import Dict
 
 import bpy
 from bpy.types import Area, Region, Screen, SpaceView3D, Window
 from mathutils import Euler, Vector
 
-from blender_utils.typing import (
+from blender_utils.btyping import (
     ShadingTypeItems,
     SpaceTypeItems,
     ViewPerspectiveTypeItems,

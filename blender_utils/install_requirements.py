@@ -1,22 +1,20 @@
-import inspect
 import os
-import subprocess
-import typing
 
 import bpy
-import typing_extensions
 
 
 def main():
     print("make cycles module symlink here for type checking:")
     scripts_path = bpy.utils.script_paths()[0]
     source_path = os.path.join(scripts_path, "addons_core", "cycles")
-    symlink_path = os.path.join(os.path.dirname(__file__), "typing", "cycles")
-    create_symlink("blender_utils.typing.cycles", source_path, symlink_path)
+    symlink_path = os.path.join(os.path.dirname(__file__), "typing")
+    create_symlink("blender_utils.btyping.cycles", source_path, symlink_path)
 
     print("make blender_utils module symlink so it's available to scripts:")
     source_path = os.path.abspath(os.path.dirname(str(__file__)))
-    symlink_path = os.path.join(bpy.utils.user_resource("SCRIPTS"), "modules")
+    symlink_path = os.path.join(
+        bpy.utils.user_resource("SCRIPTS"), "modules", "blender_utils"
+    )
     create_symlink("blender_utils", source_path, symlink_path)
 
     print("make blender_utils module symlink so it's available to scripts:")

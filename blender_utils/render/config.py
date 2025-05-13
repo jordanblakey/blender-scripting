@@ -3,7 +3,7 @@ import os
 import bpy
 from bpy.types import Scene
 
-from blender_utils.typing import RenderEngineTypeItems
+from blender_utils.btyping import RenderEngineTypeItems
 
 
 def config_render_paths(

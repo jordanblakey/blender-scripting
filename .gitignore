@@ -8,4 +8,4 @@ __pycache__/
 *.blend1
 
 # Symlinks
-blender_utils/typing/cycles
+blender_utils/btyping/cycles

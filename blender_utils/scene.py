@@ -10,8 +10,6 @@ from bpy.types import (
     ViewLayer,
 )
 
-from blender_utils.typing import ConstraintTypeItems
-
 
 def clean(
     unhide_objects: bool = True,

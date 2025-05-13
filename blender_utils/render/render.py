@@ -1,23 +1,22 @@
 import os
-from typing import Literal
 
 import bpy
 from bpy.types import Scene
 
-from blender_utils import render, typing, ui
+from blender_utils import btyping, render, ui
 
 
 def quick_render(
     cwd: os.PathLike,
-    engine: typing.RenderEngineTypeItems = "BLENDER_EEVEE_NEXT",
+    engine: btyping.RenderEngineTypeItems = "BLENDER_EEVEE_NEXT",
     resolution_percentage: int = 100,
     viewport: bool = True,
-    shading_type: typing.ShadingTypeItems = "SOLID",
-    view3d_perspective: typing.ViewPerspectiveTypeItems = "ORTHO",
+    shading_type: btyping.ShadingTypeItems = "SOLID",
+    view3d_perspective: btyping.ViewPerspectiveTypeItems = "ORTHO",
     image: bool = False,
-    image_format: typing.ImageTypeItems = "PNG",
+    image_format: btyping.ImageTypeItems = "PNG",
     animation: bool = False,
-    animation_format: typing.ImageTypeItems = "FFMPEG",
+    animation_format: btyping.ImageTypeItems = "FFMPEG",
     fps: int = 60,
 ) -> None:
     """
@@ -50,10 +49,10 @@ def quick_render(
 
 
 def render_viewport(
-    image_format: typing.ImageTypeItems = "PNG",
+    image_format: btyping.ImageTypeItems = "PNG",
     resolution_percentage: int = 100,
-    shading_type: typing.ShadingTypeItems = "SOLID",
-    view_perspective: typing.ViewPerspectiveTypeItems = "ORTHO",
+    shading_type: btyping.ShadingTypeItems = "SOLID",
+    view_perspective: btyping.ViewPerspectiveTypeItems = "ORTHO",
 ) -> None:
     """
     Render the viewport, setting the perspective mode and shading type.
@@ -73,7 +72,7 @@ def render_viewport(
 
 
 def render_image(
-    image_format: typing.ImageTypeItems = "PNG",
+    image_format: btyping.ImageTypeItems = "PNG",
     resolution_percentage: int = 100,
 ) -> None:
     """
@@ -90,7 +89,7 @@ def render_image(
 
 
 def render_animation(
-    animation_format: typing.ImageTypeItems = "FFMPEG", fps: int = 60
+    animation_format: btyping.ImageTypeItems = "FFMPEG", fps: int = 60
 ) -> None:
     """
     Render an animation sequence using the scene camera.
