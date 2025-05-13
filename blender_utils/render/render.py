@@ -7,7 +7,7 @@ from blender_utils import btyping, render, ui
 
 
 def quick_render(
-    cwd: os.PathLike,
+    cwd: str | os.PathLike,
     engine: btyping.RenderEngineTypeItems = "BLENDER_EEVEE_NEXT",
     resolution_percentage: int = 100,
     viewport: bool = True,
