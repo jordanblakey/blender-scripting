@@ -1,7 +1,4 @@
-from typing import Type
-
 import bpy
-from bpy._typing.rna_enums import ConstraintTypeItems
 from bpy.types import (
     Camera,
     NodeSocketColor,
@@ -12,6 +9,8 @@ from bpy.types import (
     TrackToConstraint,
     ViewLayer,
 )
+
+from blender_utils.typing import ConstraintTypeItems
 
 
 def clean(

@@ -2,9 +2,14 @@ import math
 from typing import Dict, Literal
 
 import bpy
-from bpy._typing.rna_enums import ShadingTypeItems, SpaceTypeItems
 from bpy.types import Area, Region, Screen, SpaceView3D, Window
 from mathutils import Euler, Vector
+
+from blender_utils.typing import (
+    ShadingTypeItems,
+    SpaceTypeItems,
+    ViewPerspectiveTypeItems,
+)
 
 
 def get_context(
@@ -64,7 +69,7 @@ def set_view3d_shading_type(
 
 
 def set_view3d_persective(
-    perspective: Literal["PERSP", "ORTHO", "CAMERA"] = "CAMERA",
+    perspective: ViewPerspectiveTypeItems = "CAMERA",
 ):
     """
     Set the perspective mode of the viewport.
