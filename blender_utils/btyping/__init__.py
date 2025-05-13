@@ -2,11 +2,9 @@
 
 import typing
 
-ViewPerspectiveTypeItems = typing.Literal["PERSP", "ORTHO", "CAMERA"]
+from blender_utils.btyping.render import *  # noqa: F403
 
-RenderEngineTypeItems = typing.Literal[
-    "CYCLES", "BLENDER_EEVEE_NEXT", "BLENDER_WORKBENCH"
-]
+ViewPerspectiveTypeItems = typing.Literal["PERSP", "ORTHO", "CAMERA"]
 
 ImageTypeItems = typing.Literal[
     "BMP",  # BMP.Output image in bitmap format.
@@ -54,14 +52,3 @@ SpaceTypeItems = typing.Literal[
     "SPREADSHEET",  # Spreadsheet.Explore geometry data in a table.
     "PREFERENCES",  # Preferences.Edit persistent configuration settings.
 ]
-
-PreviewDenoiserTypeItems = typing.Literal["OPENIMAGEDENOISE", "OPTIX"]
-PreviewDenoisingInputPassesTypeItems = typing.Literal[
-    "RGB", "RGB_ALBEDO", "RGB_ALBEDO_NORMAL"
-]
-DenoisingPrefilterTypeItems = typing.Literal["NONE", "FAST", "ACCURATE"]
-DenoiserTypeItems = typing.Literal["OPENIMAGEDENOISE", "OPTIX"]
-DenoisingInputPassesTypeItems = typing.Literal[
-    "RGB", "RGB_ALBEDO", "RGB_ALBEDO_NORMAL"
-]
-DenoisingQualityTypeItems = typing.Literal["HIGH", "BALANCED", "FAST"]
