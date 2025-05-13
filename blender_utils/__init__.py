@@ -1,5 +1,1 @@
-import blend_file
-import mesh
-import render
-import scene
-import ui
+from blender_utils import blend_file, mesh, render, scene, ui

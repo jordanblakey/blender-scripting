@@ -2,35 +2,31 @@ import os
 from typing import Literal
 
 import bpy
-from bpy._typing.rna_enums import ImageTypeItems, ShadingTypeItems
 from bpy.types import Scene
 
-from blender_utils import ui
-
-EngineType = Literal["BLENDER_EEVEE_NEXT"]
-ImageFormatType = Literal["PNG"]
+from blender_utils import render, typing, ui
 
 
 def quick_render(
     cwd: os.PathLike,
-    engine: EngineType = "BLENDER_EEVEE_NEXT",
+    engine: typing.RenderEngineTypeItems = "BLENDER_EEVEE_NEXT",
     resolution_percentage: int = 100,
     viewport: bool = True,
-    shading_type: ShadingTypeItems = "SOLID",
-    view3d_perspective: Literal["PERSP", "ORTHO", "CAMERA"] = "ORTHO",
+    shading_type: typing.ShadingTypeItems = "SOLID",
+    view3d_perspective: typing.ViewPerspectiveTypeItems = "ORTHO",
     image: bool = False,
-    image_format: ImageFormatType = "PNG",
+    image_format: typing.ImageTypeItems = "PNG",
     animation: bool = False,
-    animation_format: Literal["FFMPEG"] = "FFMPEG",
+    animation_format: typing.ImageTypeItems = "FFMPEG",
     fps: int = 60,
 ) -> None:
     """
     Quickly render the scene with some basic options.
     """
-    config_engine(engine)
+    render.config_engine(engine)
 
     if viewport:
-        config_render_paths(
+        render.config_render_paths(
             cwd, filename="opengl", resolution_percentage=resolution_percentage
         )
         render_viewport(
@@ -40,12 +36,12 @@ def quick_render(
             view_perspective=view3d_perspective,
         )
     if image:
-        config_render_paths(
+        render.config_render_paths(
             cwd, filename="still", resolution_percentage=resolution_percentage
         )
         render_image(image_format, resolution_percentage)
     if animation:
-        config_render_paths(
+        render.config_render_paths(
             cwd,
             filename="animation",
             resolution_percentage=resolution_percentage,
@@ -53,53 +49,11 @@ def quick_render(
         render_animation(animation_format, fps)
 
 
-def config_render_paths(
-    cwd: os.PathLike,
-    filename: str = "render",
-    resolution_percentage: int | None = None,
-) -> None:
-    """
-    Create paths for rendering relative to the calling script.
-    """
-    render_dir = os.path.join(cwd, "renders")
-    os.makedirs(render_dir, exist_ok=True)
-    if not isinstance(bpy.context.scene, Scene):
-        raise TypeError()
-    res = str(resolution_percentage) if resolution_percentage else ""
-    bpy.context.scene.render.filepath = os.path.join(
-        render_dir, f"{filename}{'@' + res if res else ''}"
-    )
-
-
-def config_engine(
-    engine: EngineType = "BLENDER_EEVEE_NEXT",
-    time_limit: int = 5,
-    use_denoising: bool = False,
-) -> None:
-    """
-    Configure the rendering engine.
-    """
-    if not isinstance(bpy.context.scene, Scene):
-        raise TypeError()
-    bpy.context.scene.render.engine = engine
-    if engine == "CYCLES":
-        # This is a per frame time limit for cycles
-        bpy.context.scene.cycles.time_limit = time_limit
-        # Skip denoising which is relatively expensive for a simple render like this
-        bpy.context.scene.cycles.use_denoising = use_denoising
-
-    elif engine == "BLENDER_EEVEE_NEXT":
-        pass
-
-    elif engine == "WORKBENCH":
-        pass
-
-
 def render_viewport(
-    image_format: ImageTypeItems = "PNG",
+    image_format: typing.ImageTypeItems = "PNG",
     resolution_percentage: int = 100,
-    shading_type: ShadingTypeItems = "SOLID",
-    view_perspective: Literal["PERSP", "ORTHO", "CAMERA"] = "ORTHO",
+    shading_type: typing.ShadingTypeItems = "SOLID",
+    view_perspective: typing.ViewPerspectiveTypeItems = "ORTHO",
 ) -> None:
     """
     Render the viewport, setting the perspective mode and shading type.
@@ -119,7 +73,8 @@ def render_viewport(
 
 
 def render_image(
-    image_format: ImageFormatType = "PNG", resolution_percentage: int = 100
+    image_format: typing.ImageTypeItems = "PNG",
+    resolution_percentage: int = 100,
 ) -> None:
     """
     Render a still image using the scene camera.
@@ -135,7 +90,7 @@ def render_image(
 
 
 def render_animation(
-    animation_format: ImageTypeItems = "FFMPEG", fps: int = 60
+    animation_format: typing.ImageTypeItems = "FFMPEG", fps: int = 60
 ) -> None:
     """
     Render an animation sequence using the scene camera.
