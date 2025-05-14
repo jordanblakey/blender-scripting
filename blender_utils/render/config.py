@@ -7,7 +7,7 @@ from blender_utils.btyping import RenderEngineTypeItems
 
 
 def config_render_paths(
-    cwd: os.PathLike,
+    cwd: str | os.PathLike,
     filename: str = "render",
     resolution_percentage: int | None = None,
 ) -> None:
@@ -19,9 +19,9 @@ def config_render_paths(
     if not isinstance(bpy.context.scene, Scene):
         raise TypeError()
     res = str(resolution_percentage) if resolution_percentage else ""
-    bpy.context.scene.render.filepath = os.path.join(
-        render_dir, f"{filename}{'@' + res if res else ''}"
-    )
+    is_anim = "anim" in filename
+    filename = f"{filename}{'@' + res if res else ''}{'_' if is_anim else ''}"
+    bpy.context.scene.render.filepath = os.path.join(render_dir, filename)
 
 
 def config_engine(

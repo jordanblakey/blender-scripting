@@ -81,20 +81,19 @@ def setup_starter_scene(background_color=(0, 0, 0, 1), lens=55):
     world = bpy.data.worlds["World"]
     if not isinstance(world.node_tree, ShaderNodeTree):
         raise TypeError()
-    new_socket = NodeSocketColor()
-    new_socket.default_value = background_color
-    world.node_tree.nodes["Background"].inputs["Color"] = new_socket
+    # TODO: fix this
+    # new_socket = NodeSocketColor()
+    # new_socket.default_value = background_color
+    # print(type(world.node_tree.nodes["Background"].inputs["Color"]))
+    # world.node_tree.nodes["Background"].inputs["Color"] = background_color
 
     # set up camera
     bpy.ops.object.camera_add(location=(5, 5, 5))
     camera = bpy.context.active_object
-    if not isinstance(camera, Camera):
+    if not camera or not bpy.context.scene:
         raise TypeError()
-    camera.lens = lens
-    scene = bpy.context.scene
-    if not isinstance(scene, Scene):
-        raise TypeError()
-    scene.camera = bpy.context.active_object
+    setattr(camera.data, "lens", 55)
+    bpy.context.scene.camera = bpy.context.active_object
 
     # set up camera tracking
     bpy.ops.object.empty_add()
@@ -110,6 +109,5 @@ def setup_starter_scene(background_color=(0, 0, 0, 1), lens=55):
     # set up light
     bpy.ops.object.light_add(type="SUN", rotation=(0, 0, 0))
     light = bpy.context.active_object
-    if not light or not isinstance(light.data, PointLight):
-        raise TypeError()
-    light.data.energy = 10
+    if light and light.data and hasattr(light.data, "energy"):
+        setattr(light.data, "energy", 10)
