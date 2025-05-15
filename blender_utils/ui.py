@@ -14,7 +14,7 @@ from blender_utils.btyping import (
 
 def get_context(
     name: SpaceTypeItems,
-) -> Dict[str, Window | Screen | Area | Region]:
+) -> dict:
     """
     Gets context for overrides.
 

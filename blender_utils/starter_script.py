@@ -20,10 +20,19 @@ RENDER_ANIMATION = False
 # blender -P headless_mode.py -b  # run without UI to debug scripts
 # blender -P headless_mode.py  # run with UI to check output and work visually
 
-dirname: os.PathLike = Path(os.path.dirname(__file__))
-blend_file: os.PathLike = Path(os.path.splitext(__file__)[0] + ".blend")
+dirname = os.path.dirname(__file__)
+blend_file = os.path.splitext(__file__)[0] + ".blend"
 blender_utils.scene.clean()
 blender_utils.blend_file.create_or_open(blend_file)
+
+################################################################################
+# Compose Functions
+################################################################################
+
+
+def main():
+    add_vertex()
+
 
 ################################################################################
 # Define Functions
@@ -36,15 +45,6 @@ def add_vertex() -> None:
     if not obj or not isinstance(obj.data, bpy.types.Mesh):
         raise TypeError()
     obj.data.vertices.add(1)
-
-
-################################################################################
-# Compose Functions
-################################################################################
-
-
-def main():
-    add_vertex()
 
 
 ################################################################################
