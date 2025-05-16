@@ -56,6 +56,10 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
+| ![Iterative Material Experiments](./13_node_based_material_exploration/_renders/iterative_material_exploration-BSDF.png) | ![Exploring Fresnel and adding bloom with the compositor](./13_node_based_material_exploration/_renders/fresnel_node+bloom.png) |
+| :----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+|                                              Iterative Material Experiments                                              |                                   Exploring Fresnel node and adding bloom with the compositor                                   |
+
 | ![Wave Texture -> Voronoi Texture -> Displacement](./static/images/readme/materal_wave-texture_voronoi_displacement.png) |
 | :----------------------------------------------------------------------------------------------------------------------: |
 |                                     Wave Texture -> Voronoi Texture -> Displacement                                      |
