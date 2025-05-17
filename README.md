@@ -56,6 +56,10 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
+| ![Hard Surface Modeling](/static/images/readme/hard_surface_modeling.png) |
+| :-----------------------------------------------------------------------: |
+|                       Learning Hard Suface Modeling                       |
+
 | ![Geometry Nodes](/static/images/readme/geometry_nodes_and_materials.png) |
 | :-----------------------------------------------------------------------: |
 |                Working with node based geometry modifiers                 |
