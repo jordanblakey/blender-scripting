@@ -56,6 +56,10 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
+| ![Geometry Nodes](./static/images/readme/geometry_nodes_and_materials.png) |
+| :------------------------------------------------------------------------: |
+|                 Working with node based geometry modifiers                 |
+
 | ![Iterative Material Experiments](./static/images/readme/iterative_material_exploration-BSDF.png) | ![Exploring Fresnel and adding bloom with the compositor](./static/images/readme/fresnel_node+bloom.png) |
 | :-----------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
 |                                  Iterative Material Experiments                                   |                       Exploring Fresnel node and adding bloom with the compositor                        |
