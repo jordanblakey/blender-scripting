@@ -56,6 +56,10 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
+| ![Parametric Modeling with Geometry Nodes](/static/images/readme/parameteric_meshes_geometry_nodes.png) |
+| :-----------------------------------------------------------------------------------------------------: |
+|                                 Parametric Modeling with Geometry Nodes                                 |
+
 | ![Hard Surface Modeling](/static/images/readme/hard_surface_modeling.png) |
 | :-----------------------------------------------------------------------: |
 |                       Learning Hard Suface Modeling                       |
