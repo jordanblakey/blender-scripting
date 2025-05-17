@@ -1,0 +1,8 @@
+shader cellphone(
+  color a = 0,
+  color b = 0,
+  vector d = 0,
+  output color c = 0
+) {
+  c = color(a.r, b.g, d.z);
+}

@@ -5,6 +5,9 @@ Experiments in automating Blender with Python.
 ## Setup Project for VSCode
 
 ```bash
+# clone repo with no history for fast download
+git clone --depth 1 <repo-url>
+
 # create a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
@@ -55,6 +58,10 @@ There is a deprecated [extension](https://marketplace.visualstudio.com/items/?it
 Note that print statements from the script will appear in the terminal, but not from the python REPL in Blender.
 
 ## Visual Notes, Renders
+
+| ![Writing Shaders in OSL](/static/images/readme/writing_shaders_in_osl.png) |
+| :-------------------------------------------------------------------------: |
+|                Writing Shaders in Open Shader Language (OSL)                |
 
 | ![Parametric Modeling with Geometry Nodes](/static/images/readme/parameteric_meshes_geometry_nodes.png) |
 | :-----------------------------------------------------------------------------------------------------: |

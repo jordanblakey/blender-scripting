@@ -9,3 +9,6 @@ __pycache__/
 
 # Symlinks
 blender_utils/btyping/cycles
+
+# Compiled shaders
+*.oso

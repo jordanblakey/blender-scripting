@@ -1,0 +1,7 @@
+shader bsdf_diffuse_only(
+    color Diffuse_Color = color(1.0, 0.0, 0.0),
+    output closure color BSDF = diffuse(N))
+{
+    color material_color = Diffuse_Color;
+    BSDF = material_color * diffuse(N);
+}
