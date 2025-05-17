@@ -56,46 +56,46 @@ Note that print statements from the script will appear in the terminal, but not 
 
 ## Visual Notes, Renders
 
-| ![Geometry Nodes](./static/images/readme/geometry_nodes_and_materials.png) |
-| :------------------------------------------------------------------------: |
-|                 Working with node based geometry modifiers                 |
+| ![Geometry Nodes](/static/images/readme/geometry_nodes_and_materials.png) |
+| :-----------------------------------------------------------------------: |
+|                Working with node based geometry modifiers                 |
 
-| ![Iterative Material Experiments](./static/images/readme/iterative_material_exploration-BSDF.png) | ![Exploring Fresnel and adding bloom with the compositor](./static/images/readme/fresnel_node+bloom.png) |
-| :-----------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
-|                                  Iterative Material Experiments                                   |                       Exploring Fresnel node and adding bloom with the compositor                        |
+| ![Iterative Material Experiments](/static/images/readme/iterative_material_exploration-BSDF.png) | ![Exploring Fresnel and adding bloom with the compositor](/static/images/readme/fresnel_node+bloom.png) |
+| :----------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
+|                                  Iterative Material Experiments                                  |                       Exploring Fresnel node and adding bloom with the compositor                       |
 
-| ![Wave Texture -> Voronoi Texture -> Displacement](./static/images/readme/materal_wave-texture_voronoi_displacement.png) |
-| :----------------------------------------------------------------------------------------------------------------------: |
-|                                     Wave Texture -> Voronoi Texture -> Displacement                                      |
+| ![Wave Texture -> Voronoi Texture -> Displacement](/static/images/readme/materal_wave-texture_voronoi_displacement.png) |
+| :---------------------------------------------------------------------------------------------------------------------: |
+|                                     Wave Texture -> Voronoi Texture -> Displacement                                     |
 
-| ![Screen1](./static/images/readme/iteration.png) | ![Screen2](./static/images/readme/iteration2.png) |
-| :----------------------------------------------: | :-----------------------------------------------: |
-|           Experimenting with iteration           |      Iterating using trigonometric functions      |
+| ![Screen1](/static/images/readme/iteration.png) | ![Screen2](/static/images/readme/iteration2.png) |
+| :---------------------------------------------: | :----------------------------------------------: |
+|          Experimenting with iteration           |     Iterating using trigonometric functions      |
 
-| ![Defining Materials with Python](./static/images/readme/cycles_render@200.png) |
-| :-----------------------------------------------------------------------------: |
-|                         Defining Materials with Python                          |
+| ![Defining Materials with Python](/static/images/readme/cycles_render@200.png) |
+| :----------------------------------------------------------------------------: |
+|                         Defining Materials with Python                         |
 
-| ![Node Based Material Experiments](./static/images/readme/node_mat_experiments.png) |
-| :---------------------------------------------------------------------------------: |
-|                           Node Based Material Experiments                           |
+| ![Node Based Material Experiments](/static/images/readme/node_mat_experiments.png) |
+| :--------------------------------------------------------------------------------: |
+|                          Node Based Material Experiments                           |
 
-| ![Using graph editor and camera perspective to proof and tweak an animation](./static/images/readme/graph_editor.png) |
-| :-------------------------------------------------------------------------------------------------------------------: |
-|                       Using graph editor and camera perspective to proof and tweak an animation                       |
+| ![Using graph editor and camera perspective to proof and tweak an animation](/static/images/readme/graph_editor.png) |
+| :------------------------------------------------------------------------------------------------------------------: |
+|                      Using graph editor and camera perspective to proof and tweak an animation                       |
 
-| ![Mesh from scratch, composing and repetition](./static/images/readme/cycles_render_hq.png) |
-| :-----------------------------------------------------------------------------------------: |
-|                         Mesh from scratch, composing and repetition                         |
+| ![Mesh from scratch, composing and repetition](/static/images/readme/cycles_render_hq.png) |
+| :----------------------------------------------------------------------------------------: |
+|                        Mesh from scratch, composing and repetition                         |
 
-| ![Procedural Animation Example](./static/images/readme/interface.png) |
-| :-------------------------------------------------------------------: |
-|                     Procedural Animation Example                      |
+| ![Procedural Animation Example](/static/images/readme/interface.png) |
+| :------------------------------------------------------------------: |
+|                     Procedural Animation Example                     |
 
-| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](./static/images/readme/status_bar_config.png) |
-| :-------------------------------------------------------------------------------------------------------------------------: |
-|                         Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                          |
+| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](/static/images/readme/status_bar_config.png) |
+| :------------------------------------------------------------------------------------------------------------------------: |
+|                         Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                         |
 
-| ![Debugger Example](./static/images/readme/debugger.png) |
-| :------------------------------------------------------: |
-|                     Debugger Example                     |
+| ![Debugger Example](/static/images/readme/debugger.png) |
+| :-----------------------------------------------------: |
+|                    Debugger Example                     |
