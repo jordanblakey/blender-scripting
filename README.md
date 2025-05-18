@@ -53,6 +53,10 @@ butils/
 
 ## Visual Notes, Renders
 
+| ![Rock texture](/static/images/readme/procedural-rock-shader.png) |
+| :---------------------------------------------------------------: |
+|          Creating rock textures from procedural shaders           |
+
 | ![Writing Shaders in OSL](/static/images/readme/writing_shaders_in_osl.png) |
 | :-------------------------------------------------------------------------: |
 |                Writing Shaders in Open Shader Language (OSL)                |
