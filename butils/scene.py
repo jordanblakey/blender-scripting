@@ -70,19 +70,17 @@ def set_active_collection(name, parent=None):
     return False
 
 
-def setup_starter_scene(background_color=(0, 0, 0, 1), lens=55):
+def setup_starter_scene(background_color=(0.0, 0.0, 0.0, 1.0), lens=55):
     """
     Set up a basic scene from the blank state produced by the "clean" function.
     """
     # set up world
     world = bpy.data.worlds["World"]
+
     if not isinstance(world.node_tree, ShaderNodeTree):
         raise TypeError()
-    # TODO: fix this
-    # new_socket = NodeSocketColor()
-    # new_socket.default_value = background_color
-    # print(type(world.node_tree.nodes["Background"].inputs["Color"]))
-    # world.node_tree.nodes["Background"].inputs["Color"] = background_color
+    background_node = world.node_tree.nodes["Background"]
+    background_node.inputs["Color"].default_value = background_color  # type: ignore
 
     # set up camera
     bpy.ops.object.camera_add(location=(5, 5, 5))
