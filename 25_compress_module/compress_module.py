@@ -1,7 +1,9 @@
 import os
 import sys
 
-from PIL import Image, PngImagePlugin
+from PIL.ImageFile import ImageFile
+
+import compress_utils
 
 # Not importing blender_utils, since it depends on Blender env to work.
 # So, it's necessary to import the submodules directly to test them.
@@ -11,7 +13,7 @@ sys.path.append(
     )
 )
 
-from post_process import compress, image  # type: ignore
+from compress_utils import compress_image, image  # type: ignore
 
 if (
     "post_process.compress" not in sys.modules
@@ -21,11 +23,11 @@ if (
 # Now the modules are available
 
 
-for fp in image.get_abs_paths("images"):
+for fp in os.listdir("images"):
     if "compressed" in fp:
         continue
     print(fp)
-    img: PngImagePlugin.PngImageFile = image.analyze_image(fp)
+    img: ImageFile = compress_utils.image.analyze_image(fp)
     print(img)
     root, ext = os.path.splitext(os.path.split(fp)[-1])
 
@@ -35,4 +37,4 @@ for fp in image.get_abs_paths("images"):
     img.save(new_fp, optimize=True)
     new_img = image.analyze_image(new_fp)
     print(new_img)
-    compress.check_compression_performance(img, new_img)
+    compress_utils.get_compression_factor(img, new_img)

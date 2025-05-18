@@ -1,1 +1,4 @@
 fake-bpy-module-latest==20250505
+ffmpeg-python==0.2.0
+piexif==1.1.3
+pillow==11.2.1
