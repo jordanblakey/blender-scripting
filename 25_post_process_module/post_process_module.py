@@ -29,7 +29,9 @@ for fp in image.get_abs_paths("images"):
     print(img)
     root, ext = os.path.splitext(os.path.split(fp)[-1])
 
-    new_fp = f"images/{root}-compressed.{ext}"
+    print(ext)
+
+    new_fp = f"images/{root}-compressed{ext}"
     img.save(new_fp, optimize=True)
     new_img = image.analyze_image(new_fp)
     print(new_img)

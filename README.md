@@ -8,6 +8,9 @@ Experiments in automating Blender with Python.
 # clone repo with no history for fast download
 git clone --depth 1 <repo-url>
 
+# install system packages
+sudo snap install blender && sudo apt install ffmpeg
+
 # create a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
