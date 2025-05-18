@@ -1,20 +1,20 @@
 import os
 
+from butils import get_root
 
-def main():
+__all__ = ["install"]
+
+
+def install():
     print("make cycles module symlink here for type checking:")
     expr = "print(bpy.utils.script_paths()[0])"
     scripts_path = run_in_blender(expr)
     source_path = os.path.join(scripts_path, "addons_core", "cycles")
-    symlink_path = os.path.join(
-        os.path.dirname(__file__), "..", "btyping", "cycles"
-    )
+    symlink_path = os.path.join(get_root("butils"), "btyping", "cycles")
     create_symlink("butils.btyping.cycles", source_path, symlink_path)
 
     print("make butils module symlink so it's available to scripts:")
-    source_path = os.path.abspath(
-        os.path.join(os.path.dirname(str(__file__)), "..")
-    )
+    source_path = get_root("butils")
     expr = "print(bpy.utils.script_path_user())"
     user_scripts_path = run_in_blender(expr)
     symlink_path = os.path.join(user_scripts_path, "modules", "butils")
@@ -71,9 +71,9 @@ def validate_importable(module_name):
 
 def install_requirements():
     """Install requirements.txt in Blender user scripts, allowing imports."""
-    root = os.path.join(os.path.dirname(__file__), "..", "..")
-    print(root)
-    requirements = open(os.path.join(root, "requirements.txt")).readlines()
+    requirements = open(
+        os.path.join(get_root("blender-scripting"), "requirements.txt")
+    ).readlines()
     expr = "print(bpy.utils.script_path_user())"
     user_scripts_path = run_in_blender(expr)
 

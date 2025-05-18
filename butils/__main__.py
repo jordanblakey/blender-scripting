@@ -2,7 +2,7 @@ import argparse
 import os
 import re
 
-from butils import commands
+import butils.commands
 
 
 def main():
@@ -28,7 +28,8 @@ def main():
     args = parser.parse_args()
 
     if args.action == "install":
-        commands.install_requirements.main()
+        butils.commands.requirements.install()
+        butils.commands.pythonpath.install()
 
     if args.action == "compress":
         if not args.input_file:
@@ -38,10 +39,10 @@ def main():
             _, ext = os.path.splitext(args.input_file)
             if re.match(r"\.(mkv|mp4)", ext):
                 print(f"Trying video compression for {ext} file.")
-                commands.compress.video.main(args.input_file, crf=args.crf)
+                butils.commands.video.compress(args.input_file, crf=args.crf)
             elif re.match(r"\.(png|jpg|jpeg)", ext):
                 print(f"Trying image compression for {ext} file.")
-                commands.compress.image.main(
+                butils.commands.image.compress(
                     args.input_file, analyze=args.analyze
                 )
             else:

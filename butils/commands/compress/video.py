@@ -7,7 +7,7 @@ from typing import Generator
 import ffmpeg
 
 
-def main(input_path, crf=None):
+def compress(input_path, crf=None):
     crf = (
         crf
         or input("Enter CRF (0 = lossless, 23 = default, 29 = aggressive): ")

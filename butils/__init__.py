@@ -1,3 +1,5 @@
+import pathlib
+
 import bpy
 
 if hasattr(bpy, "context"):
@@ -11,3 +13,9 @@ if hasattr(bpy, "context"):
         scene,
         ui,
     )
+
+
+def get_root(dirname="blender-scripting"):
+    path = pathlib.Path(__file__)
+    parts_slice = path.parts[: path.parts.index(dirname) + 1]
+    return path.joinpath(*parts_slice)

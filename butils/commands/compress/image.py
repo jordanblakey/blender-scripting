@@ -8,7 +8,7 @@ from PIL import Image
 from PIL.ImageFile import ImageFile
 
 
-def main(input_path, analyze=False):
+def compress(input_path, analyze=False):
     t1 = time.time()
     img: ImageFile = Image.open(input_path)
     head, tail = os.path.split(input_path)

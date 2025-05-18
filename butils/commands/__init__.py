@@ -1,2 +1,2 @@
-from . import install_requirements
 from .compress import image, video
+from .install import pythonpath, requirements
