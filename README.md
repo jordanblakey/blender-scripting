@@ -32,6 +32,9 @@ python -m butils --help
 # run this every requirements.txt is updated.
 python -m butils install
 
+# start new blender script
+python -m butils create
+
 # compress output images and videos
 python -m butils compress -i render.png
 python -m butils compress -i render.mkv

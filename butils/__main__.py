@@ -8,7 +8,9 @@ import butils.commands
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "action", type=str, help="An action to perform like: install, compress"
+        "action",
+        type=str,
+        help="An action to perform like: install, create, compress",
     )
     parser.add_argument(
         "-i",
@@ -30,6 +32,9 @@ def main():
     if args.action == "install":
         butils.commands.requirements.install()
         butils.commands.pythonpath.install()
+
+    if args.action == "create":
+        butils.commands.starter.create(name=args.input_file)
 
     if args.action == "compress":
         if not args.input_file:

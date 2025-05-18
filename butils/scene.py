@@ -1,9 +1,6 @@
 import bpy
 from bpy.types import (
-    Camera,
-    NodeSocketColor,
     Object,
-    PointLight,
     Scene,
     ShaderNodeTree,
     TrackToConstraint,
