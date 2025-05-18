@@ -16,28 +16,27 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# install requirements and butils symlink in Blender scripts directory
-# run this every requirements.txt is updated.
-python -m butils install
-
 # run Python scripts in Blender from the CLI
 blender -P headless_mode.py -b  # run without UI to debug scripts (fast)
 blender -P headless_mode.py  # run with UI to check output and work visually
-
-# compress output images
-python -m butils
-```
-
-```py
-# autocompletion for bpy through the fake-bpy-module-latest package
-import bpy
 ```
 
 ## `butils` module
 
-A python module to abstract common blender scripting code.
+`butils` abstracts common Blender scripting code and provides CLI commands.
 
 ```sh
+python -m butils --help
+
+# install requirements and butils symlink in Blender scripts directory
+# run this every requirements.txt is updated.
+python -m butils install
+
+# compress output images and videos
+python -m butils compress -i render.png
+python -m butils compress -i render.mkv
+
+# module structure
 butils/
 ├── commands/  # CLI commands available when running butils as a module
 ├── starter_script.py  # boilerplate for scripting a blender scene
@@ -48,13 +47,6 @@ butils/
 ├── render/  # simplify rendering viewport, stills, and animations
 └── ui.py  # work with the blender ui: get contexts, control viewport
 ```
-
-## Blender UI Notes
-
-- `Preferences > General > Developer Extras (geometric data)`
-- Use `simplescreenrecorder` to record with fast encoding system audio
-
-Note that print statements from the script will appear in the terminal, but not from the python REPL in Blender.
 
 ## Visual Notes, Renders
 
