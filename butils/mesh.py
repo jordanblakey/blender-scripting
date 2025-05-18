@@ -12,7 +12,7 @@ def get_bmesh(obj: bpy.types.Object) -> Generator[BMesh, None, None]:
     Context manager handling data sync and cleanup fo simplify bmesh workflow.
 
     Example Usage:
-    with blender_utils.mesh.get_bmesh(obj) as bm:
+    with butils.mesh.get_bmesh(obj) as bm:
         bmesh.ops.bevel(bm, geom=list(bm.edges), offset=0.5, segments=1)
     """
     # create the bmesh from obj.data

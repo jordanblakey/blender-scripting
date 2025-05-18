@@ -1,7 +1,7 @@
 from typing import Callable, TypedDict, Unpack
 from typing import NotRequired as NR
 
-from blender_utils import btyping
+from butils import btyping
 
 
 class UpdateMask:

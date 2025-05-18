@@ -1,16 +1,13 @@
 import os
 import sys
 
+import compress_utils
 from PIL.ImageFile import ImageFile
 
-import compress_utils
-
-# Not importing blender_utils, since it depends on Blender env to work.
+# Not importing butils, since it depends on Blender env to work.
 # So, it's necessary to import the submodules directly to test them.
 sys.path.append(
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "..", "blender_utils")
-    )
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "butils"))
 )
 
 from compress_utils import compress_image, image  # type: ignore

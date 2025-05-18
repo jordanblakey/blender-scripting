@@ -4,13 +4,13 @@ from pathlib import Path
 
 import bpy
 
-import blender_utils
-from blender_utils.animation.keyframe import edit_keyframe, insert_keyframe
+import butils
+from butils.animation.keyframe import edit_keyframe, insert_keyframe
 
 dirname: os.PathLike = Path(os.path.dirname(__file__))
 blend_file: os.PathLike = Path(os.path.splitext(__file__)[0] + ".blend")
-blender_utils.scene.clean()
-blender_utils.blend_file.create_or_open(blend_file)
+butils.scene.clean()
+butils.blend_file.create_or_open(blend_file)
 
 
 def add_geometry():
@@ -39,7 +39,7 @@ def animate():
 
 
 def setup_scene():
-    blender_utils.scene.setup_starter_scene()
+    butils.scene.setup_starter_scene()
 
 
 def main():
@@ -49,7 +49,7 @@ def main():
 
 
 main()
-blender_utils.blend_file.save(blend_file)
+butils.blend_file.save(blend_file)
 setattr(bpy.context.scene, "frame_end", 75)
-blender_utils.render.quick_render(cwd=dirname, viewport=False, animation=True)
+butils.render.quick_render(cwd=dirname, viewport=False, animation=True)
 print("Done.")

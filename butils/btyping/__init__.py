@@ -2,8 +2,8 @@
 
 import typing
 
-from blender_utils.btyping.animation import *  # noqa: F403
-from blender_utils.btyping.render import *  # noqa: F403
+from butils.btyping.animation import *  # noqa: F403
+from butils.btyping.render import *  # noqa: F403
 
 ViewPerspectiveTypeItems = typing.Literal["PERSP", "ORTHO", "CAMERA"]
 

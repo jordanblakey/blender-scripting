@@ -1,24 +1,34 @@
 import os
 
-import bpy
-
 
 def main():
     print("make cycles module symlink here for type checking:")
-    scripts_path = bpy.utils.script_paths()[0]
+    expr = "print(bpy.utils.script_paths()[0])"
+    scripts_path = run_in_blender(expr)
     source_path = os.path.join(scripts_path, "addons_core", "cycles")
-    symlink_path = os.path.join(os.path.dirname(__file__), "typing")
-    create_symlink("blender_utils.btyping.cycles", source_path, symlink_path)
-
-    print("make blender_utils module symlink so it's available to scripts:")
-    source_path = os.path.abspath(os.path.dirname(str(__file__)))
     symlink_path = os.path.join(
-        bpy.utils.user_resource("SCRIPTS"), "modules", "blender_utils"
+        os.path.dirname(__file__), "..", "btyping", "cycles"
     )
-    create_symlink("blender_utils", source_path, symlink_path)
+    create_symlink("butils.btyping.cycles", source_path, symlink_path)
 
-    print("make blender_utils module symlink so it's available to scripts:")
+    print("make butils module symlink so it's available to scripts:")
+    source_path = os.path.abspath(
+        os.path.join(os.path.dirname(str(__file__)), "..")
+    )
+    expr = "print(bpy.utils.script_path_user())"
+    user_scripts_path = run_in_blender(expr)
+    symlink_path = os.path.join(user_scripts_path, "modules", "butils")
+    create_symlink("butils", source_path, symlink_path)
+
+    print("make butils module symlink so it's available to scripts:")
     install_requirements()
+    print("Installation process complete.")
+
+
+def run_in_blender(expr):
+    expr = f"import bpy;{expr}"
+    wrap = os.popen(f'blender --quiet --background --python-expr "{expr}"')
+    return wrap.read().strip()
 
 
 def create_symlink(module_name, source_path, symlink_path):
@@ -48,8 +58,10 @@ def validate_importable(module_name):
     """Validate `import` works for a module by name."""
     R, G, C = "\033[91m", "\033[92m", "\033[0m"
     try:
-        __import__(module_name)
-    except ImportError:
+        result = run_in_blender(f"import {module_name};print({module_name})")
+        if not result:
+            raise ModuleNotFoundError
+    except ModuleNotFoundError:
         print(f"{R}FAIL: `{module_name}` is not importable{C}\n")
         return False
     else:
@@ -59,8 +71,11 @@ def validate_importable(module_name):
 
 def install_requirements():
     """Install requirements.txt in Blender user scripts, allowing imports."""
-    requirements = open("../requirements.txt").readlines()
-    user_scripts_path = bpy.utils.user_resource("SCRIPTS")
+    root = os.path.join(os.path.dirname(__file__), "..", "..")
+    print(root)
+    requirements = open(os.path.join(root, "requirements.txt")).readlines()
+    expr = "print(bpy.utils.script_path_user())"
+    user_scripts_path = run_in_blender(expr)
 
     for package in requirements:
         package = package.strip().split("=")[0]
@@ -68,6 +83,3 @@ def install_requirements():
         cmd = f"pip install {package} --target={install_path} --upgrade"
         stdout = os.popen(cmd).read()
         print(stdout)
-
-
-main()

@@ -7,12 +7,12 @@ import bmesh
 import bpy
 import mathutils
 
-import blender_utils
+import butils
 
 dirname: os.PathLike = Path(os.path.dirname(__file__))
 blend_file: os.PathLike = Path(os.path.splitext(__file__)[0] + ".blend")
-blender_utils.scene.clean()
-blender_utils.blend_file.create_or_open(blend_file)
+butils.scene.clean()
+butils.blend_file.create_or_open(blend_file)
 
 
 def add_geometry():
@@ -70,19 +70,19 @@ def animate():
     # keyframe: bpy.types.Keyframe = list(keyframe_points)[0]
 
     # print(keyframe)
-    # easing: blender_utils.btyping.BeztripleInterpolationEasingItems = (
+    # easing: butils.btyping.BeztripleInterpolationEasingItems = (
     #     keyframe.easing
     # )
     # co: mathutils.Vector = keyframe.co
     # handle_left: mathutils.Vector = keyframe.handle_left
-    # handle_left_type: blender_utils.btyping.KeyframeHandleTypeItems = (
+    # handle_left_type: butils.btyping.KeyframeHandleTypeItems = (
     #     keyframe.handle_left_type
     # )
     # handle_left: mathutils.Vector = keyframe.handle_right
-    # handle_right_type: blender_utils.btyping.KeyframeHandleTypeItems = (
+    # handle_right_type: butils.btyping.KeyframeHandleTypeItems = (
     #     keyframe.handle_right_type
     # )
-    # interpolation: blender_utils.btyping.BeztripleInterpolationModeItems = (
+    # interpolation: butils.btyping.BeztripleInterpolationModeItems = (
     #     keyframe.interpolation
     # )
     # iterpolation = "CONSTANT"
@@ -99,8 +99,8 @@ def main():
 
 
 main()
-blender_utils.blend_file.save(blend_file)
-blender_utils.render.quick_render(
+butils.blend_file.save(blend_file)
+butils.render.quick_render(
     cwd=dirname,
     viewport=False,
     animation=False,
@@ -144,12 +144,12 @@ print("Done.")
 # obj.location.x = 10
 # obj.keyframe_insert("location", index=0, frame=250)
 
-# fcurves = blender_utils.animation.get_fcurves(obj)
+# fcurves = butils.animation.get_fcurves(obj)
 # for fcurve in fcurves:
 #     print(fcurve.data_path, fcurve.array_index)
 # print(fcurves.keys())
 
-# location_fcurve = blender_utils.animation.get_fcurve("location", 0, fcurves)
+# location_fcurve = butils.animation.get_fcurve("location", 0, fcurves)
 # if not location_fcurve:
 #     raise TypeError()
 # print(location_fcurve.keyframe_points)
@@ -157,7 +157,7 @@ print("Done.")
 # location_fcurve.keyframe_points[0].interpolation = "EXPO"
 # location_fcurve.keyframe_points[0].easing = "EASE_IN_OUT"
 
-# rotation_fcurve = blender_utils.animation.get_fcurve(
+# rotation_fcurve = butils.animation.get_fcurve(
 #     "rotation_euler", 0, fcurves
 # )
 # if not rotation_fcurve:

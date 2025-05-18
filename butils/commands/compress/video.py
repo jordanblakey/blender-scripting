@@ -7,23 +7,9 @@ from typing import Generator
 import ffmpeg
 
 
-def main():
-    argparser = argparse.ArgumentParser()
-    argparser.add_argument(
-        "input_path", type=str, help="Path to the video file."
-    )
-    argparser.add_argument(
-        "--crf",
-        type=str,
-        help="Constant Rate Factor. Determines the target bitrate",
-    )
-    args = argparser.parse_args()
-    argparser.print_help()
-    print()
-
-    input_path: str | os.PathLike = args.input_path
+def main(input_path, crf=None):
     crf = (
-        args.crf
+        crf
         or input("Enter CRF (0 = lossless, 23 = default, 29 = aggressive): ")
         or 29
     )
@@ -69,7 +55,3 @@ def get_abs_paths(dirpath: str | os.PathLike) -> Generator[str, None, None]:
     for dirpath, _, filenames in os.walk(dirpath):
         for filename in filenames:
             yield os.path.abspath(os.path.join(dirpath, filename))
-
-
-if __name__ == "__main__":
-    main()

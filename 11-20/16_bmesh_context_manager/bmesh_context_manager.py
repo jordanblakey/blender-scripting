@@ -4,7 +4,7 @@ import sys
 import bmesh
 import bpy
 
-import blender_utils
+import butils
 
 dirname = os.path.dirname(__file__)
 blend_file = os.path.splitext(__file__)[0] + ".blend"
@@ -48,5 +48,5 @@ bpy.ops.mesh.primitive_cube_add()
 obj = bpy.context.active_object
 if not obj or not isinstance(obj.data, bpy.types.Mesh):
     raise TypeError()
-with blender_utils.mesh.get_bmesh(obj) as bm:
+with butils.mesh.get_bmesh(obj) as bm:
     bmesh.ops.bevel(bm, geom=list(bm.edges), offset=0.5, segments=1)

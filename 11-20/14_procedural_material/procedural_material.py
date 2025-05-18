@@ -1,10 +1,11 @@
-import bpy
 import colorsys
+import math
 import os
 import sys
-import math
 
-ENGINE = 'CYCLES'
+import bpy
+
+ENGINE = "CYCLES"
 RESOLUTION_PERCENTAGE = 200
 RENDER_IMAGE = False
 RENDER_ANIMATION = False
@@ -17,16 +18,16 @@ RENDER_ANIMATION = False
 # blender -P headless_mode.py  # work in UI
 
 dirname = os.path.dirname(__file__)
-blend_file = os.path.splitext(__file__)[0] + '.blend'
+blend_file = os.path.splitext(__file__)[0] + ".blend"
 
 # Import custom modules
-modules_path = os.path.join(dirname, '..')
-if not modules_path in sys.path:
+modules_path = os.path.join(dirname, "..")
+if modules_path not in sys.path:
     sys.path.append(modules_path)
-import blender_utils  # nopep8
+import butils  # nopep8
 
-blender_utils.scene.clean()
-blender_utils.blend_file.create_or_open(blend_file)
+butils.scene.clean()
+butils.blend_file.create_or_open(blend_file)
 
 ################################################################################
 # Define Script
@@ -34,26 +35,27 @@ blender_utils.blend_file.create_or_open(blend_file)
 
 
 def main():
-    blender_utils.scene.setup_starter_scene(
-        background_color=(*colorsys.hls_to_rgb(2/3, 0, 1/4), 1))
-    bpy.data.objects.get('Sun').data.angle = math.pi / 18
+    butils.scene.setup_starter_scene(
+        background_color=(*colorsys.hls_to_rgb(2 / 3, 0, 1 / 4), 1)
+    )
+    bpy.data.objects.get("Sun").data.angle = math.pi / 18
 
     # create object
     bpy.ops.mesh.primitive_uv_sphere_add(radius=1)
     object = bpy.context.active_object
     bpy.ops.object.shade_smooth()
-    bpy.ops.object.modifier_add(type='SUBSURF')
+    bpy.ops.object.modifier_add(type="SUBSURF")
     bpy.context.object.modifiers["Subdivision"].levels = 2
     material = create_material()
     object.data.materials.append(material)
 
     # preview in viewport
-    blender_utils.ui.set_view3d_shading_type('RENDERED')
+    butils.ui.set_view3d_shading_type("RENDERED")
 
 
 def create_material():
     # create and apply material
-    material = bpy.data.materials.new(name='Material')
+    material = bpy.data.materials.new(name="Material")
 
     # prepare to use shader editor
     material.use_nodes = True
@@ -61,19 +63,20 @@ def create_material():
     links = material.node_tree.links
 
     # create and position nodes
-    principled_bsdf_node = nodes.get('Principled BSDF')
-    texture_coordinate_node = nodes.new(type='ShaderNodeTexCoord')
+    principled_bsdf_node = nodes.get("Principled BSDF")
+    texture_coordinate_node = nodes.new(type="ShaderNodeTexCoord")
     texture_coordinate_node.location = (-600, 0)
-    color_ramp_node = nodes.new(type='ShaderNodeValToRGB')
+    color_ramp_node = nodes.new(type="ShaderNodeValToRGB")
     color_ramp_node.location = (-300, 0)
 
     # create links between nodes
     links.new(
-        texture_coordinate_node.outputs['Normal'],
-        color_ramp_node.inputs['Fac'])
+        texture_coordinate_node.outputs["Normal"], color_ramp_node.inputs["Fac"]
+    )
     links.new(
-        color_ramp_node.outputs['Color'],
-        principled_bsdf_node.inputs['Base Color'])
+        color_ramp_node.outputs["Color"],
+        principled_bsdf_node.inputs["Base Color"],
+    )
 
     # config the color ramp for a twilight gradient
     elements = color_ramp_node.color_ramp.elements
@@ -97,25 +100,32 @@ def create_material():
 # Run Script, Save .blend File, Render
 ################################################################################
 
-print('script stage starting...')
+print("script stage starting...")
 main()
-print('script stage complete.')
+print("script stage complete.")
 
-blender_utils.blend_file.save(blend_file)
+butils.blend_file.save(blend_file)
 
-print('render stage starting...')
-blender_utils.render.config_engine(ENGINE, 0, True)
+print("render stage starting...")
+butils.render.config_engine(ENGINE, 0, True)
 
-blender_utils.render.config_render_paths(
-    cwd=dirname, filename='viewport_render',
-    resolution_percentage=RESOLUTION_PERCENTAGE)
-blender_utils.render.render_viewport(
-    image_format='PNG', resolution_percentage=RESOLUTION_PERCENTAGE,
-    shading_type="WIREFRAME", view_perspective='ORTHO')
+butils.render.config_render_paths(
+    cwd=dirname,
+    filename="viewport_render",
+    resolution_percentage=RESOLUTION_PERCENTAGE,
+)
+butils.render.render_viewport(
+    image_format="PNG",
+    resolution_percentage=RESOLUTION_PERCENTAGE,
+    shading_type="WIREFRAME",
+    view_perspective="ORTHO",
+)
 
-blender_utils.render.config_render_paths(
-    cwd=dirname, filename='cycles_render',
-    resolution_percentage=RESOLUTION_PERCENTAGE)
-blender_utils.render.render_image(resolution_percentage=RESOLUTION_PERCENTAGE)
+butils.render.config_render_paths(
+    cwd=dirname,
+    filename="cycles_render",
+    resolution_percentage=RESOLUTION_PERCENTAGE,
+)
+butils.render.render_image(resolution_percentage=RESOLUTION_PERCENTAGE)
 
-print('render stage complete.')
+print("render stage complete.")

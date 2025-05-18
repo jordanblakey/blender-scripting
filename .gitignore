@@ -8,7 +8,7 @@ __pycache__/
 *.blend1
 
 # Symlinks
-blender_utils/btyping/cycles
+butils/btyping/cycles
 
 # Compiled shaders
 *.oso

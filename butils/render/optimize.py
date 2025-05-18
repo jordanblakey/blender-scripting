@@ -1,8 +1,9 @@
+import subprocess
+
 import bpy
 
-from blender_utils.btyping.cycles.properties import CyclesRenderSettings
-from blender_utils.helpers import clip_values
-from blender_utils.render.update_mask import CyclesUpdateMask, RenderUpdateMask
+from butils.btyping.cycles.properties import CyclesRenderSettings
+from butils.render.update_mask import CyclesUpdateMask, RenderUpdateMask
 
 
 def apply_fast_cycles_preset():
@@ -27,3 +28,20 @@ def apply_fast_cycles_preset():
         max_bounces=8,
     )
     cycles_update_mask.apply()
+
+
+def clip_values(obj):
+    """Copy keys and values of obj.dir() to clipboard, omitting __*__ attrs."""
+    output = []
+
+    def set_clipboard_data(text):
+        p = subprocess.Popen(
+            ["xsel", "-b", "-i"], stdin=subprocess.PIPE, encoding="utf-8"
+        )
+        p.communicate(text)
+
+    for key in dir(obj):
+        if not key.startswith("_"):
+            line = f"{key}: {type(getattr(obj, key)).__name__} = {getattr(obj, key)}"
+            output.append(line)
+    set_clipboard_data("\n".join(output))

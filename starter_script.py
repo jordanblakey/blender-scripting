@@ -5,7 +5,7 @@ from pathlib import Path
 import bmesh
 import bpy
 
-import blender_utils
+import butils
 
 ENGINE = "BLENDER_EEVEE_NEXT"
 RESOLUTION_PERCENTAGE = 200
@@ -22,8 +22,8 @@ RENDER_ANIMATION = False
 
 dirname = os.path.dirname(__file__)
 blend_file = os.path.splitext(__file__)[0] + ".blend"
-blender_utils.scene.clean()
-blender_utils.blend_file.create_or_open(blend_file)
+butils.scene.clean()
+butils.blend_file.create_or_open(blend_file)
 
 ################################################################################
 # Compose Functions
@@ -54,9 +54,9 @@ def add_vertex() -> None:
 print("script stage starting...")
 main()
 print("script stage complete.")
-blender_utils.blend_file.save(blend_file)
+butils.blend_file.save(blend_file)
 print("render stage starting...")
-blender_utils.render.quick_render(
+butils.render.quick_render(
     cwd=dirname,
     engine=ENGINE,
     resolution_percentage=RESOLUTION_PERCENTAGE,

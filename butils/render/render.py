@@ -3,7 +3,7 @@ import os
 import bpy
 from bpy.types import Scene
 
-from blender_utils import btyping, render, ui
+from butils import btyping, render, ui
 
 
 def quick_render(

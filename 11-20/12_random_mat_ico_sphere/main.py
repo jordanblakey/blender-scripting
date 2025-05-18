@@ -1,12 +1,13 @@
-import bpy
-import sys
+import colorsys
+import math
 import os
 import random
-import bmesh
-import math
-import colorsys
+import sys
 
-ENGINE = 'BLENDER_EEVEE_NEXT'
+import bmesh
+import bpy
+
+ENGINE = "BLENDER_EEVEE_NEXT"
 RESOLUTION_PERCENTAGE = 200
 RENDER_IMAGE = True
 RENDER_ANIMATION = True
@@ -19,16 +20,16 @@ RENDER_ANIMATION = True
 # blender -P headless_mode.py  # work in UI
 
 dirname = os.path.dirname(__file__)
-blend_file = os.path.splitext(__file__)[0] + '.blend'
+blend_file = os.path.splitext(__file__)[0] + ".blend"
 
 # Import custom modules
-modules_path = os.path.join(dirname, '..')
-if not modules_path in sys.path:
+modules_path = os.path.join(dirname, "..")
+if modules_path not in sys.path:
     sys.path.append(modules_path)
-import blender_utils  # nopep8
+import butils  # nopep8
 
-blender_utils.blend_file.create_or_open(blend_file)
-blender_utils.scene.clean()
+butils.blend_file.create_or_open(blend_file)
+butils.scene.clean()
 
 ################################################################################
 # Start Script
@@ -40,22 +41,22 @@ def create_geometry():
     bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=4)
     obj = bpy.context.active_object
     bpy.ops.object.shade_smooth()
-    bpy.ops.object.modifier_add(type='SUBSURF')
+    bpy.ops.object.modifier_add(type="SUBSURF")
     bpy.context.object.modifiers["Subdivision"].levels = 2
 
     # enter edit mode
-    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.object.mode_set(mode="EDIT")
 
     # deselect faces
-    bpy.ops.mesh.select_mode(type='FACE')
-    bpy.ops.mesh.select_all(action='DESELECT')
+    bpy.ops.mesh.select_mode(type="FACE")
+    bpy.ops.mesh.select_all(action="DESELECT")
 
     # generate materials (1 for every 25 polygons)
     count = int(len(obj.data.polygons) / 25)
     materials = []
     for i in range(count):
         # create material
-        mat = bpy.data.materials.new(name=f'random_mat_{i}')
+        mat = bpy.data.materials.new(name=f"random_mat_{i}")
 
         # generate color
         hue = random.random()
@@ -71,7 +72,6 @@ def create_geometry():
     # iterate through faces
     ico_bmesh = bmesh.from_edit_mesh(obj.data)
     for face in ico_bmesh.faces:
-
         # pick a random mat
         mat = random.choice(materials)
 
@@ -91,19 +91,21 @@ def create_geometry():
 def setup_scene():
     # set up world
     color = (0, 0, 1, 1)
-    world = bpy.data.worlds['World']
-    world.node_tree.nodes['Background'].inputs['Color'].default_value = color
+    world = bpy.data.worlds["World"]
+    world.node_tree.nodes["Background"].inputs["Color"].default_value = color
 
     # set up camera
-    bpy.ops.object.camera_add(location=(5, 5, 5), rotation=(
-        math.radians(60), 0, math.radians(135)))
+    bpy.ops.object.camera_add(
+        location=(5, 5, 5), rotation=(math.radians(60), 0, math.radians(135))
+    )
     camera = bpy.context.active_object
     camera.data.lens = 250
     bpy.context.scene.camera = bpy.context.active_object
 
     # set up light
-    bpy.ops.object.light_add(type='SUN', rotation=(
-        math.radians(100), 0, math.radians(90)))
+    bpy.ops.object.light_add(
+        type="SUN", rotation=(math.radians(100), 0, math.radians(90))
+    )
     light = bpy.context.active_object
     light.data.energy = 10
 
@@ -112,20 +114,22 @@ def animate():
     bpy.context.scene.frame_end = 250
 
     # animate light
-    light = bpy.data.objects.get('Sun')
+    light = bpy.data.objects.get("Sun")
     light.rotation_euler[2] = 0 * math.pi
-    light.keyframe_insert(data_path='rotation_euler', index=2, frame=1)
+    light.keyframe_insert(data_path="rotation_euler", index=2, frame=1)
     light.rotation_euler[2] = 8 * math.pi
     light.keyframe_insert(
-        data_path='rotation_euler', index=2, frame=bpy.context.scene.frame_end)
+        data_path="rotation_euler", index=2, frame=bpy.context.scene.frame_end
+    )
 
     # animate sphere
-    sphere = bpy.data.objects.get('Icosphere')
+    sphere = bpy.data.objects.get("Icosphere")
     sphere.rotation_euler[2] = 0 * math.pi
-    sphere.keyframe_insert(data_path='rotation_euler', index=2, frame=1)
+    sphere.keyframe_insert(data_path="rotation_euler", index=2, frame=1)
     sphere.rotation_euler[2] = -1 * math.pi
     sphere.keyframe_insert(
-        data_path='rotation_euler', index=2, frame=bpy.context.scene.frame_end)
+        data_path="rotation_euler", index=2, frame=bpy.context.scene.frame_end
+    )
 
 
 def main():
@@ -135,12 +139,13 @@ def main():
 
 
 main()
-blender_utils.blend_file.save(blend_file)
-blender_utils.render(
+butils.blend_file.save(blend_file)
+butils.render(
     cwd=dirname,
     engine=ENGINE,
     resolution_percentage=RESOLUTION_PERCENTAGE,
     image=RENDER_IMAGE,
-    animation=RENDER_ANIMATION)
+    animation=RENDER_ANIMATION,
+)
 
-print('reached end of script')
+print("reached end of script")

@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 import time
@@ -9,21 +8,7 @@ from PIL import Image
 from PIL.ImageFile import ImageFile
 
 
-def main():
-    argparser = argparse.ArgumentParser()
-    argparser.add_argument(
-        "input_path", type=str, help="Path to the image file."
-    )
-    argparser.add_argument(
-        "--analyze",
-        action="store_true",
-        help="Get image attributes and metadata. Skips compression.",
-    )
-    args = argparser.parse_args()
-
-    input_path: str | os.PathLike = args.input_path
-    analyze: bool = args.analyze
-
+def main(input_path, analyze=False):
     t1 = time.time()
     img: ImageFile = Image.open(input_path)
     head, tail = os.path.split(input_path)
@@ -88,7 +73,3 @@ def analyze_image(file_path: str | os.PathLike) -> ImageFile:
         img.info.pop("exif")
     print(f"info: {json.dumps(img.info, indent=2)}")
     return img
-
-
-if __name__ == "__main__":
-    main()

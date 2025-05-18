@@ -5,7 +5,7 @@ import bpy
 from bpy.types import Area, Region, Screen, SpaceView3D, Window
 from mathutils import Euler, Vector
 
-from blender_utils.btyping import (
+from butils.btyping import (
     ShadingTypeItems,
     SpaceTypeItems,
     ViewPerspectiveTypeItems,

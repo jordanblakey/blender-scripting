@@ -16,13 +16,16 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# install requirements and blender_utils symlink in Blender scripts directory
+# install requirements and butils symlink in Blender scripts directory
 # run this every requirements.txt is updated.
-blender --background --python blender_utils/install_requirements.py
+python -m butils install
 
 # run Python scripts in Blender from the CLI
 blender -P headless_mode.py -b  # run without UI to debug scripts (fast)
 blender -P headless_mode.py  # run with UI to check output and work visually
+
+# compress output images
+python -m butils
 ```
 
 ```py
@@ -30,31 +33,24 @@ blender -P headless_mode.py  # run with UI to check output and work visually
 import bpy
 ```
 
-## `blender_utils` module
+## `butils` module
 
 A python module to abstract common blender scripting code.
 
 ```sh
-blender_utils/
-├── install_symlink.py  # run to symlink module to Blender scripts directory
+butils/
+├── commands/  # CLI commands available when running butils as a module
 ├── starter_script.py  # boilerplate for scripting a blender scene
 ├── blend_file.py  # work with .blend files
+├── animation/  # work with keyframe animations
 ├── scene.py  # clean scenes, work with collections
 ├── mesh.py  # simplify working with meshes
-├── render.py  # simplify rendering viewport, stills, and animations
+├── render/  # simplify rendering viewport, stills, and animations
 └── ui.py  # work with the blender ui: get contexts, control viewport
 ```
 
-## Blender VS Code Extension
-
-There is a deprecated [extension](https://marketplace.visualstudio.com/items/?itemName=JacquesLucke.blender-development), but still works to debug a blender scripts. Crashes frequently.
-
-- `Ctrl + Shift + P`: Blender: Start
-- `Ctrl + Shift + P`: Blender: Run Script (Not Run & Debug)
-
 ## Blender UI Notes
 
-- `Alt + R`:
 - `Preferences > General > Developer Extras (geometric data)`
 - Use `simplescreenrecorder` to record with fast encoding system audio
 

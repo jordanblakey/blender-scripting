@@ -1,7 +1,7 @@
 import bpy
 
-import blender_utils
-import blender_utils.btyping
+import butils
+import butils.btyping
 
 
 def insert_keyframe(
@@ -10,10 +10,8 @@ def insert_keyframe(
     frame: int,
     index: int = -1,
     value: None | float = None,
-    easing: None
-    | blender_utils.btyping.BeztripleInterpolationEasingItems = None,
-    interpolation: None
-    | blender_utils.btyping.BeztripleInterpolationModeItems = None,
+    easing: None | butils.btyping.BeztripleInterpolationEasingItems = None,
+    interpolation: None | butils.btyping.BeztripleInterpolationModeItems = None,
 ) -> bpy.types.Keyframe:
     obj.keyframe_insert(data_path, index=index, frame=frame)
     keyframe = get_keyframe(obj, data_path, index=index, frame=frame)
@@ -34,8 +32,8 @@ def get_keyframe(
     frame: int,
     index: int = -1,
 ) -> None | bpy.types.Keyframe:
-    fcurves = blender_utils.animation.get_fcurves(obj)
-    fcurve = blender_utils.animation.get_fcurve(data_path, index, fcurves)
+    fcurves = butils.animation.get_fcurves(obj)
+    fcurve = butils.animation.get_fcurve(data_path, index, fcurves)
     if not fcurve:
         return
     for keyframe in fcurve.keyframe_points:
@@ -46,10 +44,8 @@ def get_keyframe(
 def edit_keyframe(
     keyframe: bpy.types.Keyframe,
     value: None | float = None,
-    easing: None
-    | blender_utils.btyping.BeztripleInterpolationEasingItems = None,
-    interpolation: None
-    | blender_utils.btyping.BeztripleInterpolationModeItems = None,
+    easing: None | butils.btyping.BeztripleInterpolationEasingItems = None,
+    interpolation: None | butils.btyping.BeztripleInterpolationModeItems = None,
 ) -> bool:
     if not keyframe:
         return False
@@ -65,8 +61,8 @@ def edit_keyframe(
 def delete_keyframe(
     obj: bpy.types.Object, data_path: str, frame: int, index: int = -1
 ):
-    fcurves = blender_utils.animation.get_fcurves(obj)
-    fcurve = blender_utils.animation.get_fcurve(data_path, index, fcurves)
+    fcurves = butils.animation.get_fcurves(obj)
+    fcurve = butils.animation.get_fcurve(data_path, index, fcurves)
     if not fcurve:
         return False
     fcurves.keyframe_delete(data_path, index=index, frame=frame)

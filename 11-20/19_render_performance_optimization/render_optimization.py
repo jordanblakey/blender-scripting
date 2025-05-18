@@ -1,4 +1,4 @@
-from blender_utils.render import apply_fast_cycles_preset
+from butils.render import apply_fast_cycles_preset
 
 
 def main():
