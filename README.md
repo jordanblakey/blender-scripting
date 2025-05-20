@@ -53,6 +53,10 @@ butils/
 
 ## Visual Notes, Renders
 
+| ![reference modeling](/static/images/readme/modeling_with_reference_images.png) |
+| :-----------------------------------------------------------------------------: |
+|                     Learning to model with reference images                     |
+
 | ![Rock texture](/static/images/readme/procedural-rock-shader.png) |
 | :---------------------------------------------------------------: |
 |          Creating rock textures from procedural shaders           |
