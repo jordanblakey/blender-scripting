@@ -1,0 +1,36 @@
+#!/bin/sh
+
+echo "Running ./git/hooks/pre-commit..."
+
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+cd "$PROJECT_ROOT" || exit 1
+
+BLENDER_CMD=$(which blender)
+TEST_RUNNER_SCRIPT='tests/run_tests.py'
+COVERAGE_THRESHOLD=80 # Set your desired minimum coverage percentage here
+
+
+if [ ! -f "$TEST_RUNNER_SCRIPT" ]; then
+  echo "Error: $TEST_RUNNER_SCRIPT not found"
+  exit 1
+fi
+
+if [ ! -f "$BLENDER_CMD" ]; then
+  echo "Error: $BLENDER_CMD not found"
+  exit 1
+fi
+
+"$BLENDER_CMD" -b -P "$TEST_RUNNER_SCRIPT" \
+    --no-buffer \
+    --coverage \
+    --coverage-threshold "$COVERAGE_THRESHOLD"
+
+
+RESULT=$?
+
+if [ $RESULT -ne 0 ]; then
+  echo "Commit aborted."
+  exit $RESULT
+fi
+
+exit 0

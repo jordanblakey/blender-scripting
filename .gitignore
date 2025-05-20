@@ -12,3 +12,6 @@ butils/btyping/cycles
 
 # Compiled shaders
 *.oso
+
+# Coverage cache
+.coverage

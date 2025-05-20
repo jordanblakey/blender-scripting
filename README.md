@@ -51,6 +51,22 @@ butils/
 └── ui.py  # work with the blender ui: get contexts, control viewport
 ```
 
+## Unit tests
+
+Unit tests run using a pre-commit hook at .git/hooks/pre-commit. Run tests with full output for debugging and inspect Blender's python environment using these commands:
+
+```sh
+# Installed git hooks (e.g. pre-commit)
+cp -f tests/githooks/* .git/hooks/
+# Run manually to debug
+blender --background --python tests/run_tests.py -- --no-buffer --verbosity 2
+# Identify Blender's python interpreter
+BLENDER_PYTHON_EXEC=$(blender -b --quiet --python-expr "import sys;print(sys.executable)")
+# Run arbitrary python commands from Blender's python interpreter
+$BLENDER_PYTHON_EXEC -c "import sys;print(sys.version)"
+$BLENDER_PYTHON_EXEC -m pip --version
+```
+
 ## Visual Notes, Renders
 
 | ![reference modeling](/static/images/readme/modeling_with_reference_images.png) |
