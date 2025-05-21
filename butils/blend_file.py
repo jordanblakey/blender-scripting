@@ -8,7 +8,7 @@ def create_or_open(blend_file: str | os.PathLike) -> None:
     Create a .blend file if it doesn't exist, otherwise open it.
     """
     filepath: str = getattr(bpy.context.blend_data, "filepath", "")
-    if filepath:
+    if filepath and os.path.exists(filepath):
         print("opened existing .blend file.")
     elif os.path.exists(blend_file):
         print(".blend file exists, opening...")

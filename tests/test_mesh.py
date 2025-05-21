@@ -15,6 +15,7 @@ class TestGetBMesh(unittest.TestCase):
         """
         Set up a clean scene and add a default cube before each test.
         """
+        super().setUp()
         # Use the clean function from butils.scene
         # This ensures a consistent state for each test
         scene.clean()
@@ -34,6 +35,7 @@ class TestGetBMesh(unittest.TestCase):
         """
         Clean up the scene after each test.
         """
+        super().tearDown()
         # Use the clean function from butils.scene
         scene.clean()
 

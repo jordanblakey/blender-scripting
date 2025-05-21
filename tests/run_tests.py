@@ -69,6 +69,13 @@ def parse_cli_args():
         metavar="PERCENT",
         help="Minimum required coverage percentage. If coverage is below this, the script exits with a non-zero status.",
     )
+    parser.add_argument(
+        "-t",
+        "--test-case",
+        type=str,
+        default=None,
+        help="Run a specific test case (e.g., tests.test_module.TestClass.test_method).",
+    )
 
     parser.set_defaults(buffer=True)  # Default behavior is to buffer output
 
@@ -96,6 +103,17 @@ if cli_args.coverage:
     cov.start()
     print("Coverage measurement started.")
 # --- End Coverage Setup ---
+
+if cli_args.test_case:
+    print(f"Running specific test case: {cli_args.test_case}")
+    # project_root is already added to sys.path, so 'tests.module' should be importable
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromName(cli_args.test_case)
+else:
+    print(f"Discovering tests in {test_dir}")
+    # Use unittest's default test loader to discover tests
+    # It will look for files matching 'test_*.py' in the test_dir
+    suite = unittest.defaultTestLoader.discover(test_dir, pattern="test_*.py")
 
 runner = unittest.TextTestRunner(
     verbosity=cli_args.verbosity, buffer=cli_args.buffer
