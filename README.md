@@ -8,17 +8,16 @@ Experiments in automating Blender with Python.
 # clone repo with no history for fast download
 git clone --depth 1 <repo-url>
 
-# install system packages
-sudo snap install blender && sudo apt install ffmpeg
-
-# create a virtual environment
+# install dependencies
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+poe install
+poe # list of useful project commands
 
-# run Python scripts in Blender from the CLI
-blender -P headless_mode.py -b  # run without UI to debug scripts (fast)
-blender -P headless_mode.py  # run with UI to check output and work visually
+# big idea: run Python scripts in Blender from the CLI
+blender -P headless_mode.py  # run with UI to work visually - poe blend
+blender -P headless_mode.py -b  # run without UI to debug (fast) - poe bblend
 ```
 
 ## `butils` module
@@ -30,14 +29,14 @@ python -m butils --help
 
 # install requirements and butils symlink in Blender scripts directory
 # run this every requirements.txt is updated.
-python -m butils install
+python -m butils install # `poe install-butils`
 
 # start new blender script
-python -m butils create
+python -m butils create # `poe create`
 
 # compress output images and videos
-python -m butils compress -i render.png
-python -m butils compress -i render.mkv
+python -m butils compress -i render.png # `poe compress`
+python -m butils compress -i render.mkv # `poe compress`
 
 # module structure
 butils/
@@ -56,10 +55,10 @@ butils/
 Unit tests run using a pre-commit hook at .git/hooks/pre-commit. Run tests with full output for debugging and inspect Blender's python environment using these commands:
 
 ```sh
-# Installed git hooks (e.g. pre-commit)
-cp -f tests/githooks/* .git/hooks/
+# Install git hooks (e.g. pre-commit)
+poe install-githooks
 # Run manually to debug
-blender --background --python tests/run_tests.py -- --no-buffer --verbosity 2
+poe test
 # Identify Blender's python interpreter
 BLENDER_PYTHON_EXEC=$(blender -b --quiet --python-expr "import sys;print(sys.executable)")
 # Run arbitrary python commands from Blender's python interpreter

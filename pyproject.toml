@@ -1,0 +1,42 @@
+[tool.poe.tasks.default]
+help = "Show available poe tasks"
+cmd = "poe -h"
+
+[tool.poe.tasks.install]
+help = "Install all project dependencies."
+sequence = ["install-butils", "install-githooks", "install-blender", "install-ffmpeg"]
+
+[tool.poe.tasks.test]
+help = "Run unit tests."
+cmd = "blender --background --python tests/run_tests.py -- --no-buffer --verbosity 2"
+
+[tool.poe.tasks.blend]
+help = "`blender -P script.py`."
+cwd = "$POE_PWD"
+cmd = "blender --python"
+
+[tool.poe.tasks.bblend]
+help = "`blender -b -P script.py`."
+cwd = "$POE_PWD"
+cmd = "blender --background --python"
+
+[tool.poe.tasks.eblend]
+help = "`blender -b --python-expr`."
+cwd = "$POE_PWD"
+cmd = "blender --background --python-expr"
+
+[tool.poe.tasks.create]
+help = "`python -m butils create`. See `poe create --help`."
+cwd = "$POE_PWD"
+cmd = "python -m butils create"
+
+[tool.poe.tasks.compress]
+help = "`python -m butils compress`. See `poe compress --help`."
+cwd = "$POE_PWD"
+cmd = "python -m butils compress"
+
+[tool.poe.tasks]
+install-butils = "python -m butils install"
+install-githooks = "cp -f tests/githooks/* .git/hooks/"
+install-blender = "sudo snap install blender"
+install-ffmpeg = "sudo apt install ffmpeg"
