@@ -57,9 +57,9 @@ Unit tests run using a pre-commit hook at .git/hooks/pre-commit. Run tests with 
 ```sh
 # Install git hooks (e.g. pre-commit)
 poe install-githooks
-# Run manually to debug
+# Run manually to debug. Optionally, add --coverage.
 poe test
-# Run specific tests to write new tests
+# Run specific tests to write new tests.
 poe test -t tests.test_blend_file
 # Identify Blender's python interpreter
 BLENDER_PYTHON_EXEC=$(blender -b --quiet --python-expr "import sys;print(sys.executable)")

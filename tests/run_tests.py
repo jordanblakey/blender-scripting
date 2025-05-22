@@ -130,7 +130,7 @@ if cov:
     cov.save()
     print("\nGenerating coverage report:")
     # Report to stdout. coverage.report() returns the total percentage.
-    total_percentage = cov.report(file=sys.stdout)
+    total_percentage = cov.report(file=sys.stdout, show_missing=True)
     if (
         cli_args.coverage_threshold is not None
         and total_percentage < cli_args.coverage_threshold

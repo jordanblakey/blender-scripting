@@ -3,7 +3,7 @@ import os
 import bpy
 
 
-def create_or_open(blend_file: str | os.PathLike) -> None:
+def create_or_open(blend_file: str | os.PathLike[str]) -> None:
     """
     Create a .blend file if it doesn't exist, otherwise open it.
     """
@@ -18,7 +18,7 @@ def create_or_open(blend_file: str | os.PathLike) -> None:
         save(blend_file)
 
 
-def save(blend_file: str | os.PathLike) -> None:
+def save(blend_file: str | os.PathLike[str]) -> None:
     """
     Save a .blend file at a location whether it exists or not.
     """

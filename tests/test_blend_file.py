@@ -51,6 +51,7 @@ class TestBlendFile(unittest.TestCase):
         create_or_open(self.filepath)
         self.assertTrue(self.filepath.exists(), "File should still exist")
         mtime_after_second_call = self.filepath.stat().st_mtime
+        time.sleep(0.01)
         self.assertGreater(
             mtime_after_second_call,
             mtime_after_create,

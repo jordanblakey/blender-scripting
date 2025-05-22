@@ -41,3 +41,13 @@ install-butils = "python -m butils install"
 install-githooks = "cp -f tests/githooks/* .git/hooks/"
 install-blender = "sudo snap install blender"
 install-ffmpeg = "sudo apt install ffmpeg"
+
+[tool.coverage.run]
+# choose what to run coverage against
+# source = ["butils"]
+
+# or choose what to omit
+omit = [
+    "*/scripts/modules/bpy/*",
+    "tests/*"
+]
