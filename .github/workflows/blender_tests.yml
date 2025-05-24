@@ -43,6 +43,8 @@ jobs:
         # Alternative: Define an environment variable for the Blender executable
         # echo "BLENDER_PATH=$GITHUB_WORKSPACE/blender-${BLENDER_VERSION_FULL}-linux-x64/blender" >> $GITHUB_ENV
 
+    - name: Install butils for Blender (custom setup)
+      run: python -m butils install
 
     - name: Verify Blender installation
       run: blender --version
