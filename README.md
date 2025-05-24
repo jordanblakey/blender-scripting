@@ -5,7 +5,7 @@ Experiments in automating Blender with Python.
 ## Setup Project for VSCode
 
 ```bash
-# clone repo with no history for fast download
+# clone the repo with no history for fast download
 git clone --depth 1 <repo-url>
 
 # install dependencies
