@@ -28,7 +28,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Install Blender
-        run: sudo apt-get update && sudo apt-get install -y blender
+        run: echo "installing blender..." && sudo apt-get update && sudo apt-get install -y blender && echo "Blender installed successfully"
 
       - name: Install butils for Blender (custom setup)
         run: python -m butils install
