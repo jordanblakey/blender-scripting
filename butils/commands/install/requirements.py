@@ -19,6 +19,7 @@ def install():
     source_path = get_root("butils")
     expr = "print(bpy.utils.script_path_user())"
     user_scripts_path = run_in_blender(expr)
+    print(f"Debug: install: user_scripts_path from run_in_blender='{user_scripts_path}'")
     symlink_path = os.path.join(user_scripts_path, "modules", "butils")
     create_symlink("butils", source_path, symlink_path)
 
@@ -59,23 +60,46 @@ def run_in_blender(expr):
 
 def create_symlink(module_name, source_path, symlink_path):
     """Create a symlink for module by name, given source and symlink paths."""
-    print(f"creating {symlink_path}...", end="")
+    print(f"Attempting to create symlink for module: {module_name}")
+    print(f"  Source path: {source_path}")
+    print(f"  Symlink path: {symlink_path}")
 
-    # check exists
-    if os.path.exists(symlink_path):
-        print("already exists")
+    parent_dir = os.path.dirname(symlink_path)
+    print(f"  Parent directory for symlink: {parent_dir}")
 
+    if parent_dir:
+        print(f"  Ensuring parent directory '{parent_dir}' exists...")
+        try:
+            os.makedirs(parent_dir, exist_ok=True)
+        except Exception as e:
+            print(f"  Error creating parent directory '{parent_dir}': {e}", file=sys.stderr)
+            # If parent dir creation fails, it's unlikely symlink will succeed.
+            # For now, let it proceed and symlink creation might fail.
+
+    # Check if symlink_path already exists
+    if os.path.islink(symlink_path):
+        print(f"  Symlink '{symlink_path}' already exists.")
+    elif os.path.exists(symlink_path):
+        print(f"  Path '{symlink_path}' already exists but is not a symlink. Will not overwrite.")
     else:
-        # create symlink
-        os.symlink(source_path, symlink_path)
-
-        # check it was created
-        if os.path.exists(symlink_path):
-            print("created")
+        # Path does not exist, proceed with symlink creation
+        if not os.path.exists(source_path):
+            print(f"  Source path '{source_path}' does not exist. Cannot create symlink.")
         else:
-            print("creation failed")
-
-    # check importing works
+            print(f"  Attempting os.symlink(src='{source_path}', dst='{symlink_path}')")
+            try:
+                os.symlink(source_path, symlink_path)
+                # Verify after creation attempt
+                if os.path.islink(symlink_path):
+                    print("  Symlink creation successful (symlink confirmed).")
+                elif os.path.exists(symlink_path): 
+                    print("  Symlink creation resulted in a path, but it's not a symlink - check manually.")
+                else:
+                    print("  Symlink creation failed (symlink not found after creation attempt).")
+            except Exception as e:
+                print(f"  Symlink creation failed with error: {e}", file=sys.stderr)
+    
+    # check importing works (original logic)
     if module_name:
         validate_importable(module_name)
 
