@@ -15,3 +15,6 @@ butils/btyping/cycles
 
 # Coverage cache
 .coverage
+
+# blender
+blender-*/
