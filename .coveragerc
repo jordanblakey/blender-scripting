@@ -1,0 +1,18 @@
+[run]
+source = butils
+omit =
+    butils/btyping/*
+    butils/__main__.py
+    tests/*
+    */site-packages/*
+
+[report]
+# Settings for the textual report
+show_missing = True
+skip_covered = False
+
+#fail_under = 80
+# Uncomment above to fail if coverage is below 80%
+
+[html]
+directory = htmlcov
