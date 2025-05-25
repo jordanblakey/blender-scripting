@@ -28,7 +28,13 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Install Blender
-        run: echo "installing blender..." && sudo apt-get update && sudo apt-get install -y blender && echo "Blender installed successfully"
+        run: |
+          curl https://mirror.freedif.org/blender/release/Blender4.4/blender-4.4.3-linux-x64.tar.xz -o blender-4.4.3-linux-x64.tar.xz
+          sudo tar -xf blender-4.4.3-linux-x64.tar.xz -C /opt
+          sudo rm blender-4.4.3-linux-x64.tar.xz
+          # Create a symlink to make Blender accessible from the PATH
+          # This assumes /opt/blender-4.4.3-linux-x64/blender is the correct path
+          sudo ln -s /opt/blender-4.4.3-linux-x64/blender /usr/bin/blender
 
       - name: Install butils for Blender (custom setup)
         run: python -m butils install
