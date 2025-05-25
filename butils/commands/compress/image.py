@@ -1,9 +1,12 @@
 import json
 import os
+import sys
 import time
 from typing import Any
 
 import piexif
+
+print(sys.executable)
 from PIL import Image
 from PIL.ImageFile import ImageFile
 
