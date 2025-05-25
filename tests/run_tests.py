@@ -5,6 +5,34 @@ import unittest
 
 import coverage
 
+# ===== BEGIN DIAGNOSTIC CODE =====
+try:
+    import bpy
+    print("--- bpy.types diagnostic (within tests/run_tests.py) ---")
+    print(f"bpy module: {bpy}")
+    print(f"bpy.types module: {bpy.types}")
+    if hasattr(bpy.types, 'ActionChannelbagFCurves'):
+        print("bpy.types.ActionChannelbagFCurves IS found by hasattr.")
+        # Attempting to print the type itself might be problematic if it's unusual
+        # print(f"Content: {bpy.types.ActionChannelbagFCurves}") 
+    else:
+        print("bpy.types.ActionChannelbagFCurves IS NOT found by hasattr.")
+    
+    # Listing all attributes can be very verbose but might be helpful
+    # print(f"dir(bpy.types): {dir(bpy.types)}")
+    
+    # Check sys.path to see if fake-bpy-module paths are present
+    import sys # sys is already imported, but good practice if this block were standalone
+    print(f"sys.path: {sys.path}")
+    for pth in sys.path:
+        if 'fake-bpy-module' in pth:
+            print(f"WARNING: Found 'fake-bpy-module' in sys.path: {pth}")
+            
+except Exception as e:
+    print(f"Error during diagnostic code execution: {e}")
+print("--- end diagnostic ---")
+# ===== END DIAGNOSTIC CODE =====
+
 # TODO: add include and exclude directories with .coveragerc
 # TODO: exclude /snap/blender/6181/4.4/scripts/modules/bpy/
 # TODO: exclude /tests directory

@@ -123,7 +123,6 @@ def install_requirements():
     """Install requirements.txt in Blender user scripts, allowing imports."""
     requirements_file_path = os.path.join(get_root("blender-scripting"), "requirements.txt")
     
-    # Check if requirements.txt exists
     if not os.path.exists(requirements_file_path):
         print(f"Warning: requirements.txt not found at {requirements_file_path}", file=sys.stderr)
         return
