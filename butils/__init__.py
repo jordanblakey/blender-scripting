@@ -14,6 +14,16 @@ if hasattr(bpy, "context"):
         ui,
     )
 
+    __all__ = [
+        "animation",
+        "blend_file",
+        "btyping",
+        "mesh",
+        "render",
+        "scene",
+        "ui",
+    ]
+
 
 def get_root(dirname="blender-scripting"):
     path = pathlib.Path(__file__)
