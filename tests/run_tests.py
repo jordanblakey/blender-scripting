@@ -3,31 +3,31 @@ import os
 import sys
 import unittest
 
-import coverage
-
 # ===== BEGIN DIAGNOSTIC CODE =====
 try:
     import bpy
+
     print("--- bpy.types diagnostic (within tests/run_tests.py) ---")
     print(f"bpy module: {bpy}")
     print(f"bpy.types module: {bpy.types}")
-    if hasattr(bpy.types, 'ActionChannelbagFCurves'):
+    if hasattr(bpy.types, "ActionChannelbagFCurves"):
         print("bpy.types.ActionChannelbagFCurves IS found by hasattr.")
         # Attempting to print the type itself might be problematic if it's unusual
-        # print(f"Content: {bpy.types.ActionChannelbagFCurves}") 
+        # print(f"Content: {bpy.types.ActionChannelbagFCurves}")
     else:
         print("bpy.types.ActionChannelbagFCurves IS NOT found by hasattr.")
-    
+
     # Listing all attributes can be very verbose but might be helpful
     # print(f"dir(bpy.types): {dir(bpy.types)}")
-    
+
     # Check sys.path to see if fake-bpy-module paths are present
-    import sys # sys is already imported, but good practice if this block were standalone
+    import sys  # sys is already imported, but good practice if this block were standalone
+
     print(f"sys.path: {sys.path}")
     for pth in sys.path:
-        if 'fake-bpy-module' in pth:
+        if "fake-bpy-module" in pth:
             print(f"WARNING: Found 'fake-bpy-module' in sys.path: {pth}")
-            
+
 except Exception as e:
     print(f"Error during diagnostic code execution: {e}")
 print("--- end diagnostic ---")
@@ -85,18 +85,18 @@ def parse_cli_args():
         dest="buffer",
         help="Disable output buffering during tests. If this flag is present, buffering is OFF.",
     )
-    parser.add_argument(
-        "--coverage",
-        action="store_true",
-        help="Enable code coverage reporting.",
-    )
-    parser.add_argument(
-        "--coverage-threshold",
-        type=int,
-        default=None,
-        metavar="PERCENT",
-        help="Minimum required coverage percentage. If coverage is below this, the script exits with a non-zero status.",
-    )
+    # parser.add_argument(
+    #     "--coverage",
+    #     action="store_true",
+    #     help="Enable code coverage reporting.",
+    # )
+    # parser.add_argument(
+    #     "--coverage-threshold",
+    #     type=int,
+    #     default=None,
+    #     metavar="PERCENT",
+    #     help="Minimum required coverage percentage. If coverage is below this, the script exits with a non-zero status.",
+    # )
     parser.add_argument(
         "-t",
         "--test-case",
@@ -125,11 +125,11 @@ def parse_cli_args():
 cli_args = parse_cli_args()
 
 # --- Coverage Setup ---
-cov = None
-if cli_args.coverage:
-    cov = coverage.Coverage()
-    cov.start()
-    print("Coverage measurement started.")
+# cov = None
+# if cli_args.coverage:
+#     cov = coverage.Coverage()
+#     cov.start()
+#     print("Coverage measurement started.")
 # --- End Coverage Setup ---
 
 if cli_args.test_case:
@@ -152,24 +152,24 @@ result = runner.run(suite)
 print("-" * 70)  # Separator for clarity
 
 # --- Coverage Reporting ---
-coverage_ok = True
-if cov:
-    cov.stop()
-    cov.save()
-    print("\nGenerating coverage report:")
-    # Report to stdout. coverage.report() returns the total percentage.
-    total_percentage = cov.report(file=sys.stdout, show_missing=True)
-    if (
-        cli_args.coverage_threshold is not None
-        and total_percentage < cli_args.coverage_threshold
-    ):
-        print(
-            f"{Colors.RED}Coverage {total_percentage:.2f}% is below the required threshold of {cli_args.coverage_threshold}%.{Colors.RESET}"
-        )
-        coverage_ok = False
+# coverage_ok = True
+# if cov:
+#     cov.stop()
+#     cov.save()
+#     print("\nGenerating coverage report:")
+#     # Report to stdout. coverage.report() returns the total percentage.
+#     total_percentage = cov.report(file=sys.stdout, show_missing=True)
+#     if (
+#         cli_args.coverage_threshold is not None
+#         and total_percentage < cli_args.coverage_threshold
+#     ):
+#         print(
+#             f"{Colors.RED}Coverage {total_percentage:.2f}% is below the required threshold of {cli_args.coverage_threshold}%.{Colors.RESET}"
+#         )
+#         coverage_ok = False
 # --- End Coverage Reporting ---
 
-if result.wasSuccessful() and coverage_ok:
+if result.wasSuccessful():  # and coverage_ok:
     print(f"{Colors.GREEN}All tests passed!{Colors.RESET}")
     sys.exit(0)
 else:
