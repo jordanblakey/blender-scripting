@@ -1,7 +1,7 @@
 import unittest
 
 
-class TestVideo(unittest.TestCase):
+class TestRender(unittest.TestCase):
     def setUp(self):
         super().setUp()
 

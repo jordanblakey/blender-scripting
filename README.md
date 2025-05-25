@@ -62,7 +62,7 @@ poe test
 # Run specific tests to write new tests.
 poe test -t tests.test_blend_file
 # Identify Blender's python interpreter
-BLENDER_PYTHON_EXEC=$(blender -b --quiet --python-expr "import sys;print(sys.executable)")
+set BLENDER_PYTHON_EXEC $(blender -b --quiet --python-expr "import sys;print(sys.executable)")
 # Run arbitrary python commands from Blender's python interpreter
 $BLENDER_PYTHON_EXEC -c "import sys;print(sys.version)"
 $BLENDER_PYTHON_EXEC -m pip --version
