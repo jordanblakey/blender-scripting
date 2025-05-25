@@ -1,7 +1,7 @@
 import unittest
 
 
-class TestVideo(unittest.TestCase):
+class TestUi(unittest.TestCase):
     def setUp(self):
         super().setUp()
 

@@ -28,7 +28,13 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Install Blender
-        run: echo "installing blender..." && sudo apt-get update && sudo apt-get install -y blender && echo "Blender installed successfully"
+        run: |
+          curl https://mirror.freedif.org/blender/release/Blender4.4/blender-4.4.3-linux-x64.tar.xz -o blender-4.4.3-linux-x64.tar.xz
+          sudo tar -xf blender-4.4.3-linux-x64.tar.xz -C /opt
+          sudo rm blender-4.4.3-linux-x64.tar.xz
+          # Create a symlink to make Blender accessible from the PATH
+          # This assumes /opt/blender-4.4.3-linux-x64/blender is the correct path
+          sudo ln -s /opt/blender-4.4.3-linux-x64/blender /usr/bin/blender
 
       - name: Install butils for Blender (custom setup)
         run: python -m butils install
@@ -44,11 +50,3 @@ jobs:
         # To include coverage, ensure 'poe test' calls tests/run_tests.py with --coverage,
         # or add a separate step/task:
         # run: blender --background --python tests/run_tests.py -- --coverage --no-buffer --verbosity 2
-
-    # Optional: Upload coverage report
-    # - name: Upload coverage report
-    #   if: always() # Run even if tests fail, to see partial coverage
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: coverage-report
-    #     path: htmlcov/ # Assumes .coveragerc outputs HTML to htmlcov/

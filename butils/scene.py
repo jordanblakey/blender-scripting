@@ -1,7 +1,6 @@
 import bpy
 from bpy.types import (
     Object,
-    Scene,
     ShaderNodeTree,
     TrackToConstraint,
     ViewLayer,
@@ -26,7 +25,7 @@ def clean(
             obj.hide_viewport = False
             obj.hide_render = False
     if delete_objects:
-        if not isinstance(scene, Scene):
+        if not scene:
             raise TypeError()
         for collection in scene.collection.children:
             bpy.data.collections.remove(collection)
@@ -46,7 +45,7 @@ def clean(
         for name in world_names:
             bpy.data.worlds.remove(bpy.data.worlds[name])
         bpy.ops.world.new()
-        if not isinstance(scene, Scene):
+        if not scene:
             raise TypeError()
         scene.world = bpy.data.worlds["World"]
 
