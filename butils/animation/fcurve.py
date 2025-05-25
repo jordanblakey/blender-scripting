@@ -1,6 +1,5 @@
 import bpy
 
-
 def get_fcurves(obj: bpy.types.Object) -> bpy.types.ActionChannelbagFCurves:
     if not obj.animation_data or not obj.animation_data.action:
         raise TypeError()
