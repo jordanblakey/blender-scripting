@@ -2,7 +2,6 @@ import subprocess
 
 import bpy
 
-from butils.btyping.cycles.properties import CyclesRenderSettings
 from butils.render.update_mask import CyclesUpdateMask, RenderUpdateMask
 
 
@@ -10,7 +9,7 @@ def apply_fast_cycles_preset():
     if not bpy.context.scene or not bpy.context.scene.cycles:
         raise TypeError()
     render: bpy.types.RenderSettings = bpy.context.scene.render
-    cycles: CyclesRenderSettings = bpy.context.scene.cycles
+    cycles = bpy.context.scene.cycles
 
     # clip_values(render)  #  copy attrs and vals of object - use to extend
     render_update_mask = RenderUpdateMask(

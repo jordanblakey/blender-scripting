@@ -4,7 +4,12 @@ cmd = "poe -h"
 
 [tool.poe.tasks.install]
 help = "Install all project dependencies."
-sequence = ["install-butils", "install-githooks", "install-blender", "install-ffmpeg"]
+sequence = [
+  "install-butils",
+  "install-githooks",
+  "install-blender",
+  "install-ffmpeg",
+]
 
 [tool.poe.tasks.test]
 help = "Run unit tests. Add -t tests.<test_file> to run specific tests."
@@ -47,7 +52,4 @@ install-ffmpeg = "sudo apt install ffmpeg"
 # source = ["butils"]
 
 # or choose what to omit
-omit = [
-    "*/scripts/modules/bpy/*",
-    "tests/*"
-]
+omit = ["*/scripts/modules/bpy/*", "tests/*"]

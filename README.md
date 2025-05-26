@@ -2,6 +2,9 @@
 
 Experiments in automating Blender with Python.
 
+- TODO: migrate to poetry
+- TODO: get unit tests passing using containerized blender
+
 ## Setup Project for VSCode
 
 ```bash
@@ -52,20 +55,29 @@ butils/
 
 ## Unit tests
 
-Unit tests run using a pre-commit hook at .git/hooks/pre-commit. Run tests with full output for debugging and inspect Blender's python environment using these commands:
-
 ```sh
+# TODO: Clean this up
+# run tests locally with `act push`
+# use the install script in the project root to install act
+gh workflow run "Blender Tests"
+act push
+act pull_request
+act workflow_dispatch
+act workflow_dispatch --input "testcase=stest_blend_file.TestCaseName.function_name" --input "verbosity=1"
+--input="print=true" --input="coverage=true"
+
+# OLD BELOW THIS LINE
 # Install git hooks (e.g. pre-commit)
-poe install-githooks
-# Run manually to debug. Optionally, add --coverage.
-poe test
-# Run specific tests to write new tests.
-poe test -t tests.test_blend_file
-# Identify Blender's python interpreter
-set BLENDER_PYTHON_EXEC $(blender -b --quiet --python-expr "import sys;print(sys.executable)")
-# Run arbitrary python commands from Blender's python interpreter
-$BLENDER_PYTHON_EXEC -c "import sys;print(sys.version)"
-$BLENDER_PYTHON_EXEC -m pip --version
+# poe install-githooks
+# # Run manually to debug. Optionally, add --coverage.
+# poe test
+# # Run specific tests to write new tests.
+# poe test -t tests.test_blend_file
+# # Identify Blender's python interpreter
+# set BLENDER_PYTHON_EXEC $(blender -b --quiet --python-expr "import sys;print(sys.executable)")
+# # Run arbitrary python commands from Blender's python interpreter
+# $BLENDER_PYTHON_EXEC -c "import sys;print(sys.version)"
+# $BLENDER_PYTHON_EXEC -m pip --version
 ```
 
 ## Visual Notes, Renders
