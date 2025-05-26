@@ -59,6 +59,12 @@ butils/
 # TODO: Clean this up
 # run tests locally with `act push`
 # use the install script in the project root to install act
+gh workflow run "Blender Tests"
+act push
+act pull_request
+act workflow_dispatch
+act workflow_dispatch --input "testcase=stest_blend_file.TestCaseName.function_name" --input "verbosity=1"
+--input="print=true" --input="coverage=true"
 
 # OLD BELOW THIS LINE
 # Install git hooks (e.g. pre-commit)

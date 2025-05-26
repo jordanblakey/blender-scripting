@@ -2,9 +2,15 @@ name: Blender Tests
 
 on:
   push:
-    branches: [main] # Or your default branch
+    branches: [main]
   pull_request:
-    branches: [main] # Or your default branch
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      testcase: { type: string }
+      verbosity: { type: number }
+      print: { type: boolean }
+      coverage: { type: boolean }
 
 jobs:
   test:
@@ -13,6 +19,7 @@ jobs:
       image: docker.io/blendergrid/blender:latest
 
     steps:
+      ##########################################################################
       - name: Inspect environment
         run: |
           # print environment information
@@ -24,37 +31,37 @@ jobs:
           echo "Blender version: $(blender --background --quiet)"
           blender -b -q --python-expr "import bpy; print(f'Python in Blender: {bpy}')"
 
+      ##########################################################################
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run tests
+      ##########################################################################
+      - name: Run tests (push || pull_request)
+        if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
         run: |
-          echo "Running tests in Blender..."
-          blender -b -P tests/run_tests.py
-      # - name: Set up Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: "3.12" # Adjust if your project uses a different version
+          echo "running tests in Blender..."
 
-      # - name: Install Python dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install poethepoet  # For running 'poe test'
-      #     # Assuming requirements.txt contains other necessary Python packages
-      #     # If not, add them here, e.g., pip install coverage Pillow ffmpeg-python
-      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          blender -b -P tests/run_tests.py -- --coverage --verbosity=2
 
-      # - name: Install butils for Blender (custom setup)
-      #   run: python -m butils install
+      ##########################################################################
+      - name: Run tests (workflow_dispatch)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "running tests in Blender..."
+          TEST="${{ github.event.inputs.testcase }}"
+          COV="${{ github.event.inputs.coverage }}"
+          PRINT="${{ github.event.inputs.print }}"
+          VERB="${{ github.event.inputs.verbosity }}"
 
-      # - name: Verify Blender installation
-      #   run: blender --version
+          echo testcase: $TEST
+          echo coverage: $COV
+          echo print: $PRINT
+          echo verbosity: $VERB
+          echo
 
-      # - name: Run tests with poethepoet
-      #   # The 'poe test' command from pyproject.toml is:
-      #   # blender --background --python tests/run_tests.py -- --no-buffer --verbosity 2
-      #   # This command should now use the Blender from the PATH
-      #   run: poe test
-      #   # To include coverage, ensure 'poe test' calls tests/run_tests.py with --coverage,
-      #   # or add a separate step/task:
-      #   # run: blender --background --python tests/run_tests.py -- --coverage --no-buffer --verbosity 2
+          if [ "$TEST" != "" ]; then TEST=--testcase="$TEST"; fi
+          if [ "$COV" = "true" ]; then COV=--coverage; else COV=""; fi
+          if [ "$PRINT" = "true" ]; then PRINT=--print; else PRINT=""; fi
+          if [ "$VERB" != "" ]; then VERB=--verbosity="$VERB"; else VERB="2"; fi
+
+          blender -b -P tests/run_tests.py -- $TEST $COV $PRINT $VERB
