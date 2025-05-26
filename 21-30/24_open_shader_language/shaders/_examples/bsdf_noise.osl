@@ -1,8 +1,0 @@
-shader bsdf_diffuse_only(
-    color Diffuse_Color = color(1.0, 0.0, 0.0),
-    float Noise_Factor = 0.5,
-    output closure color BSDF = diffuse(N))
-{
-    color material_color = Diffuse_Color * mix(1.0, noise(P * 10.0), Noise_Factor);
-    BSDF = material_color * diffuse(N);
-}

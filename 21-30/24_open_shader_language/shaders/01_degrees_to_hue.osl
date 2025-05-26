@@ -1,8 +1,0 @@
-shader degreesToHue(
-  float Degree = 0,
-  output float Hue = 0
-) {
-  float Pi = 3.1415926;
-  Hue = fmod(Degree / 360, 1);
-
-}
