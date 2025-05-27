@@ -82,6 +82,10 @@ act workflow_dispatch --input "testcase=stest_blend_file.TestCaseName.function_n
 
 ## Visual Notes, Renders
 
+| ![reference modeling](/static/images/readme/topology_practice.png) |
+| :----------------------------------------------------------------: |
+|             Learning to create clean, precise topology             |
+
 | ![reference modeling](/static/images/readme/modeling_with_reference_images.png) |
 | :-----------------------------------------------------------------------------: |
 |                     Learning to model with reference images                     |
