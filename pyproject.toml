@@ -83,3 +83,13 @@ cwd = "$POE_PWD"
 cmd = "python -m butils compress"
 
 
+[tool.coverage.run]
+# choose what to run coverage against
+source = ["butils"]
+
+# or choose what to omit
+omit = ["butils/btyping/*", "tests/*", "*/site-packages/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
