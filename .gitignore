@@ -1,6 +1,9 @@
 # Compiled Python files
 __pycache__/
 
+# Build directories
+dist/
+
 # Environments
 .venv
 

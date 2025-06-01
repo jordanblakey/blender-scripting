@@ -4,20 +4,29 @@ Experiments in automating Blender with Python.
 
 ## Setup Project for VSCode
 
-```bash
+```sh
 # clone the repo with no history for fast download
 git clone --depth 1 <repo-url>
+```
 
-# install dependencies
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-poe install # installs blender, act, ffmpeg
-poe # list of useful project commands
+```sh
+# https://python-poetry.org/docs/#installing-with-the-official-installer
+curl -sSL https://install.python-poetry.org | python3 -
+# https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
+poetry completions bash >> ~/.bash_completion
 
-# big idea: run Python scripts in Blender from the CLI
-blender -P headless_mode.py  # run with UI to work visually - poe blend
-blender -P headless_mode.py -b  # run without UI to debug (fast) - poe bblend
+# run this once to create venv and install poe
+poetry install
+# run to (re)install everything--this is the main install command
+poe install
+```
+
+big idea: run Python scripts in Blender from the CLI
+```sh
+# run with UI to work visually - poe blend
+blender -P headless_mode.py
+# run without UI to debug (fast) - poe bblend
+blender -P headless_mode.py -b
 ```
 
 ## `butils` module
@@ -27,8 +36,8 @@ blender -P headless_mode.py -b  # run without UI to debug (fast) - poe bblend
 ```sh
 python -m butils --help
 
-# install requirements and butils symlink in Blender scripts directory
-# run this every requirements.txt is updated.
+# install deps **in blender's python environment** and symlink butils there
+# run when deps are added
 python -m butils install # `poe install-butils`
 
 # start new blender script
@@ -75,7 +84,7 @@ There are several ways to run the tests:
   gh workflow run "Blender Tests" --input testcase=your_test_case --input verbosity=2
   ```
 
-## Visual Notes, Renders
+## Visual Notes and Renders
 
 | ![reference modeling](/static/images/readme/topology_practice.png) |
 | :----------------------------------------------------------------: |
@@ -136,11 +145,3 @@ There are several ways to run the tests:
 | ![Procedural Animation Example](/static/images/readme/interface.png) |
 | :------------------------------------------------------------------: |
 |                     Procedural Animation Example                     |
-
-| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](/static/images/readme/status_bar_config.png) |
-| :------------------------------------------------------------------------------------------------------------------------: |
-|                         Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                         |
-
-| ![Debugger Example](/static/images/readme/debugger.png) |
-| :-----------------------------------------------------: |
-|                    Debugger Example                     |
