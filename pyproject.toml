@@ -9,12 +9,25 @@ sequence = [
   "install-githooks",
   "install-blender",
   "install-ffmpeg",
+  "install-act",
 ]
 
-[tool.poe.tasks.test]
-help = "Run unit tests. Add -t tests.<test_file> to run specific tests."
+[tool.poe.tasks]
+install-butils = "python -m butils install"
+install-githooks = "rsync -av tests/githooks/ .git/hooks/"
+install-blender = "sudo snap install blender"
+install-ffmpeg = "sudo apt install ffmpeg"
+install-act = "./butils/commands/install/act.sh"
+
+[tool.poe.tasks.act]
+help = "Run unit tests. Add --input 'testcase=test.Case.function' to run specific tests."
 cwd = "$POE_PWD"
-cmd = "blender --background --python tests/run_tests.py -- --no-buffer --verbosity 2"
+cmd = """
+  act workflow_dispatch
+    --input 'verbosity=2'
+    --input='print=true'
+    --input='coverage=false'
+"""
 
 [tool.poe.tasks.blend]
 help = "`blender -P script.py`."
@@ -41,11 +54,6 @@ help = "`python -m butils compress`. See `poe compress --help`."
 cwd = "$POE_PWD"
 cmd = "python -m butils compress"
 
-[tool.poe.tasks]
-install-butils = "python -m butils install"
-install-githooks = "cp -f tests/githooks/* .git/hooks/"
-install-blender = "sudo snap install blender"
-install-ffmpeg = "sudo apt install ffmpeg"
 
 [tool.coverage.run]
 # choose what to run coverage against
