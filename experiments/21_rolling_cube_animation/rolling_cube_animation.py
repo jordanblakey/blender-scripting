@@ -1,5 +1,4 @@
 import math
-from typing import Type
 
 import bpy
 

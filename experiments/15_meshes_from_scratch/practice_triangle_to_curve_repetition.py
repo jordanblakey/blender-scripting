@@ -1,9 +1,10 @@
 import math
 import os
-import random
 import sys
 
 import bpy
+
+import butils
 
 ENGINE = "BLENDER_EEVEE_NEXT"
 RESOLUTION_PERCENTAGE = 200
@@ -24,7 +25,7 @@ blend_file = os.path.splitext(__file__)[0] + ".blend"
 modules_path = os.path.join(dirname, "..")
 if modules_path not in sys.path:
     sys.path.append(modules_path)
-import butils  # nopep8
+
 
 butils.scene.clean()
 butils.blend_file.create_or_open(blend_file)
@@ -41,9 +42,13 @@ def create_geometry(n=6, r=0.2, steps=36):
         # radius = random.normalvariate(mu=1, sigma=1)
         bpy.ops.mesh.primitive_circle_add(vertices=n, radius=0.1 + (i * r))
         obj = bpy.context.active_object
+        if not obj or not isinstance(obj.data, bpy.types.Mesh):
+            raise TypeError("Active object is not a mesh.")
         obj.rotation_euler.x = math.radians(-90)
         obj.rotation_euler.z = step_angle * i
 
+        if not isinstance(obj.data, bpy.types.Curve):
+            raise TypeError("Object data is not a curve.")
         bpy.ops.object.convert(target="CURVE")
         obj.data.bevel_depth = 0.025
         obj.data.bevel_resolution = 16
@@ -70,7 +75,7 @@ main()
 print("script stage complete.")
 butils.blend_file.save(blend_file)
 print("render stage starting...")
-butils.quick_render(
+butils.render.quick_render(
     cwd=dirname,
     engine=ENGINE,
     resolution_percentage=RESOLUTION_PERCENTAGE,

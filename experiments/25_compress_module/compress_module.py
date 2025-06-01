@@ -10,7 +10,7 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "butils"))
 )
 
-from compress_utils import compress_image, image  # type: ignore
+from compress_utils import image  # type: ignore
 
 if (
     "post_process.compress" not in sys.modules

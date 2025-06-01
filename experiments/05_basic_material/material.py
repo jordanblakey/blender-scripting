@@ -1,20 +1,20 @@
-import bpy
 import random
 
+import bpy
 
-def set_viewports_mode(mode='RENDERED'):
+
+def set_viewports_mode(mode="RENDERED"):
     """
     Sets the shading type of all 3D Viewports in all windows to 'RENDERED'.
     """
     for window in bpy.context.window_manager.windows:
         screen = window.screen
         for area in screen.areas:
-            if area.type == 'VIEW_3D':
+            if area.type == "VIEW_3D":
                 for space in area.spaces:
-                    if space.type == 'VIEW_3D':
+                    if space.type == "VIEW_3D":
                         space.shading.type = mode
-                        print(
-                            f"Set viewport in area '{area.ui_type}' to RENDERED")
+                        print(f"Set viewport in area '{area.ui_type}' to RENDERED")
                         break  # Only need to set it once per area
 
 
@@ -24,12 +24,13 @@ def clean_scene():
     """
 
     # select all
-    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.select_all(action="SELECT")
     # delete all
     bpy.ops.object.delete(use_global=False)
     # remove data connected
     bpy.ops.outliner.orphans_purge(
-        do_local_ids=True, do_linked_ids=True, do_recursive=True)
+        do_local_ids=True, do_linked_ids=True, do_recursive=True
+    )
 
 
 def create_material(name="my_generated_material"):
@@ -39,18 +40,24 @@ def create_material(name="my_generated_material"):
 
     # enable nodes
     material.use_nodes = True
-    nodes = material.node_tree.nodes
+    # nodes = material.node_tree.nodes
 
     # get ref to Principled BSDF shader node
-    principled_bsdf_node = material.node_tree.nodes['Principled BSDF']
+    if material.node_tree is not None:
+        principled_bsdf_node = material.node_tree.nodes["Principled BSDF"]
+    else:
+        raise ValueError(f"Material '{name}' does not have a node tree.")
     # set base color (using a random color for fun)
-    principled_bsdf_node.inputs['Base Color'].default_value = (
-        random.random(), random.random(), random.random(), 1)
+    principled_bsdf_node.inputs["Base Color"].default_value = (
+        random.random(),
+        random.random(),
+        random.random(),
+        1,
+    )
     # set metallic
-    principled_bsdf_node.inputs['Metallic'].default_value = 1.0
+    principled_bsdf_node.inputs["Metallic"].default_value = 1.0
     # set the roughness
-    principled_bsdf_node.inputs['Roughness'].default_value = random.uniform(
-        0.1, 0.5)
+    principled_bsdf_node.inputs["Roughness"].default_value = random.uniform(0.1, 0.5)
 
     return material
 

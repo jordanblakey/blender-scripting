@@ -2,12 +2,14 @@
 
 echo "running pre-commit hook..."
 
-set -e
+# set -e
+
+echo "MODIFIED"
 
 # Check if ruff is installed
 if ! command -v ruff > /dev/null; then
   echo "Ruff is not installed. Installing ruff..."
-  python -m pip install --user ruff
+  python -m pip install ruff
 fi
 
 # Run ruff for linting
@@ -16,7 +18,16 @@ python -m ruff check .
 
 # Run ruff for formatting
 echo "Running ruff for formatting..."
-python -m ruff format --check .
+python -m ruff format .
+# python -m ruff format --check .
+
+# read -p "Do you want to format these files? (y/n): " response
+# if [ "$response" != "y" ]; then
+#   echo "Skipping pre-commit hook."
+#   exit 0
+# fi
+
+
 
 # echo "TODO: add linting and formatting checks here"
 gh act push

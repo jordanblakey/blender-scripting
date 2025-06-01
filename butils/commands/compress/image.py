@@ -5,10 +5,10 @@ import time
 from typing import Any
 
 import piexif
-
-print(sys.executable)
 from PIL import Image
 from PIL.ImageFile import ImageFile
+
+print(sys.executable)  # noqa: F821
 
 
 def compress(input_path, analyze=False):

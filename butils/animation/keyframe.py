@@ -58,9 +58,7 @@ def edit_keyframe(
     return True
 
 
-def delete_keyframe(
-    obj: bpy.types.Object, data_path: str, frame: int, index: int = -1
-):
+def delete_keyframe(obj: bpy.types.Object, data_path: str, frame: int, index: int = -1):
     fcurves = butils.animation.get_fcurves(obj)
     fcurve = butils.animation.get_fcurve(data_path, index, fcurves)
     if not fcurve:

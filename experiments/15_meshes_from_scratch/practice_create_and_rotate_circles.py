@@ -1,24 +1,26 @@
-import bpy
 import math
 
+import bpy
+
 # Create a new mesh
-mesh = bpy.data.meshes.new('poly')
+mesh = bpy.data.meshes.new("poly")
 verts = [(1, 0, 0), (0, 1, 0), (0, 0, 0)]
 faces = [(0, 1, 2)]
 mesh.from_pydata(verts, [], faces)
 
 # Delete the default cube
-obj = bpy.data.objects.get('Cube')
-bpy.data.objects.remove(obj)
+obj = bpy.data.objects.get("Cube")
+if obj:
+    bpy.data.objects.remove(obj)
 
 
 def create_circle(steps=16, radius=1, location=(0, 0, 0), rotation=(0, 0, 0)):
     # create mesh
-    mesh = bpy.data.meshes.new('circle')
+    mesh = bpy.data.meshes.new("circle")
     verts = []
 
     # create vertices
-    for i in (range(steps)):
+    for i in range(steps):
         angle_step = math.tau / steps
         theta = angle_step * i
         x = radius * math.cos(theta)
@@ -33,9 +35,10 @@ def create_circle(steps=16, radius=1, location=(0, 0, 0), rotation=(0, 0, 0)):
     mesh.from_pydata(verts, edges, [])
 
     # create object
-    obj = bpy.data.objects.new('Circle', mesh)
-    collection = bpy.data.collections.get('Collection')
-    collection.objects.link(obj)
+    obj = bpy.data.objects.new("Circle", mesh)
+    collection = bpy.data.collections.get("Collection")
+    if collection:
+        collection.objects.link(obj)
 
     # position object
     obj.location = location

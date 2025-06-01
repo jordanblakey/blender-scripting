@@ -4,6 +4,9 @@ import sys
 
 import bmesh
 import bpy
+import mathutils
+
+import butils
 
 ENGINE = "BLENDER_EEVEE_NEXT"
 RESOLUTION_PERCENTAGE = 200
@@ -25,7 +28,7 @@ blend_file = os.path.splitext(__file__)[0] + ".blend"
 modules_path = os.path.join(dirname, "..")
 if modules_path not in sys.path:
     sys.path.append(modules_path)
-import butils  # nopep8
+
 
 butils.scene.clean()
 butils.blend_file.create_or_open(blend_file)
@@ -42,6 +45,8 @@ def create_circle(vert_count=16, radius=1, z=0):
     # create an empty object
     bpy.ops.object.add(type="MESH")
     obj = bpy.context.active_object
+    if not obj or not isinstance(obj.data, bpy.types.Mesh):
+        raise TypeError("Active object is not a mesh.")
     mesh = obj.data
     bm = bmesh.new()
 
@@ -55,12 +60,13 @@ def create_circle(vert_count=16, radius=1, z=0):
         bm.verts.new((x, y, z))
 
     # finalize bmesh data
-    bm.faces.new(bm.verts)
+    bm.verts.ensure_lookup_table()
+    bm.faces.new([bm.verts[i] for i in range(vert_count)])
     bm.to_mesh(mesh)
     bm.free()
 
 
-def create_obj_spiral(obj_count=16, radius=1, offset=1):
+def create_obj_spiral(obj_count=16, radius=1, offset: float = 1):
     angle_step = math.tau / obj_count
     for i in range(obj_count * 2):
         theta = i * angle_step
@@ -98,7 +104,7 @@ print("script stage complete.")
 butils.blend_file.save(blend_file)
 
 print("render stage starting...")
-butils.ui.set_view_location(location=(0, 0, 0))
+butils.ui.set_view_location(location=mathutils.Vector((0, 0, 0)))
 butils.render.quick_render(
     cwd=dirname,
     viewport=True,

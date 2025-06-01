@@ -99,9 +99,7 @@ def render_animation(
         raise TypeError()
     bpy.context.scene.render.fps = fps
     time_scale_factor = int(fps / 30)
-    bpy.context.scene.frame_end = (
-        bpy.context.scene.frame_end * time_scale_factor
-    )
+    bpy.context.scene.frame_end = bpy.context.scene.frame_end * time_scale_factor
     bpy.context.scene.render.frame_map_new = 100 * time_scale_factor
 
     # config format and encoding

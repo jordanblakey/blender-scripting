@@ -1,7 +1,5 @@
 import os
-from ast import mod
 from math import pi, radians
-from typing import get_args
 
 import bpy
 
@@ -69,9 +67,7 @@ def animate_torus(
     edit_keyframe(key, interpolation=interpolation, easing=easing)
 
     key = insert_keyframe(torus, "rotation_euler", frame=end, index=0)
-    edit_keyframe(
-        key, value=pi * 3.5, interpolation=interpolation, easing=easing
-    )
+    edit_keyframe(key, value=pi * 3.5, interpolation=interpolation, easing=easing)
 
 
 def setup_scene():

@@ -1,11 +1,8 @@
 import os
-import sys
 from math import tau
 from pathlib import Path
 
-import bmesh
 import bpy
-import mathutils
 
 import butils
 
@@ -31,7 +28,7 @@ def animate():
     animation_data: bpy.types.AnimData = obj.animation_data
     if not isinstance(animation_data.action, bpy.types.Action):
         raise TypeError()
-    action: bpy.types.Action = animation_data.action
+    # action: bpy.types.Action = animation_data.action
     # print(action)
     # print(action.curve_frame_range)
 

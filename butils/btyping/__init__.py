@@ -53,3 +53,11 @@ SpaceTypeItems = typing.Literal[
     "SPREADSHEET",  # Spreadsheet.Explore geometry data in a table.
     "PREFERENCES",  # Preferences.Edit persistent configuration settings.
 ]
+
+OperatorReturnItems = typing.Literal[
+    "CANCELLED",  # Operation was cancelled.
+    "FINISHED",  # Operation completed successfully.
+    "PASS_THROUGH",  # Operation was passed through to another operator.
+    "RUNNING_MODAL",  # Operation is running in modal mode.
+    "INVOKE_DEFAULT",  # Operation was invoked with default parameters.
+]

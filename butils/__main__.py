@@ -47,9 +47,7 @@ def main():
                 butils.commands.video.compress(args.input_file, crf=args.crf)
             elif re.match(r"\.(png|jpg|jpeg)", ext):
                 print(f"Trying image compression for {ext} file.")
-                butils.commands.image.compress(
-                    args.input_file, analyze=args.analyze
-                )
+                butils.commands.image.compress(args.input_file, analyze=args.analyze)
             else:
                 print(f"{ext} is not a supported file type.")
 

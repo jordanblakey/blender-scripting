@@ -1,3 +1,3 @@
 import webbrowser
 
-webbrowser.open('https://www.blender.org/ ')
+webbrowser.open("https://www.blender.org/ ")

@@ -1,6 +1,4 @@
-import argparse
 import os
-import sys
 import time
 from typing import Generator
 
@@ -9,9 +7,7 @@ import ffmpeg
 
 def compress(input_path, crf=None):
     crf = (
-        crf
-        or input("Enter CRF (0 = lossless, 23 = default, 29 = aggressive): ")
-        or 29
+        crf or input("Enter CRF (0 = lossless, 23 = default, 29 = aggressive): ") or 29
     )
     compress_video(input_path, crf)
 

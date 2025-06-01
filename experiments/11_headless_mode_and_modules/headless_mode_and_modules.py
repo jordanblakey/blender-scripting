@@ -3,6 +3,8 @@ import sys
 
 import bpy
 
+import butils
+
 ################################################################################
 # Set Up Script
 ################################################################################
@@ -17,7 +19,7 @@ blend_file = os.path.splitext(__file__)[0] + ".blend"
 modules_path = os.path.join(dirname, "..")
 if modules_path not in sys.path:
     sys.path.append(modules_path)
-import butils  # nopep8
+
 
 butils.scene.clean()
 butils.blend_file.create_or_open(blend_file)
