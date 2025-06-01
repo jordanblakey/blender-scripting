@@ -4,6 +4,7 @@ echo "running pre-commit hook..."
 
 set -e
 
-gh act push
+# echo "TODO: add linting and formatting checks here"
+# gh act push  # this makes commiting slow, try doing it async on push for a while
 
-exit 0
+echo "pre-commit hook completed successfully."
