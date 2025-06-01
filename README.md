@@ -2,9 +2,6 @@
 
 Experiments in automating Blender with Python.
 
-- TODO: migrate to poetry
-- TODO: get unit tests passing using containerized blender
-
 ## Setup Project for VSCode
 
 ```bash
@@ -15,7 +12,7 @@ git clone --depth 1 <repo-url>
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-poe install
+poe install # installs blender, act, ffmpeg
 poe # list of useful project commands
 
 # big idea: run Python scripts in Blender from the CLI

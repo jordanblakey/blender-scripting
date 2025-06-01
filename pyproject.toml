@@ -9,6 +9,7 @@ sequence = [
   "install-githooks",
   "install-blender",
   "install-ffmpeg",
+  "install-act",
 ]
 
 [tool.poe.tasks.test]
@@ -43,9 +44,10 @@ cmd = "python -m butils compress"
 
 [tool.poe.tasks]
 install-butils = "python -m butils install"
-install-githooks = "cp -f tests/githooks/* .git/hooks/"
+install-githooks = "rsync -av tests/githooks/ .git/hooks/"
 install-blender = "sudo snap install blender"
 install-ffmpeg = "sudo apt install ffmpeg"
+install-act = "./butils/commands/install/act.sh"
 
 [tool.coverage.run]
 # choose what to run coverage against
