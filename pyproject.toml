@@ -57,7 +57,11 @@ cmd = "python -m butils compress"
 
 [tool.coverage.run]
 # choose what to run coverage against
-# source = ["butils"]
+source = ["butils"]
 
 # or choose what to omit
-omit = ["*/scripts/modules/bpy/*", "tests/*"]
+omit = ["butils/btyping/*", "tests/*", "*/site-packages/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
