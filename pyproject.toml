@@ -6,38 +6,7 @@ readme = "README.md"
 authors = [{name = "Jordan Blakey", email = "jordan.t.blakey@gmail.com"}]
 requires-python = ">=3.12"
 classifiers = [ "Topic :: Software Development :: Libraries :: Python Modules" ]
-[virtualenvs]
-path = ".venvs"
-create = false
-in-project = true
-dependencies = [
-    "blender-stubs (>=3.12.27,<4.0.0)",
-    "fake-bpy-module-latest (>=20250522,<20250523)",
-    "coverage (>=7.8.2,<8.0.0)",
-    "ffmpeg-python (>=0.2.0,<0.3.0)",
-    "future (>=1.0.0,<2.0.0)",
-    "pastel (>=0.2.1,<0.3.0)",
-    "piexif (>=1.1.3,<2.0.0)",
-    "pillow (>=11.2.1,<12.0.0)",
-    "pyyaml (>=6.0.2,<7.0.0)"
-]
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.11.12"
-poethepoet = "^0.34.0"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.coverage.run]
-source = ["butils"]
-omit = [
-    "butils/btyping/*",
-    "tests/*",
-    "*/site-packages/*",
-    "*/scripts/modules/bpy/*",
-]
 
 [tool.poe.tasks.default]
 help = "Show available poe tasks"
@@ -82,14 +51,40 @@ help = "`python -m butils compress`. See `poe compress --help`."
 cwd = "$POE_PWD"
 cmd = "python -m butils compress"
 
+[virtualenvs]
+path = ".venvs"
+create = false
+in-project = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.coverage.run]
-# choose what to run coverage against
 source = ["butils"]
-
-# or choose what to omit
-omit = ["butils/btyping/*", "tests/*", "*/site-packages/*"]
+omit = [
+    "butils/btyping/*",
+    "tests/*",
+    "*/site-packages/*",
+    "*/scripts/modules/bpy/*",
+]
 
 [tool.coverage.report]
 show_missing = true
 skip_covered = false
+
+dependencies = [
+    "blender-stubs (>=3.12.27,<4.0.0)",
+    "fake-bpy-module-latest (>=20250522,<20250523)",
+    "coverage (>=7.8.2,<8.0.0)",
+    "ffmpeg-python (>=0.2.0,<0.3.0)",
+    "future (>=1.0.0,<2.0.0)",
+    "pastel (>=0.2.1,<0.3.0)",
+    "piexif (>=1.1.3,<2.0.0)",
+    "pillow (>=11.2.1,<12.0.0)",
+    "pyyaml (>=6.0.2,<7.0.0)"
+]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.12"
+poethepoet = "^0.34.0"

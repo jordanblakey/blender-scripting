@@ -33,8 +33,8 @@ blender -P headless_mode.py -b
 ```sh
 python -m butils --help
 
-# install requirements and butils symlink in Blender scripts directory
-# run this every requirements.txt is updated.
+# install deps **in blender's python environment** and symlink butils there
+# run when deps are added
 python -m butils install # `poe install-butils`
 
 # start new blender script
@@ -81,7 +81,7 @@ There are several ways to run the tests:
   gh workflow run "Blender Tests" --input testcase=your_test_case --input verbosity=2
   ```
 
-## Visual Notes, Renders
+## Visual Notes and Renders
 
 | ![reference modeling](/static/images/readme/topology_practice.png) |
 | :----------------------------------------------------------------: |
@@ -142,11 +142,3 @@ There are several ways to run the tests:
 | ![Procedural Animation Example](/static/images/readme/interface.png) |
 | :------------------------------------------------------------------: |
 |                     Procedural Animation Example                     |
-
-| ![Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.](/static/images/readme/status_bar_config.png) |
-| :------------------------------------------------------------------------------------------------------------------------: |
-|                         Status Bar Config - Show Scene Details, Memory, VRAM, Animation data, etc.                         |
-
-| ![Debugger Example](/static/images/readme/debugger.png) |
-| :-----------------------------------------------------: |
-|                    Debugger Example                     |
