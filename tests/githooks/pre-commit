@@ -6,9 +6,9 @@ printf "\033[33mpre-commit hook \033[0m\n"
 set -e
 
 # Check if ruff is installed
-if ! command -v ruff > /dev/null; then
-  echo "Ruff is not installed. Installing ruff..."
-  python -m pip install ruff
+if ! command -v ruff >/dev/null; then
+	echo "Ruff is not installed. Installing ruff..."
+	python -m pip install ruff
 fi
 
 printf "\033[35mruff check . \033[0m\n"
