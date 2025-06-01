@@ -5,7 +5,6 @@
 
 # check docker engine installed
 if ! docker version | grep -q Engine; then
-  echo huh
   # install docker engine
   # https://docs.docker.com/engine/install/ubuntu/#install-from-a-package
   for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
