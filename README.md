@@ -8,12 +8,12 @@ Experiments in automating Blender with Python.
 # clone the repo with no history for fast download
 git clone --depth 1 <repo-url>
 
-# install dependencies
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-poe install # installs blender, act, ffmpeg
-poe # list of useful project commands
+# run this to install poetry globally
+pip install poetry
+# run this once to create venv and install poe
+poetry install
+# run to (re)install everything--this is the main install command
+poe install
 
 # big idea: run Python scripts in Blender from the CLI
 blender -P headless_mode.py  # run with UI to work visually - poe blend
