@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # snackbar.sh - display a message with optional color
-# Usage: . ./snackbar.sh "Hello, World!" "green"
+# Usage: ./snackbar.sh "Hello, World!" "green"
 
 message="$1"
 [ "$2" = "green" ] && color="32"
