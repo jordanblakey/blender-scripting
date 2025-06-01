@@ -7,7 +7,7 @@ set -e
 # Check if ruff is installed
 if ! command -v ruff > /dev/null; then
   echo "Ruff is not installed. Installing ruff..."
-  pip install ruff
+  python -m pip install --user ruff
 fi
 
 # Run ruff for linting
