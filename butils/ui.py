@@ -86,9 +86,7 @@ def set_view3d_persective(
         if area.type == "VIEW_3D":
             for space in area.spaces:
                 if space.type == "VIEW_3D":
-                    if not isinstance(
-                        space, bpy.types.SpaceView3D
-                    ) or not isinstance(
+                    if not isinstance(space, bpy.types.SpaceView3D) or not isinstance(
                         space.region_3d, bpy.types.RegionView3D
                     ):
                         raise TypeError()

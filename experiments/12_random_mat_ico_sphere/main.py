@@ -7,6 +7,8 @@ import sys
 import bmesh
 import bpy
 
+import butils
+
 ENGINE = "BLENDER_EEVEE_NEXT"
 RESOLUTION_PERCENTAGE = 200
 RENDER_IMAGE = True
@@ -26,7 +28,6 @@ blend_file = os.path.splitext(__file__)[0] + ".blend"
 modules_path = os.path.join(dirname, "..")
 if modules_path not in sys.path:
     sys.path.append(modules_path)
-import butils  # nopep8
 
 butils.blend_file.create_or_open(blend_file)
 butils.scene.clean()

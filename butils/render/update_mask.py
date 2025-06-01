@@ -56,9 +56,7 @@ class CyclesUpdateMask(UpdateMask):
         # Scene > Sampling > Viewport > Denoise
         use_preview_denoising: NR[bool]
         preview_denoiser: NR[btyping.PreviewDenoiserTypeItems]
-        preview_denoising_input_passes: NR[
-            btyping.PreviewDenoisingInputPassesTypeItems
-        ]
+        preview_denoising_input_passes: NR[btyping.PreviewDenoisingInputPassesTypeItems]
         preview_denoising_prefilter: NR[btyping.DenoisingPrefilterTypeItems]
         preview_denoising_quality: NR[btyping.DenoisingQualityTypeItems]
         preview_denoising_start_sample: NR[int]

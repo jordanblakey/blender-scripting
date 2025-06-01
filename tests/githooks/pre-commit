@@ -1,10 +1,26 @@
 #!/usr/bin/env sh
+# pre commit hook for linting, formatting, and running tests
 
-echo "running pre-commit hook..."
+printf "\033[33mpre-commit hook \033[0m\n"
 
 set -e
 
-# echo "TODO: add linting and formatting checks here"
+# Check if ruff is installed
+if ! command -v ruff >/dev/null; then
+	echo "Ruff is not installed. Installing ruff..."
+	python -m pip install ruff
+fi
+
+printf "\033[35mruff check . \033[0m\n"
+
+ruff check .
+
+printf "\033[35mruff format . \033[0m\n"
+
+ruff format .
+
+printf "\033[35mrunning tests \033[0m\n"
+
 gh act push
 
-echo "pre-commit hook completed successfully."
+printf "\033[32mpre-commit hook complete \033[0m\n"

@@ -4,6 +4,9 @@ import os
 import sys
 
 import bpy
+import bpy.types
+
+import butils
 
 ENGINE = "CYCLES"
 RESOLUTION_PERCENTAGE = 200
@@ -24,7 +27,7 @@ blend_file = os.path.splitext(__file__)[0] + ".blend"
 modules_path = os.path.join(dirname, "..")
 if modules_path not in sys.path:
     sys.path.append(modules_path)
-import butils  # nopep8
+
 
 butils.scene.clean()
 butils.blend_file.create_or_open(blend_file)
@@ -38,16 +41,23 @@ def main():
     butils.scene.setup_starter_scene(
         background_color=(*colorsys.hls_to_rgb(2 / 3, 0, 1 / 4), 1)
     )
-    bpy.data.objects.get("Sun").data.angle = math.pi / 18
+    sun = bpy.data.objects.get("Sun")
+    if sun and isinstance(sun.data, bpy.types.SunLight):
+        sun.data.angle = math.pi / 18
 
     # create object
     bpy.ops.mesh.primitive_uv_sphere_add(radius=1)
     object = bpy.context.active_object
     bpy.ops.object.shade_smooth()
     bpy.ops.object.modifier_add(type="SUBSURF")
-    bpy.context.object.modifiers["Subdivision"].levels = 2
+    if object and isinstance(bpy.context.object, bpy.types.Mesh):
+        mod = bpy.context.object.modifiers["Subdivision"]
+        if isinstance(mod, bpy.types.SubsurfModifier):
+            mod.levels = 2
     material = create_material()
-    object.data.materials.append(material)
+
+    if object and object.data and isinstance(object.data, bpy.types.Mesh):
+        object.data.materials.append(material)
 
     # preview in viewport
     butils.ui.set_view3d_shading_type("RENDERED")
@@ -59,6 +69,8 @@ def create_material():
 
     # prepare to use shader editor
     material.use_nodes = True
+    if material.node_tree is None:
+        raise ValueError("Material node tree is None, cannot create nodes.")
     nodes = material.node_tree.nodes
     links = material.node_tree.links
 
@@ -70,14 +82,22 @@ def create_material():
     color_ramp_node.location = (-300, 0)
 
     # create links between nodes
-    links.new(
-        texture_coordinate_node.outputs["Normal"], color_ramp_node.inputs["Fac"]
-    )
+    links.new(texture_coordinate_node.outputs["Normal"], color_ramp_node.inputs["Fac"])
+    if principled_bsdf_node is None:
+        raise ValueError("Principled BSDF node not found in material.")
     links.new(
         color_ramp_node.outputs["Color"],
         principled_bsdf_node.inputs["Base Color"],
     )
 
+    if not isinstance(color_ramp_node, bpy.types.ShaderNodeValToRGB):
+        raise TypeError(
+            "Expected ShaderNodeValToRGB, got {}".format(type(color_ramp_node))
+        )
+    if not isinstance(color_ramp_node.color_ramp, bpy.types.ColorRamp):
+        raise TypeError(
+            "Expected ColorRamp, got {}".format(type(color_ramp_node.color_ramp))
+        )
     # config the color ramp for a twilight gradient
     elements = color_ramp_node.color_ramp.elements
     stop1 = elements[0]

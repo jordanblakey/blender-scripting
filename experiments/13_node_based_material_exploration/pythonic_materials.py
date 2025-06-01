@@ -1,9 +1,5 @@
 import os
-import sys
-from ast import Attribute
-from pathlib import Path
 
-import bmesh
 import bpy
 
 import butils
@@ -33,7 +29,7 @@ butils.blend_file.create_or_open(blend_file)
 
 def main():
     bpy.ops.outliner.orphans_purge()  # remove unused materials
-    styled_sphere = create_styled_icosphere()
+    # styled_sphere = create_styled_icosphere()
     # You can do more with styled_sphere here if needed
 
 
@@ -81,9 +77,7 @@ def create_material(
     # Get the Material Output node (should always exist after use_nodes=True)
     material_output_node = nodes.get("Material Output")
     if not material_output_node:
-        print(
-            f"Error: 'Material Output' node not found in material '{material_name}'."
-        )
+        print(f"Error: 'Material Output' node not found in material '{material_name}'.")
         bpy.data.materials.remove(material)
         return None
 
