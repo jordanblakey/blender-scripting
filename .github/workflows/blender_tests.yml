@@ -1,4 +1,6 @@
 name: Blender Tests
+permissions:
+  contents: read
 
 on:
   push:
