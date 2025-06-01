@@ -4,6 +4,20 @@ echo "running pre-commit hook..."
 
 set -e
 
+# Check if ruff is installed
+if ! command -v ruff > /dev/null; then
+  echo "Ruff is not installed. Installing ruff..."
+  pip install ruff
+fi
+
+# Run ruff for linting
+echo "Running ruff for linting..."
+python -m ruff check .
+
+# Run ruff for formatting
+echo "Running ruff for formatting..."
+python -m ruff format --check .
+
 # echo "TODO: add linting and formatting checks here"
 gh act push
 
