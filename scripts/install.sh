@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# installs all project dependencies.
+# installs all dependencies and validates the project.
 # usage: ./scripts/install.sh
 
 set -e
@@ -20,7 +20,12 @@ poetry install
 
 # blender: via snap
 ./scripts/snackbar.sh "installing blender" "magenta"
-sudo snap install blender
+
+if ! command -v blender &> /dev/null; then
+  sudo snap install blender
+else
+  sudo snap refresh blender
+fi
 
 # apt packages: ffmpeg
 ./scripts/snackbar.sh "installing apt packages" "magenta"
