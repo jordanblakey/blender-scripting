@@ -52,30 +52,28 @@ butils/
 
 ## Unit tests
 
-```sh
-# TODO: Clean this up
-# run tests locally with `act push`
-# use the install script in the project root to install act
-gh workflow run "Blender Tests"
-act push
-act pull_request
-act workflow_dispatch
-act workflow_dispatch --input "testcase=stest_blend_file.TestCaseName.function_name" --input "verbosity=1"
---input="print=true" --input="coverage=true"
+This project uses Python's built-in `unittest` module for testing. Tests are executed within a Docker container that includes Blender, ensuring a consistent testing environment. This setup is defined in the GitHub Actions workflow file (`.github/workflows/blender_tests.yml`).
 
-# OLD BELOW THIS LINE
-# Install git hooks (e.g. pre-commit)
-# poe install-githooks
-# # Run manually to debug. Optionally, add --coverage.
-# poe test
-# # Run specific tests to write new tests.
-# poe test -t tests.test_blend_file
-# # Identify Blender's python interpreter
-# set BLENDER_PYTHON_EXEC $(blender -b --quiet --python-expr "import sys;print(sys.executable)")
-# # Run arbitrary python commands from Blender's python interpreter
-# $BLENDER_PYTHON_EXEC -c "import sys;print(sys.version)"
-# $BLENDER_PYTHON_EXEC -m pip --version
-```
+### Running Tests
+
+There are several ways to run the tests:
+
+- **Locally with `act`**:
+  You can simulate the GitHub Actions environment locally using `act`. The `pyproject.toml` defines a `poe` task for this:
+
+  ```sh
+  poe act
+  poe act --input="testcase=tests.test_module.TestCase.test_function"
+  ```
+
+  Refer to the `tool.poe.tasks.act` section in `pyproject.toml` and the `workflow_dispatch` inputs in `.github/workflows/blender_tests.yml` for more details on available parameters.
+
+- **GitHub Actions**:
+  Tests are automatically executed in GitHub Actions on every `push` and `pull_request` to the `main` branch.
+  You can also manually trigger the "Blender Tests" workflow from the Actions tab in your GitHub repository, providing inputs for specific test cases, verbosity, etc.
+  ```sh
+  gh workflow run "Blender Tests" --input testcase=your_test_case --input verbosity=2
+  ```
 
 ## Visual Notes, Renders
 
