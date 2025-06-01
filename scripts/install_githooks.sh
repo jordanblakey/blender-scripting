@@ -2,6 +2,8 @@
 # installs githooks in .git/hooks and tests them.
 # usage: ./scripts/install_githooks.sh
 
+set -e
+
 # install the git hooks
 rsync -av ./scripts/githooks/ ./.git/hooks/
 chmod +x ./.git/hooks/*
