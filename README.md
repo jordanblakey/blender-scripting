@@ -4,12 +4,11 @@ Experiments in automating Blender with Python.
 
 ## Setup Project for VSCode
 
+### Installation
+
 ```sh
 # clone the repo with no history for fast download
 git clone --depth 1 <repo-url>
-```
-
-```sh
 # https://python-poetry.org/docs/#installing-with-the-official-installer
 curl -sSL https://install.python-poetry.org | python3 -
 # https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
@@ -20,12 +19,13 @@ poetry install
 poe install
 ```
 
-big idea: run Python scripts in Blender from the CLI
+### The Big Idea: run Python scripts in Blender from the CLI
+
 ```sh
-# run with UI to work visually - poe blend
-blender -P headless_mode.py
-# run without UI to debug (fast) - poe bblend
-blender -P headless_mode.py -b
+# run with UI to work visually
+blender -P headless_mode.py # `poe blend`
+# run without UI to debug (fast)
+blender -P headless_mode.py -b # `poe bblend`
 ```
 
 ## `butils` module
@@ -34,10 +34,6 @@ blender -P headless_mode.py -b
 
 ```sh
 python -m butils --help
-
-# install deps **in blender's python environment** and symlink butils there
-# run when deps are added
-python -m butils install # `poe install-butils`
 
 # start new blender script
 python -m butils create # `poe create`
