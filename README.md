@@ -88,6 +88,17 @@ butils/
 └── ui.py  # Work with the Blender UI: get contexts, control viewport
 ```
 
+### Pre-commit Hooks & Code Quality
+
+This project uses pre-commit hooks to ensure code quality and consistency. These hooks are automatically installed when you run `git commit` for the first time after cloning, or by running `scripts/install_githooks.sh`.
+
+The hooks currently perform:
+- Python linting and formatting using `ruff`.
+- Shell script linting and formatting using `shfmt` and `shellcheck`.
+- Markdown linting and formatting using `pymarkdownlnt` (for linting) and `mdformat` (for formatting).
+
+The Markdown tools (`pymarkdownlnt` and `mdformat`) are included as development dependencies in `pyproject.toml` and will be installed into the project's virtual environment when you run `poetry install`. The pre-commit script utilizes these tools from the Poetry environment.
+
 ## Unit tests
 
 This project uses Python's built-in `unittest` module for testing. Tests are executed within a Docker container that includes Blender, ensuring a consistent testing environment. This setup is defined in the GitHub Actions workflow file (`.github/workflows/blender_tests.yml`).
