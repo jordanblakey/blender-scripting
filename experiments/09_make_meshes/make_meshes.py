@@ -75,7 +75,9 @@ def setup_scene():
         "Color"
     ].default_value = (0.03, 0.02, 0.05, 1)
     bpy.ops.object.light_add(
-        type="SUN", location=(0, 0, 10), rotation=(0, math.pi / 4, 5 * math.pi / 3)
+        type="SUN",
+        location=(0, 0, 10),
+        rotation=(0, math.pi / 4, 5 * math.pi / 3),
     )
     light = bpy.context.active_object
     light.data.color = (1, 0.5, 0)
