@@ -87,3 +87,9 @@ omit = [
 [tool.coverage.report]
 show_missing = true
 skip_covered = false
+
+[tool.ruff]
+line-length = 80
+exclude = [
+    "static/**",
+]
