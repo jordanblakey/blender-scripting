@@ -16,7 +16,6 @@ def main():
 
     # clean modules directory
     modules_dir = f"{bpy.utils.script_path_user()}/modules"
-    # shutil.rmtree(modules_dir)
     Path(modules_dir).mkdir(parents=True, exist_ok=True)
 
     # install dependencies
