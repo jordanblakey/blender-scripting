@@ -33,31 +33,20 @@ blender -P headless_mode.py -b # `poe bblend`
 
 `butils` abstracts common Blender scripting code and provides CLI commands.
 
-```sh
-# General help
-python -m butils --help
+| Command                                                       | Description                                                                 | Options                                                                                                                                                              |
+| :------------------------------------------------------------ | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `python -m butils --help`                                     | General help                                                                | `--help`                                                                                                                                                             |
+| `python -m butils install`                                    | Install dependencies into Blender's Python environment and symlink `butils`. |                                                                                                                                                                      |
+| `python -m butils create -i <filename>.py`                    | Create a new Blender starter script.                                        | `-i/--input-file <filename>.py`: Specifies the name for the new script.                                                                                              |
+| `python -m butils compress -i <filepath>`                     | Compress output images and videos.                                          | `-i/--input-file <filepath>`: (Required) Path to the image or video file to compress.<br />`--analyze`: (Images only) Get image attributes and metadata. Skips compression.<br />`--crf <value>`: (Videos only) Constant Rate Factor (e.g., 18-28). Lower is better. |
 
-# Install dependencies into Blender's Python environment and symlink `butils`
-# Run this when new dependencies are added to `butils`.
-python -m butils install
-# (Alias: poe install-butils)
+Supported image formats for compression: `.png`, `.jpg`, `.jpeg`
+Supported video formats for compression: `.mkv`, `.mp4`
 
-# Create a new Blender starter script
-python -m butils create -i my_new_script.py
-# (Alias: poe create)
-# The -i/--input-file flag specifies the name for the new script.
-
-# Compress output images and videos
-# Supported image formats: .png, .jpg, .jpeg
-# Supported video formats: .mkv, .mp4
-python -m butils compress -i path/to/your/file.png
-python -m butils compress -i path/to/your/file.mkv --crf 23
-# (Alias: poe compress)
-
-# Options for 'compress':
-# -i, --input-file: (Required) Path to the image or video file to compress.
-# --analyze: (For images only) Get image attributes and metadata. Skips compression.
-# --crf: (For videos only) Constant Rate Factor. Determines video quality and bitrate (e.g., 18-28). Lower is better quality.
+Aliases:
+- `poe install-butils` for `python -m butils install`
+- `poe create` for `python -m butils create -i <filename>.py`
+- `poe compress` for `python -m butils compress -i <filepath>`
 
 # module structure
 butils/
