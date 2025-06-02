@@ -3,49 +3,49 @@
 
 set -e
 
-printf "\e[33mpre-commit hook \e[0m\n"
+printf "\033[33mpre-commit hook \033[0m\n"
 
 # ensure the pre-commit uses the correct python environment
 poetry env use python3
 eval $(poetry env activate | sed 's/source/./')
 
-printf "\e[35mruff format . \e[0m\n"
+printf "\033[35mruff format . \033[0m\n"
 # format: auto fix as much as possible
 ruff format .
 
-printf "\e[35mruff check . \e[0m\n"
+printf "\033[35mruff check . \033[0m\n"
 # lint: what couldn't be fixed
 ruff check .
 
 # Lint and format Markdown files (Python-based)
-printf "\e[35mFormatting and linting Markdown files (Python-based)...\e[0m\n"
+printf "\033[35mFormatting and linting Markdown files (Python-based)...\033[0m\n"
 STAGED_MD_FILES=$(git diff --cached --name-only --diff-filter=ACM "*.md")
 
 if [ -n "$STAGED_MD_FILES" ]; then
-  printf "\e[36mRunning mdformat on staged Markdown files:\e[0m\n"
+  printf "\033[36mRunning mdformat on staged Markdown files:\033[0m\n"
   echo "$STAGED_MD_FILES" | xargs -r python -m mdformat
   # Re-stage files modified by mdformat
   # Important: Ensure this git add command is run so changes by mdformat are included in the commit.
   echo "$STAGED_MD_FILES" | xargs -r git add
 
-  printf "\e[36mRunning pymarkdownlnt on staged Markdown files:\e[0m\n"
+  printf "\033[36mRunning pymarkdownlnt on staged Markdown files:\033[0m\n"
   # The 'scan' subcommand is default if paths are provided.
   # Pass the files listed in STAGED_MD_FILES to pymarkdownlnt.
   # xargs will pass them as arguments to the command.
   if ! echo "$STAGED_MD_FILES" | xargs -r python -m pymarkdownlnt scan; then
-    printf "\e[31mMarkdown linting errors found with pymarkdownlnt. Aborting commit.\e[0m\n"
+    printf "\033[31mMarkdown linting errors found with pymarkdownlnt. Aborting commit.\033[0m\n"
     # pymarkdownlnt already prints its own errors to stderr.
     exit 1
   fi
-  printf "\e[32mMarkdown files processed successfully with Python tools.\e[0m\n"
+  printf "\033[32mMarkdown files processed successfully with Python tools.\033[0m\n"
 else
-  printf "\e[32mNo staged Markdown files to process.\e[0m\n"
+  printf "\033[32mNo staged Markdown files to process.\033[0m\n"
 fi
 
 # lint and format shell scripts
 ./scripts/shfmt_and_shellcheck.sh
 
-printf "\e[35mrunning tests \e[0m\n"
+printf "\033[35mrunning tests \033[0m\n"
 gh act push
 
-printf "\e[32mpre-commit hook complete \e[0m\n"
+printf "\033[32mpre-commit hook complete \033[0m\n"
