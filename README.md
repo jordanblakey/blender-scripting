@@ -13,6 +13,7 @@ git clone --depth 1 <repo-url>
 curl -sSL https://install.python-poetry.org | python3 -
 # https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
 poetry completions bash >> ~/.bash_completion
+poetry completions fish > ~/.config/fish/completions/poetry.fish
 # run this once to create venv and install poe
 poetry install
 # run to (re)install everything--this is the main install command
@@ -33,25 +34,58 @@ blender -P headless_mode.py -b # `poe bblend`
 `butils` abstracts common Blender scripting code and provides CLI commands.
 
 ```sh
+# General help
 python -m butils --help
 
-# start new blender script
-python -m butils create # `poe create`
+# Install dependencies into Blender's Python environment and symlink `butils`
+# Run this when new dependencies are added to `butils`.
+python -m butils install
+# (Alias: poe install-butils)
 
-# compress output images and videos
-python -m butils compress -i render.png # `poe compress`
-python -m butils compress -i render.mkv # `poe compress`
+# Create a new Blender starter script
+python -m butils create -i my_new_script.py
+# (Alias: poe create)
+# The -i/--input-file flag specifies the name for the new script.
+
+# Compress output images and videos
+# Supported image formats: .png, .jpg, .jpeg
+# Supported video formats: .mkv, .mp4
+python -m butils compress -i path/to/your/file.png
+python -m butils compress -i path/to/your/file.mkv --crf 23
+# (Alias: poe compress)
+
+# Options for 'compress':
+# -i, --input-file: (Required) Path to the image or video file to compress.
+# --analyze: (For images only) Get image attributes and metadata. Skips compression.
+# --crf: (For videos only) Constant Rate Factor. Determines video quality and bitrate (e.g., 18-28). Lower is better quality.
 
 # module structure
 butils/
-├── commands/  # CLI commands available when running butils as a module
-├── starter_script.py  # boilerplate for scripting a blender scene
-├── blend_file.py  # work with .blend files
-├── animation/  # work with keyframe animations
-├── scene.py  # clean scenes, work with collections
-├── mesh.py  # simplify working with meshes
-├── render/  # simplify rendering viewport, stills, and animations
-└── ui.py  # work with the blender ui: get contexts, control viewport
+├── animation/
+│   ├── fcurve.py  # Utilities for F-Curves
+│   └── keyframe.py  # Utilities for keyframes
+├── blend_file.py  # Work with .blend files
+├── btyping/
+│   ├── animation.py  # Type hints for animation module
+│   └── render.py  # Type hints for render module
+├── commands/  # CLI commands
+│   ├── compress/
+│   │   ├── image.py  # Image compression commands
+│   │   └── video.py  # Video compression commands
+│   ├── install/
+│   │   ├── pythonpath.py  # Command to set up Python path for Blender
+│   │   └── requirements.py  # Command to install dependencies in Blender's Python
+│   └── starter/
+│       ├── create.py  # Command to create a new starter script
+│       └── starter_script.py  # Boilerplate for scripting a Blender scene
+├── mesh.py  # Simplify working with meshes
+├── render/
+│   ├── config.py  # Rendering configuration utilities
+│   ├── optimize.py  # Utilities for optimizing render performance
+│   ├── render.py  # Core rendering utilities
+│   └── update_mask.py  # Utilities for updating render masks
+├── scene.py  # Clean scenes, work with collections
+└── ui.py  # Work with the Blender UI: get contexts, control viewport
 ```
 
 ## Unit tests
