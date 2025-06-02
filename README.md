@@ -13,6 +13,7 @@ git clone --depth 1 <repo-url>
 curl -sSL https://install.python-poetry.org | python3 -
 # https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
 poetry completions bash >> ~/.bash_completion
+poetry completions fish > ~/.config/fish/completions/poetry.fish
 # run this once to create venv and install poe
 poetry install
 # run to (re)install everything--this is the main install command
