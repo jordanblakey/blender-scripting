@@ -88,7 +88,7 @@ omit = [
 show_missing = true
 skip_covered = false
 
-[tool.ruff.format]
+[tool.ruff]
 line-length = 80
 exclude = [
     "static",
