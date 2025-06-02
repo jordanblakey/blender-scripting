@@ -23,7 +23,9 @@ poetry install
 
 if ! command -v blender >/dev/null; then
 	echo 'Blender is not installed.'
-	sudo snap install blender
+ 	# take a look at to understand the security implications of --classic
+ 	# https://snapcraft.io/docs/install-modes 
+	sudo snap install blender --classic
 else
 	echo 'Blender is already installed.'
 	candidate="$(snap info blender | grep latest/stable: | awk '{ print $2 }')"
@@ -37,6 +39,14 @@ else
 		sudo snap refresh blender
 	fi
 fi
+
+# inspect blender's python environment
+./scripts/snackbar.sh "inspecting blender python environment" "magenta"
+poe bblend ./scripts/inspect_blender_py_env.py
+
+# install blender python dependencies
+./scripts/snackbar.sh "installing blender python dependencies" "magenta"
+poe bblend ./scripts/install_blender_deps.py
 
 # apt packages: ffmpeg
 ./scripts/snackbar.sh "installing apt packages" "magenta"
