@@ -91,5 +91,5 @@ skip_covered = false
 [tool.ruff]
 line-length = 80
 exclude = [
-    "static",
+    "static/**",
 ]
