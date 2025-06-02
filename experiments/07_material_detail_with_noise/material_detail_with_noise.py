@@ -49,7 +49,9 @@ def create_material(name: str = "my_generated_material"):
     noise_texture_node.inputs["Detail"].default_value = 3
     noise_texture_node.inputs["Lacunarity"].default_value = 5
     noise_texture_node.location = (-500, 200)
-    links.new(noise_texture_node.outputs["Color"], color_ramp_node.inputs["Fac"])
+    links.new(
+        noise_texture_node.outputs["Color"], color_ramp_node.inputs["Fac"]
+    )
 
     return material
 

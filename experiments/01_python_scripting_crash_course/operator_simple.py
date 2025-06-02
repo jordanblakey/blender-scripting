@@ -54,7 +54,9 @@ class JordanOperator(bpy.types.Operator):
                 bpy.ops.object.mode_set(mode="OBJECT")
             except RuntimeError:
                 # This can happen if there are no objects or the context is wrong
-                print("Warning: Could not set to OBJECT mode. Proceeding with caution.")
+                print(
+                    "Warning: Could not set to OBJECT mode. Proceeding with caution."
+                )
 
         if bpy.context.scene.objects:  # Check if there are objects to delete
             bpy.ops.object.select_all(action="SELECT")
@@ -171,7 +173,9 @@ class JordanOperator(bpy.types.Operator):
         )
 
         print(new_texture)
-        if new_texture and isinstance(new_texture, bpy.types.DistortedNoiseTexture):
+        if new_texture and isinstance(
+            new_texture, bpy.types.DistortedNoiseTexture
+        ):
             new_texture.noise_scale = self.noise_scale
             mod_displace.texture = new_texture
         elif new_texture:
@@ -181,9 +185,13 @@ class JordanOperator(bpy.types.Operator):
         else:
             print("Warning: Failed to create texture 'My Texture'.")
 
-        new_mat: bpy.types.Material | None = bpy.data.materials.new(name="My Material")
+        new_mat: bpy.types.Material | None = bpy.data.materials.new(
+            name="My Material"
+        )
         if new_mat:
-            if ao.data:  # ao and ao.data should be valid here from earlier checks
+            if (
+                ao.data
+            ):  # ao and ao.data should be valid here from earlier checks
                 mesh_data.materials.append(new_mat)  # Append to mesh_data
 
             new_mat.use_nodes = True
@@ -225,7 +233,9 @@ class JordanOperator(bpy.types.Operator):
                 glare_node: bpy.types.CompositorNodeGlare = glare_node_untyped
                 glare_node.glare_type = "FOG_GLOW"
 
-                composite_node: bpy.types.Node | None = tree.nodes.get("Composite")
+                composite_node: bpy.types.Node | None = tree.nodes.get(
+                    "Composite"
+                )
                 render_layers_node: bpy.types.Node | None = tree.nodes.get(
                     "Render Layers"
                 )
@@ -237,8 +247,12 @@ class JordanOperator(bpy.types.Operator):
                     glare_node.size = 9  # Default is 8, max is 9 for FOG_GLOW in UI, but API might allow more
                     glare_node.threshold = 0.1
 
-                    tree.links.new(render_layers_node.outputs[0], glare_node.inputs[0])
-                    tree.links.new(glare_node.outputs[0], composite_node.inputs[0])
+                    tree.links.new(
+                        render_layers_node.outputs[0], glare_node.inputs[0]
+                    )
+                    tree.links.new(
+                        glare_node.outputs[0], composite_node.inputs[0]
+                    )
                 else:
                     print(
                         "Warning: Composite or Render Layers node not found in compositor."

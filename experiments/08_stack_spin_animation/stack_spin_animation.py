@@ -86,7 +86,9 @@ def apply_random_color_material(obj):
     color = (r, g, b, 1)
     mat = bpy.data.materials.new("random_color")
     mat.use_nodes = True
-    mat.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = color
+    mat.node_tree.nodes["Principled BSDF"].inputs[
+        "Base Color"
+    ].default_value = color
     mat.node_tree.nodes["Principled BSDF"].inputs[
         "Specular IOR Level"
     ].default_value = 0
