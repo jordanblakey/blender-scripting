@@ -20,7 +20,4 @@ ruff check .
 # lint and format shell scripts
 ./scripts/shfmt_and_shellcheck.sh
 
-printf "\033[35mrunning tests \033[0m\n"
-gh act push
-
 printf "\033[32mpre-commit hook complete \033[0m\n"
