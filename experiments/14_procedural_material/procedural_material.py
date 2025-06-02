@@ -82,7 +82,9 @@ def create_material():
     color_ramp_node.location = (-300, 0)
 
     # create links between nodes
-    links.new(texture_coordinate_node.outputs["Normal"], color_ramp_node.inputs["Fac"])
+    links.new(
+        texture_coordinate_node.outputs["Normal"], color_ramp_node.inputs["Fac"]
+    )
     if principled_bsdf_node is None:
         raise ValueError("Principled BSDF node not found in material.")
     links.new(
@@ -96,7 +98,9 @@ def create_material():
         )
     if not isinstance(color_ramp_node.color_ramp, bpy.types.ColorRamp):
         raise TypeError(
-            "Expected ColorRamp, got {}".format(type(color_ramp_node.color_ramp))
+            "Expected ColorRamp, got {}".format(
+                type(color_ramp_node.color_ramp)
+            )
         )
     # config the color ramp for a twilight gradient
     elements = color_ramp_node.color_ramp.elements

@@ -38,7 +38,9 @@ def run_in_blender(expr):
         # text=True decodes output as utf-8
         # Set check=False to closely mimic original os.popen behavior for now
         # (os.popen doesn't raise an error, just returns empty output on command failure)
-        result = subprocess.run(command, capture_output=True, text=True, check=False)
+        result = subprocess.run(
+            command, capture_output=True, text=True, check=False
+        )
         if result.returncode != 0:
             # Optionally, print stderr for debugging if Blender command itself fails
             # print(f"Blender command '{' '.join(command)}' failed with error code {result.returncode}:\n{result.stderr}", file=sys.stderr)
@@ -95,7 +97,9 @@ def create_symlink(module_name, source_path, symlink_path):
                 f"  Source path '{source_path}' does not exist. Cannot create symlink."
             )
         else:
-            print(f"  Attempting os.symlink(src='{source_path}', dst='{symlink_path}')")
+            print(
+                f"  Attempting os.symlink(src='{source_path}', dst='{symlink_path}')"
+            )
             try:
                 os.symlink(source_path, symlink_path)
                 # Verify after creation attempt
@@ -209,13 +213,19 @@ def install_requirements():
         try:
             # Using capture_output=True, text=True for cleaner output
             # Set check=False to manually handle errors and print stdout/stderr like example
-            result = subprocess.run(cmd, capture_output=True, text=True, check=False)
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, check=False
+            )
             if result.returncode == 0:
-                print(f"Successfully installed {package_name_full} to {install_path}")
+                print(
+                    f"Successfully installed {package_name_full} to {install_path}"
+                )
                 if result.stdout:
                     print(f"Stdout:\n{result.stdout}")
             else:
-                print(f"Failed to install {package_name_full} to {install_path}.")
+                print(
+                    f"Failed to install {package_name_full} to {install_path}."
+                )
                 if (
                     result.stdout
                 ):  # Print stdout even on failure, it might contain useful info

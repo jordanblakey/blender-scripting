@@ -18,7 +18,12 @@ for window in bpy.context.window_manager.windows:
         if area.type == "VIEW_3D":
             for space in area.spaces:
                 if space.type == "VIEW_3D":
-                    space.region_3d.view_rotation = (0.8001, 0.4619, -0.1913, -0.3314)
+                    space.region_3d.view_rotation = (
+                        0.8001,
+                        0.4619,
+                        -0.1913,
+                        -0.3314,
+                    )
 
 
 # create a cube
