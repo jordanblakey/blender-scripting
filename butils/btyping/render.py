@@ -10,5 +10,7 @@ PreviewDenoisingInputPassesTypeItems = typing.Literal[
 ]
 DenoisingPrefilterTypeItems = typing.Literal["NONE", "FAST", "ACCURATE"]
 DenoiserTypeItems = typing.Literal["OPENIMAGEDENOISE", "OPTIX"]
-DenoisingInputPassesTypeItems = typing.Literal["RGB", "RGB_ALBEDO", "RGB_ALBEDO_NORMAL"]
+DenoisingInputPassesTypeItems = typing.Literal[
+    "RGB", "RGB_ALBEDO", "RGB_ALBEDO_NORMAL"
+]
 DenoisingQualityTypeItems = typing.Literal["HIGH", "BALANCED", "FAST"]

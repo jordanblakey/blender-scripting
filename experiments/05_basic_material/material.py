@@ -14,7 +14,9 @@ def set_viewports_mode(mode="RENDERED"):
                 for space in area.spaces:
                     if space.type == "VIEW_3D":
                         space.shading.type = mode
-                        print(f"Set viewport in area '{area.ui_type}' to RENDERED")
+                        print(
+                            f"Set viewport in area '{area.ui_type}' to RENDERED"
+                        )
                         break  # Only need to set it once per area
 
 
@@ -57,7 +59,9 @@ def create_material(name="my_generated_material"):
     # set metallic
     principled_bsdf_node.inputs["Metallic"].default_value = 1.0
     # set the roughness
-    principled_bsdf_node.inputs["Roughness"].default_value = random.uniform(0.1, 0.5)
+    principled_bsdf_node.inputs["Roughness"].default_value = random.uniform(
+        0.1, 0.5
+    )
 
     return material
 

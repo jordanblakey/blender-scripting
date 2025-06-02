@@ -23,6 +23,6 @@ def main():
 
 if __name__ == "__main__":
     if not hasattr(bpy, "app"):
-        raise RuntimeError("This script should be run in Blender's Python environment.")
+        raise RuntimeError("Script should run in Blender's Python env.")
     else:
         main()

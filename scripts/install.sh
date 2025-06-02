@@ -23,8 +23,8 @@ poetry install
 
 if ! command -v blender >/dev/null; then
 	echo 'Blender is not installed.'
- 	# take a look at to understand the security implications of --classic
- 	# https://snapcraft.io/docs/install-modes 
+	# take a look at to understand the security implications of --classic
+	# https://snapcraft.io/docs/install-modes
 	sudo snap install blender --classic
 else
 	echo 'Blender is already installed.'

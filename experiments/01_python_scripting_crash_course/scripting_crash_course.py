@@ -89,9 +89,7 @@ mod_subsurf.levels = 3
 bpy.ops.object.mode_set(mode="OBJECT")
 
 # bpy.ops.object.shade_smooth()
-mesh = (
-    ao.data
-)  # in other words .data is an iterable with the faces comprising the "mesh" in it
+mesh = ao.data  # in other words .data is an iterable with the faces comprising the "mesh" in it
 # We will set only 3 of the 6 faces to render "smooth"
 i = 0
 for face in mesh.polygons:

@@ -77,7 +77,9 @@ def create_material(
     # Get the Material Output node (should always exist after use_nodes=True)
     material_output_node = nodes.get("Material Output")
     if not material_output_node:
-        print(f"Error: 'Material Output' node not found in material '{material_name}'.")
+        print(
+            f"Error: 'Material Output' node not found in material '{material_name}'."
+        )
         bpy.data.materials.remove(material)
         return None
 
