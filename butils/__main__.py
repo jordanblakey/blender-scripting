@@ -10,7 +10,7 @@ def main():
     parser.add_argument(
         "action",
         type=str,
-        help="An action to perform like: install, create, compress",
+        help="An action to perform like: create, compress",
     )
     parser.add_argument(
         "-i",
@@ -28,10 +28,6 @@ def main():
         help="Constant Rate Factor. Determines the target bitrate",
     )
     args = parser.parse_args()
-
-    if args.action == "install":
-        butils.commands.requirements.install()
-        butils.commands.pythonpath.install()
 
     if args.action == "create":
         butils.commands.starter.create(name=args.input_file)
