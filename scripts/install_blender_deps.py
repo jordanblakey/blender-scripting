@@ -96,7 +96,7 @@ def create_butils_symlink(modules_dir):
     butils = importlib.import_module("butils")
     if not isinstance(butils, ModuleType):
         raise ImportError("Failed to import butils module.")
-    print(f"Symlink successful: {butils_dir} -> {butils_symlink}")
+    print(f"Symlink successful: {butils_symlink} -> {butils_dir}")
 
 
 if __name__ == "__main__":
