@@ -91,7 +91,7 @@ def create_butils_symlink(modules_dir):
         butils_symlink.unlink()
     butils_symlink.symlink_to(butils_dir, target_is_directory=True)
     if not butils_dir.is_dir and butils_symlink.is_symlink():
-        raise RuntimeError(f"Simlink failure: {butils_symlink} -> {butils_dir}")
+        raise RuntimeError(f"Symlink failure: {butils_symlink} -> {butils_dir}")
     # test butils import
     butils = importlib.import_module("butils")
     if not isinstance(butils, ModuleType):
