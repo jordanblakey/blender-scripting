@@ -10,6 +10,7 @@ poetry env use python3
 eval $(poetry env activate | sed 's/source/./')
 
 printf "\033[35mrunning tests \033[0m\n"
+# see [nektosact.com/usage](https://nektosact.com/usage)
 gh act push
 
 printf "\033[32mpre-commit hook complete \033[0m\n"
