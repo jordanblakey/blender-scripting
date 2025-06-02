@@ -8,7 +8,7 @@ Experiments in automating Blender with Python.
 
 ```sh
 # clone the repo with no history for fast download
-git clone --depth 1 <repo-url>
+git clone --depth 1 https://github.com/jordanblakey/blender-scripting
 # https://python-poetry.org/docs/#installing-with-the-official-installer
 curl -sSL https://install.python-poetry.org | python3 -
 # https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
