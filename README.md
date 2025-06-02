@@ -4,12 +4,11 @@ Experiments in automating Blender with Python.
 
 ## Setup Project for VSCode
 
+Installation
+
 ```sh
 # clone the repo with no history for fast download
 git clone --depth 1 <repo-url>
-```
-
-```sh
 # https://python-poetry.org/docs/#installing-with-the-official-installer
 curl -sSL https://install.python-poetry.org | python3 -
 # https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
@@ -20,7 +19,8 @@ poetry install
 poe install
 ```
 
-big idea: run Python scripts in Blender from the CLI
+**Big Idea**: run Python scripts in Blender from the CLI
+
 ```sh
 # run with UI to work visually - poe blend
 blender -P headless_mode.py
