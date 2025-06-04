@@ -85,7 +85,7 @@ butils/
 │   │   └── video.py  # Video compression commands
 │   ├── install/
 │   │   ├── pythonpath.py  # Command to set up Python path for Blender
-│   │   └── requirements.py  # Command to install dps in Blender's Python
+│   │   └── requirements.py  # Command to install deps in Blender's Python
 │   └── starter/
 │       ├── create.py  # Command to create a new starter script
 │       └── starter_script.py  # Boilerplate for scripting a Blender scene
