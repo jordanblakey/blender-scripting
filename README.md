@@ -2,6 +2,17 @@
 
 Experiments in automating Blender with Python.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Setup Project for VSCode](#setup-project-for-vscode)
+- [`butils` module](#butils-module)
+- [Unit tests](#unit-tests)
+- [Visual Notes and Renders](#visual-notes-and-renders)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Setup Project for VSCode
 
 ### Installation
@@ -162,7 +173,7 @@ There are several ways to run the tests:
 
 | ![Hard Surface Modeling][hard_surface_modeling] |
 | :---------------------------------------------: |
-|          Learning Hard Suface Modeling          |
+|         Learning Hard Surface Modeling          |
 
 | ![Geometry Nodes][geometry_nodes_and_materials] |
 | :---------------------------------------------: |
@@ -176,9 +187,9 @@ There are several ways to run the tests:
 | :-----------------------------------------------------------------------: |
 |        Exploring Fresnel node and adding bloom with the compositor        |
 
-| ![Wave -> Voronoi -> Displace][materal_wave_texture_voronoi_displacement] |
-| :-----------------------------------------------------------------------: |
-|              Wave Texture -> Voronoi Texture -> Displacement              |
+| ![Wave -> Voronoi -> Displace][material_wave_texture_voronoi_displacement] |
+| :------------------------------------------------------------------------: |
+|              Wave Texture -> Voronoi Texture -> Displacement               |
 
 |    ![Screen1][iteration]     |         ![Screen2][iteration2]          |
 | :--------------------------: | :-------------------------------------: |
@@ -217,7 +228,7 @@ There are several ways to run the tests:
 [iterative_material_exploration_bsdf]:
   /static/images/readme/iterative_material_exploration-BSDF.png
 [fresnel_node_bloom]: /static/images/readme/fresnel_node+bloom.png
-[materal_wave_texture_voronoi_displacement]:
+[material_wave_texture_voronoi_displacement]:
   /static/images/readme/materal_wave-texture_voronoi_displacement.png
 [iteration]: /static/images/readme/iteration.png
 [iteration2]: /static/images/readme/iteration2.png

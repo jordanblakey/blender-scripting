@@ -28,7 +28,7 @@ class JordanOperator(bpy.types.Operator):
         # return context.active_object is not None
 
     # create properties
-    noise_scale: bpy.props.FloatProperty = bpy.props.FloatProperty(  # type: ignore
+    noise_scale: bpy.props.FloatProperty = bpy.props.FloatProperty(  # type: ignore[override]
         name="Noise Scale",
         description="The scale of the noise",
         default=1.0,
@@ -36,7 +36,7 @@ class JordanOperator(bpy.types.Operator):
         max=2.0,
     )
 
-    def execute(self, context: bpy.types.Context) -> Set[str]:  # type: ignore
+    def execute(self, context: bpy.types.Context) -> Set[str]:  # type: ignore[override]
         main(context)
 
         print(bpy)
@@ -91,13 +91,13 @@ class JordanOperator(bpy.types.Operator):
             return {"CANCELLED"}
 
         # light.data should now be a PointLight, so we can access its properties
-        point_light_data: bpy.types.PointLight = light.data  # type: ignore
+        point_light_data: bpy.types.PointLight = light.data
         print("light.data.energy:", point_light_data.energy)
         point_light_data.energy = 1000
-        point_light_data.color = (0, 0, 1)  # type: ignore
+        point_light_data.color = (0, 0, 1)
 
         # Create cube
-        ret: Set[str] = bpy.ops.mesh.primitive_cube_add(  # type: ignore
+        ret: Set[str] = bpy.ops.mesh.primitive_cube_add(
             enter_editmode=True,  # Note: enters edit mode
             align="WORLD",
             location=(0, 0, 5),
@@ -116,7 +116,7 @@ class JordanOperator(bpy.types.Operator):
                 bpy.ops.object.mode_set(mode="OBJECT")
             return {"CANCELLED"}
 
-        mesh_data: bpy.types.Mesh = ao.data  # type: ignore
+        mesh_data: bpy.types.Mesh = ao.data
 
         print("ao.location:", ao.location)
         print("ao.scale:", ao.scale)
@@ -137,9 +137,14 @@ class JordanOperator(bpy.types.Operator):
 
         print(ao.modifiers)
 
-        mod_subsurf: bpy.types.SubsurfModifier = ao.modifiers.new(
+        mod_subsurf: bpy.types.Modifier = ao.modifiers.new(
             "My Subsurf", "SUBSURF"
-        )  # type: ignore
+        )
+
+        if not isinstance(mod_subsurf, bpy.types.SubsurfModifier):
+            raise TypeError(
+                f"Expected SubsurfModifier, got {type(mod_subsurf)}"
+            )
 
         print(mod_subsurf.levels)
         print(mod_subsurf.render_levels)
@@ -164,9 +169,13 @@ class JordanOperator(bpy.types.Operator):
             if i == 3:
                 break
 
-        mod_displace: bpy.types.DisplaceModifier = ao.modifiers.new(
+        mod_displace: bpy.types.Modifier = ao.modifiers.new(
             "My Displacement", "DISPLACE"
-        )  # type: ignore
+        )
+        if not isinstance(mod_displace, bpy.types.DisplaceModifier):
+            raise TypeError(
+                f"Expected DisplaceModifier, got {type(mod_displace)}"
+            )
 
         new_texture: bpy.types.Texture | None = bpy.data.textures.new(
             "My Texture", "DISTORTED_NOISE"
@@ -241,7 +250,7 @@ class JordanOperator(bpy.types.Operator):
                 )
 
                 if render_layers_node and composite_node:
-                    glare_node.quality = "HIGH"  # type: ignore # Enum in string
+                    glare_node.quality = "HIGH"
                     # glare_node.size is deprecated, use mix instead or check specific glare type properties
                     # For FOG_GLOW, size is still an int.
                     glare_node.size = 9  # Default is 8, max is 9 for FOG_GLOW in UI, but API might allow more

@@ -1,9 +1,8 @@
 import os
+from typing import Literal
 
 import bpy
 from bpy.types import Scene
-
-from butils.btyping import RenderEngineTypeItems
 
 
 def config_render_paths(
@@ -25,7 +24,7 @@ def config_render_paths(
 
 
 def config_engine(
-    engine: RenderEngineTypeItems = "BLENDER_EEVEE_NEXT",
+    engine: Literal["BLENDER_EEVEE_NEXT"] = "BLENDER_EEVEE_NEXT",
     time_limit: int = 5,
     use_denoising: bool = False,
 ) -> None:
@@ -34,7 +33,7 @@ def config_engine(
     """
     if not isinstance(bpy.context.scene, Scene):
         raise TypeError()
-    bpy.context.scene.render.engine = engine  # type: ignore
+    bpy.context.scene.render.engine = engine
     cycles = bpy.context.scene.cycles
     if engine == "CYCLES" and cycles:
         # This is a per frame time limit for cycles

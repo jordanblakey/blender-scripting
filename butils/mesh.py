@@ -9,7 +9,7 @@ from bmesh.types import BMesh
 @contextlib.contextmanager
 def get_bmesh(obj: bpy.types.Object) -> Generator[BMesh, None, None]:
     """
-    Context manager handling data sync and cleanup fo simplify bmesh workflow.
+    Context manager handling data sync and cleanup to simplify bmesh workflow.
 
     Example Usage:
     with butils.mesh.get_bmesh(obj) as bm:

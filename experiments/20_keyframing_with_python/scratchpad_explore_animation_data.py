@@ -44,7 +44,7 @@ def animate():
     # action_strip: bpy.types.ActionStrip = list(action_strips)[0]
     # print(action_strip)
 
-    # action_channelbag: bpy.types.ActionChannelbag = action_strip.channelbag(  # type: ignore
+    # action_channelbag: bpy.types.ActionChannelbag = action_strip.channelbag(
     #     action_slot
     # )
     # print(action_channelbag)

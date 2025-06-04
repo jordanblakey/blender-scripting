@@ -59,7 +59,7 @@ def render_viewport(
     """
     # config viewport
     ui.set_view3d_shading_type(shading_type)
-    ui.set_view3d_persective(view_perspective)
+    ui.set_view3d_perspective(view_perspective)
 
     # config format and resolution
     if not isinstance(bpy.context.scene, Scene):
