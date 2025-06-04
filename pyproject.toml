@@ -4,9 +4,9 @@ name = "butils"
 version = "0.1.0"
 description = "A collection of Blender scripts and utilities"
 readme = "README.md"
-authors = [{name = "Jordan Blakey", email = "jordan.t.blakey@gmail.com"}]
+authors = [{ name = "Jordan Blakey", email = "jordan.t.blakey@gmail.com" }]
 requires-python = ">=3.12"
-classifiers = [ "Topic :: Software Development :: Libraries :: Python Modules" ]
+classifiers = ["Topic :: Software Development :: Libraries :: Python Modules"]
 dynamic = ["dependencies"]
 
 # dependencies
@@ -23,21 +23,21 @@ pyyaml = "^6.0.2"
 colorama = "^0.4.6"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.11.12"
 poethepoet = "^0.34.0"
-pymarkdownlnt = "^0.9.16"
-mdformat = "^0.7.17"
 pre-commit = "^4.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-
 # poe tasks
 [tool.poe.tasks.default]
 help = "Show available poe tasks"
 cmd = "poe -h"
+
+[tool.poe.tasks.pre-commit]
+help = "Run pre-commit hooks on demand."
+cmd = "pre-commit run --all-files"
 
 [tool.poe.tasks.install]
 help = "Check venv, install py & external deps, install & test githooks."
@@ -82,10 +82,10 @@ cmd = "python -m butils compress"
 [tool.coverage.run]
 source = ["butils"]
 omit = [
-    "butils/btyping/*",
-    "tests/*",
-    "*/site-packages/*",
-    "*/scripts/modules/bpy/*",
+  "butils/btyping/*",
+  "tests/*",
+  "*/site-packages/*",
+  "*/scripts/modules/bpy/*",
 ]
 
 [tool.coverage.report]
@@ -94,6 +94,4 @@ skip_covered = false
 
 [tool.ruff]
 line-length = 80
-exclude = [
-    "static/**",
-]
+exclude = ["static/**"]

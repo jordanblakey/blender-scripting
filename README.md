@@ -18,12 +18,8 @@ Experiments in automating Blender with Python.
 ### Installation
 
 ```sh
-# clone the repo with no history for fast download
-git clone --depth 1 <repo-url>
-# https://python-poetry.org/docs/#installing-with-the-official-installer
-curl -sSL https://install.python-poetry.org | python3 -
-# https://python-poetry.org/docs/#enable-tab-completion-for-bash-fish-or-zsh
-poetry completions bash >> ~/.bash_completion
+git clone --depth 1 https://github.com/jordanblakey/blender-scripting
+brew install poetry
 poetry completions fish > ~/.config/fish/completions/poetry.fish
 # run this once to create venv and install poe
 poetry install
@@ -101,21 +97,15 @@ butils/
 
 ### Pre-commit Hooks & Code Quality
 
-This project uses pre-commit hooks to ensure code quality and consistency. These
-hooks are automatically installed when you run `git commit` for the first time
-after cloning, or by running `scripts/install_githooks.sh`.
+This project uses the `pre-commit` python module to ensure code quality and
+consistency. These hooks are automatically installed when you run `poe install`,
+and can be run on demand with `poe pre-commit`.
 
-The hooks currently perform:
-
-- Python linting and formatting using `ruff`.
-- Shell script linting and formatting using `shfmt` and `shellcheck`.
-- Markdown linting and formatting using `pymarkdownlnt` (for linting) and
-  `mdformat` (for formatting).
-
-The Markdown tools (`pymarkdownlnt` and `mdformat`) are included as development
-dependencies in `pyproject.toml` and will be installed into the project's
-virtual environment when you run `poetry install`. The pre-commit script
-utilizes these tools from the Poetry environment.
+- lint and format using `ruff`, `shfmt`, `shellcheck`, and `markdownlint`,
+  `yamllint`, `actionlint`.
+- check spelling, trim trailing spaces, add final newline to files.
+- validate links, scan for large files, warn about any added secrets.
+- validate json, yaml and toml files.
 
 ## Unit tests
 
