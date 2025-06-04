@@ -67,7 +67,7 @@ def set_view3d_shading_type(
     return False
 
 
-def set_view3d_persective(
+def set_view3d_perspective(
     perspective: ViewPerspectiveTypeItems = "CAMERA",
 ):
     """
@@ -78,7 +78,7 @@ def set_view3d_persective(
         TypeError: if the context doesn't contain SpaceView3D or RegionView3D.
 
     Returns:
-        Boolean result of the opreation.
+        Boolean result of the operation.
     """
     if not isinstance(bpy.context.screen, bpy.types.Screen):
         raise TypeError()

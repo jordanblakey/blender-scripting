@@ -53,15 +53,11 @@ def animate(tori: list[bpy.types.Object]):
         torus = tori[i]
         interpolation = combos[i % len(combos)][0]
         easing = combos[i % len(combos)][1]
-        animate_torus(torus, start, end, interpolation, easing)  # type: ignore
+        animate_torus(torus, start, end, interpolation, easing)
 
 
 def animate_torus(
-    torus: bpy.types.Object,
-    start: int,
-    end: int,
-    interpolation: butils.btyping.BeztripleInterpolationModeItems,
-    easing: butils.btyping.BeztripleInterpolationEasingItems,
+    torus: bpy.types.Object, start: int, end: int, interpolation, easing
 ):
     key = insert_keyframe(torus, "rotation_euler", frame=start, index=0)
     edit_keyframe(key, interpolation=interpolation, easing=easing)

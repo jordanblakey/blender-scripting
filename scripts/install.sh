@@ -28,16 +28,16 @@ if ! command -v blender >/dev/null; then
 	sudo snap install blender --classic
 else
 	echo 'Blender is already installed.'
-	# candidate="$(snap info blender | grep latest/stable: | awk '{ print $2 }')"
-	# installed="$(snap info blender | grep installed | awk '{ print $2 }')"
-	# echo "Installed version: $installed"
-	# echo "Candidate version: $candidate"
-	# if [ "$installed" = "$candidate" ]; then
-	# 	echo "Blender snap is up to date."
-	# else
-	# 	echo "Blender snap is not up to date."
-	# 	sudo snap refresh blender
-	# fi
+	candidate="$(snap info blender | grep latest/stable: | awk '{ print $2 }')"
+	installed="$(snap info blender | grep installed | awk '{ print $2 }')"
+	echo "Installed version: $installed"
+	echo "Candidate version: $candidate"
+	if [ "$installed" = "$candidate" ]; then
+		echo "Blender snap is up to date."
+	else
+		echo "Blender snap is not up to date."
+		sudo snap refresh blender
+	fi
 fi
 
 # inspect blender's python environment
@@ -73,4 +73,4 @@ done
 
 # git hooks: install and test
 ./scripts/snackbar.sh "installing and testing githooks" "magenta"
-./scripts/install_githooks.sh
+pre-commit install

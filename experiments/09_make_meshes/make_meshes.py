@@ -92,7 +92,7 @@ def setup_scene():
     if USE_CYCLES:
         scene.render.engine = "CYCLES"
         scene.cycles.device = "GPU"
-        scene.cycles.adaptive_threshhold = 0.2
+        scene.cycles.adaptive_threshold = 0.2
     else:
         scene.render.engine = "BLENDER_EEVEE_NEXT"
 

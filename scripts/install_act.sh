@@ -17,6 +17,7 @@ if ! docker version | grep -q Engine; then
 	sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 	# add the repository to apt sources:
+  # shellcheck disable=SC1091
 	echo \
 		"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
     $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" |

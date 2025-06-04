@@ -1,7 +1,6 @@
 name: Blender Tests
 permissions:
   contents: read
-
 on:
   push:
     branches: ["*"]
@@ -13,38 +12,35 @@ on:
       verbosity: { type: number }
       print: { type: boolean }
       coverage: { type: boolean }
-
 jobs:
   test:
     runs-on: ubuntu-latest
     container:
       image: docker.io/blendergrid/blender:latest
-
     steps:
       ##########################################################################
       - name: Inspect environment
         run: |
           # print environment information
-          echo "Distribution: $(cat /etc/issue | head -n 1 | cut -d ' ' -f 1-3)"
+          echo "Distribution: $(head -n 1 /etc/issue | cut -d ' ' -f 1-3)"
           echo "User: $(whoami):$(groups)"
 
           # symlink `blender` command
           ln -s /usr/local/blender/blender /usr/bin/blender
           echo "Blender version: $(blender --background --quiet)"
           blender -b -q --python-expr "import bpy; print(f'Python in Blender: {bpy}')"
-
       ##########################################################################
       - name: Checkout repository
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4
       ##########################################################################
       - name: Run tests (push || pull_request)
-        if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+        if:
+          ${{ github.event_name == 'push' || github.event_name ==
+          'pull_request'}}
         run: |
           echo "running tests in Blender..."
 
           blender -b -P tests/run_tests.py -- --coverage --verbosity=2
-
       ##########################################################################
       - name: Run tests (workflow_dispatch)
         if: ${{ github.event_name == 'workflow_dispatch' }}

@@ -1,4 +1,5 @@
 import argparse
+import importlib
 import os
 import pathlib
 import sys
@@ -32,20 +33,20 @@ else:
     suite = unittest.defaultTestLoader.discover(test_dir, pattern="test_*.py")
 
 # Run the tests
+coverage = importlib.import_module("coverage")
+cov = coverage.Coverage()
 if args.coverage:
     flags = "--upgrade --root-user-action=ignore --quiet"
     os.system(f"{sys.executable} -m pip install {flags} pip coverage")
-    import coverage  # noqa: E402
-
-    cov = coverage.Coverage()
     cov.start()
+
 runner = unittest.TextTestRunner(verbosity=args.verbosity, buffer=args.print)
 result = runner.run(suite)
-if args.coverage:
-    cov.stop()  # type: ignore
-    cov.save()  # type: ignore
-    cov.report(file=sys.stdout, show_missing=True)  # type: ignore
 
+if args.coverage:
+    cov.stop()
+    cov.save()
+    cov.report(file=sys.stdout, show_missing=True)
 if result.wasSuccessful():
     print("\033[92m" + "#" * 32 + " PASS " + "#" * 32 + "\033[0m")
 else:

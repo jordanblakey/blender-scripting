@@ -1,6 +1,7 @@
-import bpy
-import os
 import math
+import os
+
+import bpy
 
 RENDER_STILLS = True
 RENDER_ANIMATION = True
@@ -36,7 +37,7 @@ def setup_scene():
     light.data.shadow_soft_size = 10
 
 
-def set_view_persective(perspective="CAMERA"):
+def set_view_perspective(perspective="CAMERA"):
     # set the window layout
     window.workspace = bpy.data.workspaces["Layout"]
     for area in window.screen.areas:
@@ -63,17 +64,17 @@ def render():
 
         # render viewport in perspective mode
         scene.render.filepath = os.path.join(renders_dir, "persp_viewport")
-        set_view_persective("PERSP")
+        set_view_perspective("PERSP")
         bpy.ops.render.opengl(write_still=True, view_context=True)
 
         # render viewport in orthographic mode
         scene.render.filepath = os.path.join(renders_dir, "ortho_viewport")
-        set_view_persective("ORTHO")
+        set_view_perspective("ORTHO")
         bpy.ops.render.opengl(write_still=True, view_context=True)
 
         # render viewport in camera mode
         scene.render.filepath = os.path.join(renders_dir, "camera_viewport")
-        set_view_persective("CAMERA")
+        set_view_perspective("CAMERA")
         bpy.ops.render.opengl(write_still=True, view_context=True)
 
         # render camera view

@@ -79,7 +79,7 @@ def setup_starter_scene(background_color=(0.0, 0.0, 0.0, 1.0), lens=55):
     if not isinstance(world.node_tree, ShaderNodeTree):
         raise TypeError()
     background_node = world.node_tree.nodes["Background"]
-    background_node.inputs["Color"].default_value = background_color  # type: ignore
+    setattr(background_node.inputs["Color"], "default_value", background_color)
 
     # set up camera
     bpy.ops.object.camera_add(location=(5, 5, 5))

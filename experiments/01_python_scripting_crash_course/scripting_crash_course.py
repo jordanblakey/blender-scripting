@@ -44,9 +44,9 @@ ao = bpy.context.active_object  # this is the active object
 print(ao)
 
 
-print("ao.location:", ao.location)  # type Vector
-print("ao.scale:", ao.scale)  # type Vector
-print("ao.rotation_euler:", ao.rotation_euler)  # type Euler
+print("ao.location:", ao.location)  # Vector
+print("ao.scale:", ao.scale)  # Vector
+print("ao.rotation_euler:", ao.rotation_euler)  # Euler
 # note that to set these you can assign a Tuple, but the Vector and Euler types themselves are mutable
 
 degrees = 45
@@ -62,7 +62,7 @@ print(math.radians(180))  # rad from deg
 # ao.rotation_euler = (crx, cry, crz + math.radians(45))
 ao.rotation_euler[2] += math.radians(
     45
-)  # more efficent to mod a single value relative to existing value
+)  # more efficient to mod a single value relative to existing value
 # print(ao.rotation_euler) # check the result
 
 
@@ -80,7 +80,7 @@ mod_subsurf = ao.modifiers.new("My Subsurf", "SUBSURF")
 # Check the properties of the new modifiers (here they are defaults)
 print(
     mod_subsurf.levels
-)  # find how to access this value in Pthon from the properties panel
+)  # find how to access this value in Python from the properties panel
 # by enable Preferences > Interface > Python tooltips and hovering "levels viewport"
 print(mod_subsurf.render_levels)
 # Change a modifier property
@@ -93,7 +93,7 @@ mesh = ao.data  # in other words .data is an iterable with the faces comprising 
 # We will set only 3 of the 6 faces to render "smooth"
 i = 0
 for face in mesh.polygons:
-    print(face)  # type MeshPolygon
+    print(face)  #  MeshPolygon
     face.use_smooth = True
     i += 1
     if i == 3:
