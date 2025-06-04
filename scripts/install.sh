@@ -73,4 +73,5 @@ done
 
 # git hooks: install and test
 ./scripts/snackbar.sh "installing and testing githooks" "magenta"
-./scripts/install_githooks.sh
+# ./scripts/install_githooks.sh
+pre-commit install

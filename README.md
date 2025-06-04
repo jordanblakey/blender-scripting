@@ -56,8 +56,8 @@ python -m butils compress -i path/to/your/file.mkv --crf 23
 
 # Options for 'compress':
 # -i, --input-file: (Required) Path to the image or video file to compress.
-# --analyze: (For images only) Get image attributes and metadata. Skips compression.
-# --crf: (For videos only) Constant Rate Factor. Determines video quality and bitrate (e.g., 18-28). Lower is better quality.
+# --analyze: (For images only) Get image attrs and metadata. Skips compression.
+# --crf: Constant Rate Factor. Sets bitrate (e.g., 18-28). Lower is better.
 
 # module structure
 butils/
@@ -74,7 +74,7 @@ butils/
 │   │   └── video.py  # Video compression commands
 │   ├── install/
 │   │   ├── pythonpath.py  # Command to set up Python path for Blender
-│   │   └── requirements.py  # Command to install dependencies in Blender's Python
+│   │   └── requirements.py  # Command to install dps in Blender's Python
 │   └── starter/
 │       ├── create.py  # Command to create a new starter script
 │       └── starter_script.py  # Boilerplate for scripting a Blender scene
@@ -90,98 +90,139 @@ butils/
 
 ### Pre-commit Hooks & Code Quality
 
-This project uses pre-commit hooks to ensure code quality and consistency. These hooks are automatically installed when you run `git commit` for the first time after cloning, or by running `scripts/install_githooks.sh`.
+This project uses pre-commit hooks to ensure code quality and consistency. These
+hooks are automatically installed when you run `git commit` for the first time
+after cloning, or by running `scripts/install_githooks.sh`.
 
 The hooks currently perform:
+
 - Python linting and formatting using `ruff`.
 - Shell script linting and formatting using `shfmt` and `shellcheck`.
-- Markdown linting and formatting using `pymarkdownlnt` (for linting) and `mdformat` (for formatting).
+- Markdown linting and formatting using `pymarkdownlnt` (for linting) and
+  `mdformat` (for formatting).
 
-The Markdown tools (`pymarkdownlnt` and `mdformat`) are included as development dependencies in `pyproject.toml` and will be installed into the project's virtual environment when you run `poetry install`. The pre-commit script utilizes these tools from the Poetry environment.
+The Markdown tools (`pymarkdownlnt` and `mdformat`) are included as development
+dependencies in `pyproject.toml` and will be installed into the project's
+virtual environment when you run `poetry install`. The pre-commit script
+utilizes these tools from the Poetry environment.
 
 ## Unit tests
 
-This project uses Python's built-in `unittest` module for testing. Tests are executed within a Docker container that includes Blender, ensuring a consistent testing environment. This setup is defined in the GitHub Actions workflow file (`.github/workflows/blender_tests.yml`).
+This project uses Python's built-in `unittest` module for testing. Tests are
+executed within a Docker container that includes Blender, ensuring a consistent
+testing environment. This setup is defined in the GitHub Actions workflow file
+(`.github/workflows/blender_tests.yml`).
 
 ### Running Tests
 
 There are several ways to run the tests:
 
-- **Locally with `act`**:
-  You can simulate the GitHub Actions environment locally using `act`. The `pyproject.toml` defines a `poe` task for this:
+- **Locally with `act`**: You can simulate the GitHub Actions environment
+  locally using `act`. The `pyproject.toml` defines a `poe` task for this:
 
   ```sh
   poe act
   poe act --input="testcase=tests.test_module.TestCase.test_function"
   ```
 
-  Refer to the `tool.poe.tasks.act` section in `pyproject.toml` and the `workflow_dispatch` inputs in `.github/workflows/blender_tests.yml` for more details on available parameters.
+  Refer to the `tool.poe.tasks.act` section in `pyproject.toml` and the
+  `workflow_dispatch` inputs in `.github/workflows/blender_tests.yml` for more
+  details on available parameters.
 
-- **GitHub Actions**:
-  Tests are automatically executed in GitHub Actions on every `push` and `pull_request` to the `main` branch.
-  You can also manually trigger the "Blender Tests" workflow from the Actions tab in your GitHub repository, providing inputs for specific test cases, verbosity, etc.
+- **GitHub Actions**: Tests are automatically executed in GitHub Actions on
+  every `push` and `pull_request` to the `main` branch. You can also manually
+  trigger the "Blender Tests" workflow from the Actions tab in your GitHub
+  repository, providing inputs for specific test cases, verbosity, etc.
+
   ```sh
   gh workflow run "Blender Tests" --input testcase=your_test_case --input verbosity=2
   ```
 
 ## Visual Notes and Renders
 
-| ![reference modeling](/static/images/readme/topology_practice.png) |
-| :----------------------------------------------------------------: |
-|             Learning to create clean, precise topology             |
+|  ![reference modeling][topology_practice]  |
+| :----------------------------------------: |
+| Learning to create clean, precise topology |
 
-| ![reference modeling](/static/images/readme/modeling_with_reference_images.png) |
-| :-----------------------------------------------------------------------------: |
-|                     Learning to model with reference images                     |
+| ![reference modeling][modeling_with_reference_images] |
+| :---------------------------------------------------: |
+|        Learning to model with reference images        |
 
-| ![Rock texture](/static/images/readme/procedural-rock-shader.png) |
-| :---------------------------------------------------------------: |
-|          Creating rock textures from procedural shaders           |
+|    ![Rock texture][procedural_rock_shader]     |
+| :--------------------------------------------: |
+| Creating rock textures from procedural shaders |
 
-| ![Writing Shaders in OSL](/static/images/readme/writing_shaders_in_osl.png) |
-| :-------------------------------------------------------------------------: |
-|                Writing Shaders in Open Shader Language (OSL)                |
+| ![Writing Shaders in OSL][writing_shaders_in_osl] |
+| :-----------------------------------------------: |
+|   Writing Shaders in Open Shader Language (OSL)   |
 
-| ![Parametric Modeling with Geometry Nodes](/static/images/readme/parameteric_meshes_geometry_nodes.png) |
-| :-----------------------------------------------------------------------------------------------------: |
-|                                 Parametric Modeling with Geometry Nodes                                 |
+| ![Parametric Modeling with Geometry Nodes][parameteric_meshes_geometry_nodes] |
+| :---------------------------------------------------------------------------: |
+|                    Parametric Modeling with Geometry Nodes                    |
 
-| ![Hard Surface Modeling](/static/images/readme/hard_surface_modeling.png) |
+| ![Hard Surface Modeling][hard_surface_modeling] |
+| :---------------------------------------------: |
+|          Learning Hard Suface Modeling          |
+
+| ![Geometry Nodes][geometry_nodes_and_materials] |
+| :---------------------------------------------: |
+|   Working with node based geometry modifiers    |
+
+| ![Iterative Material Experiments][iterative_material_exploration_bsdf] |
+| :--------------------------------------------------------------------: |
+|                     Iterative Material Experiments                     |
+
+| ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom] |
 | :-----------------------------------------------------------------------: |
-|                       Learning Hard Suface Modeling                       |
+|        Exploring Fresnel node and adding bloom with the compositor        |
 
-| ![Geometry Nodes](/static/images/readme/geometry_nodes_and_materials.png) |
+| ![Wave -> Voronoi -> Displace][materal_wave_texture_voronoi_displacement] |
 | :-----------------------------------------------------------------------: |
-|                Working with node based geometry modifiers                 |
+|              Wave Texture -> Voronoi Texture -> Displacement              |
 
-| ![Iterative Material Experiments](/static/images/readme/iterative_material_exploration-BSDF.png) | ![Exploring Fresnel and adding bloom with the compositor](/static/images/readme/fresnel_node+bloom.png) |
-| :----------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
-|                                  Iterative Material Experiments                                  |                       Exploring Fresnel node and adding bloom with the compositor                       |
+|    ![Screen1][iteration]     |         ![Screen2][iteration2]          |
+| :--------------------------: | :-------------------------------------: |
+| Experimenting with iteration | Iterating using trigonometric functions |
 
-| ![Wave Texture -> Voronoi Texture -> Displacement](/static/images/readme/materal_wave-texture_voronoi_displacement.png) |
-| :---------------------------------------------------------------------------------------------------------------------: |
-|                                     Wave Texture -> Voronoi Texture -> Displacement                                     |
+| ![Defining Materials with Python][cycles_render_200] |
+| :--------------------------------------------------: |
+|            Defining Materials with Python            |
 
-| ![Screen1](/static/images/readme/iteration.png) | ![Screen2](/static/images/readme/iteration2.png) |
-| :---------------------------------------------: | :----------------------------------------------: |
-|          Experimenting with iteration           |     Iterating using trigonometric functions      |
+| ![Node Based Material Experiments][node_mat_experiments] |
+| :------------------------------------------------------: |
+|             Node Based Material Experiments              |
 
-| ![Defining Materials with Python](/static/images/readme/cycles_render@200.png) |
-| :----------------------------------------------------------------------------: |
-|                         Defining Materials with Python                         |
+| ![Using graph editor and camera view to proof an animation][graph_editor] |
+| :-----------------------------------------------------------------------: |
+|         Using graph editor and camera view to proof an animation          |
 
-| ![Node Based Material Experiments](/static/images/readme/node_mat_experiments.png) |
-| :--------------------------------------------------------------------------------: |
-|                          Node Based Material Experiments                           |
+| ![Mesh from scratch, composing and repetition][cycles_render_hq] |
+| :--------------------------------------------------------------: |
+|           Mesh from scratch, composing and repetition            |
 
-| ![Using graph editor and camera perspective to proof and tweak an animation](/static/images/readme/graph_editor.png) |
-| :------------------------------------------------------------------------------------------------------------------: |
-|                      Using graph editor and camera perspective to proof and tweak an animation                       |
+| ![Procedural Animation Example][interface] |
+| :----------------------------------------: |
+|        Procedural Animation Example        |
 
-| ![Mesh from scratch, composing and repetition](/static/images/readme/cycles_render_hq.png) |
-| :----------------------------------------------------------------------------------------: |
-|                        Mesh from scratch, composing and repetition                         |
-
-| ![Procedural Animation Example](/static/images/readme/interface.png) |
-| :------------------------------------------------------------------: |
-|                     Procedural Animation Example                     |
+[topology_practice]: /static/images/readme/topology_practice.png
+[modeling_with_reference_images]:
+  /static/images/readme/modeling_with_reference_images.png
+[procedural_rock_shader]: /static/images/readme/procedural-rock-shader.png
+[writing_shaders_in_osl]: /static/images/readme/writing_shaders_in_osl.png
+[parameteric_meshes_geometry_nodes]:
+  /static/images/readme/parameteric_meshes_geometry_nodes.png
+[hard_surface_modeling]: /static/images/readme/hard_surface_modeling.png
+[geometry_nodes_and_materials]:
+  /static/images/readme/geometry_nodes_and_materials.png
+[iterative_material_exploration_bsdf]:
+  /static/images/readme/iterative_material_exploration-BSDF.png
+[fresnel_node_bloom]: /static/images/readme/fresnel_node+bloom.png
+[materal_wave_texture_voronoi_displacement]:
+  /static/images/readme/materal_wave-texture_voronoi_displacement.png
+[iteration]: /static/images/readme/iteration.png
+[iteration2]: /static/images/readme/iteration2.png
+[cycles_render_200]: /static/images/readme/cycles_render@200.png
+[node_mat_experiments]: /static/images/readme/node_mat_experiments.png
+[graph_editor]: /static/images/readme/graph_editor.png
+[cycles_render_hq]: /static/images/readme/cycles_render_hq.png
+[interface]: /static/images/readme/interface.png
