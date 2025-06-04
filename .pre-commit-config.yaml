@@ -57,7 +57,6 @@ repos:
     rev: v1.37.1
     hooks:
       - id: yamllint
-        args: ["-d", "{ignore:.github/workflows/blender_tests.yml}"]
 
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.7
