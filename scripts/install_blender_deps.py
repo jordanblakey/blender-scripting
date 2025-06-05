@@ -22,8 +22,7 @@ def main():
     Path(modules_dir).mkdir(parents=True, exist_ok=True)
 
     # install python dependencies in blender's environment
-    for module_name in deps:
-        install_blender_dep(module_name, modules_dir)
+    install_blender_deps(deps, modules_dir)
     colorama = importlib.import_module("colorama")
     colorama.init(autoreset=True)
     print(colorama.Fore.GREEN + "Blender deps successfully installed.")
@@ -51,11 +50,11 @@ def parse_project_toml(toml_file="pyproject.toml"):
         return tomllib.load(f)
 
 
-def install_blender_dep(mod, mod_dir):
+def install_blender_deps(deps, mod_dir):
     """Install a python dependency in blender's environment using pip."""
     command = [sys.executable, "-m", "pip", "install"]
-    flags = [f"--target={mod_dir}", "--upgrade", mod]
-    subprocess.check_call([*command, *flags])
+    flags = [f"--target={mod_dir}", "--upgrade"]
+    subprocess.check_call([*command, *flags, *deps])
 
 
 def create_cycles_symlink():
