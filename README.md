@@ -18,7 +18,6 @@ Experiments in automating Blender with Python.
 ### Installation
 
 ```sh
-git clone --depth 1 https://github.com/jordanblakey/blender-scripting
 brew install poetry
 poetry completions fish > ~/.config/fish/completions/poetry.fish
 # run this once to create venv and install poe
@@ -81,7 +80,7 @@ butils/
 │   │   └── video.py  # Video compression commands
 │   ├── install/
 │   │   ├── pythonpath.py  # Command to set up Python path for Blender
-│   │   └── requirements.py  # Command to install dps in Blender's Python
+│   │   └── requirements.py  # Command to install deps in Blender's Python
 │   └── starter/
 │       ├── create.py  # Command to create a new starter script
 │       └── starter_script.py  # Boilerplate for scripting a Blender scene
