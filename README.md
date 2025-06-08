@@ -140,6 +140,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![modifier exploration][modifier_exploration] |
+| :-------------------------------------------: |
+|              Exploring modifiers              |
+
 |  ![reference modeling][topology_practice]  |
 | :----------------------------------------: |
 | Learning to create clean, precise topology |
@@ -204,6 +208,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[modifier_exploration]: /static//images/readme/modifier_exploration.png
 [topology_practice]: /static/images/readme/topology_practice.png
 [modeling_with_reference_images]:
   /static/images/readme/modeling_with_reference_images.png
