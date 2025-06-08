@@ -140,6 +140,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![glitter_waves_viewport][glitter_waves_viewport] |
+| :-----------------------------------------------: |
+|             Animating geometry nodes              |
+
 | ![modifier exploration][modifier_exploration] |
 | :-------------------------------------------: |
 |              Exploring modifiers              |
@@ -208,7 +212,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[modifier_exploration]: /static//images/readme/modifier_exploration.png
+[glitter_waves_viewport]: /static/images/readme/glitter_waves_viewport.png
+[modifier_exploration]: /static/images/readme/modifier_exploration.png
 [topology_practice]: /static/images/readme/topology_practice.png
 [modeling_with_reference_images]:
   /static/images/readme/modeling_with_reference_images.png
