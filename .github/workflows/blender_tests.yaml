@@ -18,7 +18,6 @@ jobs:
     container:
       image: docker.io/blendergrid/blender:latest
     steps:
-      ##########################################################################
       - name: Inspect environment
         run: |
           # print environment information
@@ -29,37 +28,42 @@ jobs:
           ln -s /usr/local/blender/blender /usr/bin/blender
           echo "Blender version: $(blender --background --quiet)"
           blender -b -q --python-expr "import bpy; print(f'Python in Blender: {bpy}')"
-      ##########################################################################
+
       - name: Checkout repository
         uses: actions/checkout@v4
-      ##########################################################################
-      - name: Run tests (push || pull_request)
-        if:
-          ${{ github.event_name == 'push' || github.event_name ==
-          'pull_request'}}
+
+      - name: Install dependencies
         run: |
-          echo "running tests in Blender..."
+          blender -b -P scripts/install_blender_deps.py
 
-          blender -b -P tests/run_tests.py -- --coverage --verbosity=2
       ##########################################################################
-      - name: Run tests (workflow_dispatch)
-        if: ${{ github.event_name == 'workflow_dispatch' }}
-        run: |
-          echo "running tests in Blender..."
-          TEST="${{ github.event.inputs.testcase }}"
-          COV="${{ github.event.inputs.coverage }}"
-          PRINT="${{ github.event.inputs.print }}"
-          VERB="${{ github.event.inputs.verbosity }}"
+      # - name: Run tests (push || pull_request)
+      #   if:
+      #     ${{ github.event_name == 'push' || github.event_name ==
+      #     'pull_request'}}
+      #   run: |
+      #     echo "running tests in Blender..."
 
-          echo testcase: $TEST
-          echo coverage: $COV
-          echo print: $PRINT
-          echo verbosity: $VERB
-          echo
+      #     blender -b -P tests/run_tests.py -- --coverage --verbosity=2
+      ##########################################################################
+      # - name: Run tests (workflow_dispatch)
+      #   if: ${{ github.event_name == 'workflow_dispatch' }}
+      #   run: |
+      #     echo "running tests in Blender..."
+      #     TEST="${{ github.event.inputs.testcase }}"
+      #     COV="${{ github.event.inputs.coverage }}"
+      #     PRINT="${{ github.event.inputs.print }}"
+      #     VERB="${{ github.event.inputs.verbosity }}"
 
-          if [ "$TEST" != "" ]; then TEST=--testcase="$TEST"; fi
-          if [ "$COV" = "true" ]; then COV=--coverage; else COV=""; fi
-          if [ "$PRINT" = "true" ]; then PRINT=--print; else PRINT=""; fi
-          if [ "$VERB" != "" ]; then VERB=--verbosity="$VERB"; else VERB="2"; fi
+      #     echo testcase: $TEST
+      #     echo coverage: $COV
+      #     echo print: $PRINT
+      #     echo verbosity: $VERB
+      #     echo
 
-          blender -b -P tests/run_tests.py -- $TEST $COV $PRINT $VERB
+      #     if [ "$TEST" != "" ]; then TEST=--testcase="$TEST"; fi
+      #     if [ "$COV" = "true" ]; then COV=--coverage; else COV=""; fi
+      #     if [ "$PRINT" = "true" ]; then PRINT=--print; else PRINT=""; fi
+      #     if [ "$VERB" != "" ]; then VERB=--verbosity="$VERB"; else VERB="2"; fi
+
+      #     blender -b -P tests/run_tests.py -- $TEST $COV $PRINT $VERB

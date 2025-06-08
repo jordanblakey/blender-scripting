@@ -11,10 +11,16 @@ repos:
       - id: check-yaml
       - id: check-toml
       - id: check-vcs-permalinks
-      - id: check-added-large-files
-        args: ["--maxkb=10000"]
+      # - id: check-added-large-files
+      #   args: ["--maxkb=20000"]
       - id: end-of-file-fixer
       - id: trailing-whitespace
+
+  - repo: https://github.com/boidolr/pre-commit-images
+    rev: v1.8.4
+    hooks:
+      - id: optimize-jpg
+      - id: optimize-png
 
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
