@@ -19,3 +19,6 @@ butils/btyping/cycles
 # caches
 .coverage
 .ruff_cache
+
+# Blender add-ons
+Poliigon
