@@ -22,3 +22,5 @@ butils/btyping/cycles
 
 # Blender add-ons
 Poliigon
+static/models/*
+static/hdris/*
