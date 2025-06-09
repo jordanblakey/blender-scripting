@@ -220,7 +220,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[rendering_compositing]: /static/images/readme/rendering_practice_car.png.png
+[rendering_compositing]: /static/images/readme/rendering_practice_car.png
 [basic_interior]: /static/images/readme/basic_interior.png
 [glitter_waves_viewport]: /static/images/readme/glitter_waves_viewport.png
 [modifier_exploration]: /static/images/readme/modifier_exploration.png
