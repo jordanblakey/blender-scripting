@@ -140,6 +140,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![blender_beginner_tutorial][blender_beginner_tutorial] |
+| :-----------------------------------------------------: |
+|                        Tradition                        |
+
 |       ![rendering_compositing][rendering_compositing]       |
 | :---------------------------------------------------------: |
 | Practicing rendering and combining images in the compositor |
@@ -220,6 +224,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[blender_beginner_tutorial]: /static/images/readme/blender_beginner_tutorial.png
 [rendering_compositing]: /static/images/readme/rendering_practice_car.png
 [basic_interior]: /static/images/readme/basic_interior.png
 [glitter_waves_viewport]: /static/images/readme/glitter_waves_viewport.png

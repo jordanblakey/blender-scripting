@@ -24,3 +24,9 @@ butils/btyping/cycles
 Poliigon
 static/models/*
 static/hdris/*
+
+# Beginner tutorial series process files
+experiments/30_*/renders/donut_anim*
+experiments/30_*/renders/render*
+experiments/30_*/renders/viewport*
+experiments/30_*/part*.blend
