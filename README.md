@@ -140,9 +140,9 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
-| ![python_ui_manipulation][python_ui_manipulation] |
-| :-----------------------------------------------: |
-|          Manipulating the UI with Python          |
+| ![ui_manipulation][ui_manipulation] |
+| :---------------------------------: |
+|   Manipulating the UI with Python   |
 
 | ![blender_beginner_tutorial][blender_beginner_tutorial] |
 | :-----------------------------------------------------: |
@@ -228,7 +228,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[python_ui_manipulation]: /static/images/readme/recursive_ui_area_splits.png
+[ui_manipulation]: /static/images/readme/ui_manipulation.png
 [blender_beginner_tutorial]: /static/images/readme/blender_beginner_tutorial.png
 [rendering_compositing]: /static/images/readme/rendering_practice_car.png
 [basic_interior]: /static/images/readme/basic_interior.png
