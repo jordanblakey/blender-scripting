@@ -10,6 +10,7 @@ def main():
             bpy.data.batch_remove(ids=(ws,))
 
     bpy.ops.wm.window_new()
+    bpy.context.space_data
     for area in bpy.context.window.screen.areas:
         with bpy.context.temp_override(window=bpy.context.window, area=area):
             # open a console and make the font big
