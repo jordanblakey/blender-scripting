@@ -2,84 +2,48 @@ import bpy
 
 
 def main():
+    # clear workspaces to start from a clean slate
     remove_other_workspaces()
-    for name in ["PROPERTIES", "VIEW_3D", "OUTLINER"]:
-        area = get_area(name)
-        with bpy.context.temp_override(area=area):
-            for _ in range(4):
-                bpy.ops.screen.area_split(direction="VERTICAL")
-                bpy.ops.screen.area_split(direction="HORIZONTAL")
 
-    # # save the blend file
-    # bpy.ops.wm.save_mainfile(filepath="test.blend", check_existing=False)
+    # save the blend file
+    bpy.ops.wm.save_mainfile(filepath="test.blend", check_existing=False)
 
-    # for area in bpy.context.window.screen.areas:
-    #     print(area.type)
-    #     if area.type == "VIEW_3D":
-    #         with bpy.context.temp_override(
-    #             window=bpy.context.window, area=area
-    #         ):
-    #             bpy.ops.screen.area_split(direction="VERTICAL", factor=0.5)
-    #             area.type = "TEXT_EDITOR"
-    #             bpy.ops.text.open(
-    #                 filepath="./script_to_run_in_blender.py", internal=True
-    #             )
-    #             bpy.ops.text.run_script()
+    # create a text editor area and load an external script
+    area = get_area("VIEW_3D")
+    with bpy.context.temp_override(area=area):
+        bpy.ops.screen.area_split(direction="VERTICAL", factor=0.5)
+        area.type = "TEXT_EDITOR"
+        bpy.ops.text.open(
+            filepath="./script_to_run_in_blender.py", internal=True
+        )
+        # run the script from the text editor
+        # note that this is running a script against an already open blend file.
+        # This could be useful to load scripts into a blend file that can then be run after working in the file.
+        # For example, a script that finds and select objects with high polygon counts.
+        # Or a script that identifies objects that are never visible to the scene camera.
+        # Or a script that programmatically sets up the scene for rendering.
+        # Or a script that performs some repetitive transformation after an object has been modeled by hand.
+        bpy.ops.text.run_script()
 
-    # for area in bpy.context.window.screen.areas:
-    #     if area.type == "PROPERTIES":
-    #         with bpy.context.temp_override(
-    #             window=bpy.context.window, area=area
-    #         ):
-    #             bpy.ops.screen.area_move(direction="UP")
+    # change the properties area's context to RENDER
+    area = get_area("PROPERTIES")
+    with bpy.context.temp_override(area=area):
+        space = get_space(area, "PROPERTIES")
+        print("Properties space:", space)
+        space.context = "RENDER"
+        # Confirm that the render engine is set to CYCLES by the external script we loaded.
 
 
-def get_area(name):
+def get_area(area_type):
     for area in bpy.context.window.screen.areas:
-        if area.type == name:
+        if area.type == area_type:
             return area
 
 
-# for window in bpy.context.window_manager.windows:
-#     print(window)
-#     print(window.screen)
-#     print(window.screen..areas)
-# for area in window.screen.areas:
-# with bpy.context.temp_override(window=window, area=area):
-#     bpy.ops.screen.area_close()
-# print("area.type", area.type)
-# print(area.regions)
-# for region in area.regions:
-#     print(region, region.type)
-# print(area.spaces)
-# for space in area.spaces:
-#     print(space, space.type)
-# break
-
-
-# with bpy.context.temp_override(window=bpy.context.window):
-#     bpy.ops.screen.area_close(area=area)
-
-# area = bpy.context.screen.areas[0]
-# print(area.type)
-# bpy.ops.screen.area_close("INVOKE_DEFAULT", area=area)
-
-
-# bpy.ops.workspace.append_activate(
-#     idname="Scripting", filepath="<startup.blend>"
-# )
-# ws = [ws for ws in bpy.data.workspaces if ws.name.startswith("Scripting")]
-# ws = ws.pop()
-
-# bpy.context.
-# bpy.context.workspace.name = "Main"
-
-# append a known default workspace to start from, delete all others
-# bpy.ops.workspace.append_activate(
-#     idname="Scripting", filepath="<startup.blend>"
-# )
-# bpy.context.workspace.name = "Main"
-# bpy.data.batch_remove(ws for ws in bpy.data.workspaces if ws.name != "Main")
+def get_space(area, space_type):
+    for space in area.spaces:
+        if space.type == space_type:
+            return space
 
 
 # Remove all workspaces except the current one
