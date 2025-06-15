@@ -4,6 +4,7 @@ Experiments in automating Blender with Python.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Setup Project for VSCode](#setup-project-for-vscode)

@@ -42,7 +42,8 @@ repos:
     rev: v2.2.0
     hooks:
       - id: doctoc
-        args: ["--maxlevel", "2", "--github", "--title", "## Table of Contents"]
+        args:
+          ["--maxlevel", "2", "--github", "--title", "\n## Table of Contents"]
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.18.1
