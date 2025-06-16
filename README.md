@@ -141,6 +141,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|      ![sphere_boolean_anim][sphere_boolean_anim]      |
+| :---------------------------------------------------: |
+| `brew install gifski && gifski -o file.gif img0*.png` |
+
 | ![ui_manipulation][ui_manipulation] |
 | :---------------------------------: |
 |   Manipulating the UI with Python   |
@@ -229,6 +233,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[sphere_boolean_anim]: /static/images/readme/sphere_animation.gif
 [ui_manipulation]: /static/images/readme/ui_manipulation.png
 [blender_beginner_tutorial]: /static/images/readme/blender_beginner_tutorial.png
 [rendering_compositing]: /static/images/readme/rendering_practice_car.png
