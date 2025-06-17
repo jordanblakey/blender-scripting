@@ -9,7 +9,7 @@ from lib import helpers
 
 def main():
     helpers.remove_other_workspaces()
-    helpers.create_scripting_window()
+    # helpers.create_scripting_window()
     print(bpy.context.window_manager.windows)
     main_window = bpy.context.window_manager.windows[0]
 
@@ -22,6 +22,17 @@ def main():
         # show or hide the status bar along the very bottom of the screen
         # note that only a main window has a status bar
         bpy.context.screen.show_statusbar = True
+        print(bpy.context.screen.statusbar_info())
+        # print(
+        #     "bpy.context.screen.is_animation_playing",
+        #     bpy.context.screen.is_animation_playing,
+        # )
+        # time.sleep(3)
+        bpy.ops.screen.animation_play()
+        print(
+            "bpy.context.screen.is_animation_playing",
+            bpy.context.screen.is_animation_playing,
+        )
 
 
 if __name__ == "__main__":
