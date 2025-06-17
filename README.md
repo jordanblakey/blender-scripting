@@ -141,6 +141,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![chair_model_complete][chair_model_complete] |
+| :-------------------------------------------: |
+|             Chair model complete.             |
+
 |      ![sphere_boolean_anim][sphere_boolean_anim]      |
 | :---------------------------------------------------: |
 | `brew install gifski && gifski -o file.gif img0*.png` |
@@ -233,6 +237,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[chair_model_complete]: /static/images/readme/chair_model_complete.png
 [sphere_boolean_anim]: /static/images/readme/sphere_animation.gif
 [ui_manipulation]: /static/images/readme/ui_manipulation.png
 [blender_beginner_tutorial]: /static/images/readme/blender_beginner_tutorial.png
