@@ -141,6 +141,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![chair_uv_unwrap][chair_uv_unwrap] |
+| :---------------------------------: |
+| UV unwrap to prepare for texturing. |
+
 | ![chair_model_complete][chair_model_complete] |
 | :-------------------------------------------: |
 |             Chair model complete.             |
@@ -237,6 +241,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[chair_uv_unwrap]: /static//images/readme/chair_uv_unwrap.png
 [chair_model_complete]: /static/images/readme/chair_model_complete.png
 [sphere_boolean_anim]: /static/images/readme/sphere_animation.gif
 [ui_manipulation]: /static/images/readme/ui_manipulation.png
