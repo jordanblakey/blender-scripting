@@ -66,6 +66,9 @@ python -m butils compress -i path/to/your/file.mkv --crf 23
 # --analyze: (For images only) Get image attrs and metadata. Skips compression.
 # --crf: Constant Rate Factor. Sets bitrate (e.g., 18-28). Lower is better.
 
+# profile GPU performance
+pipx run nvitop
+
 # module structure
 butils/
 ├── animation/
@@ -140,6 +143,14 @@ There are several ways to run the tests:
   ```
 
 ## Visual Notes and Renders
+
+| ![soborg_chair_anim][soborg_chair_anim] |
+| :-------------------------------------: |
+|     Finished chair modeling series.     |
+
+|        ![profiling_gpu_performance][profiling_gpu_performance]        |
+| :-------------------------------------------------------------------: |
+| Profiling GPU performance to identify bottlenecks in render pipeline. |
 
 | ![chair_uv_unwrap][chair_uv_unwrap] |
 | :---------------------------------: |
@@ -241,7 +252,9 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[chair_uv_unwrap]: /static//images/readme/chair_uv_unwrap.png
+[soborg_chair_anim]: /static/images/readme/soborg_chair.gif
+[profiling_gpu_performance]: /static/images/readme/profiling_gpu_performance.png
+[chair_uv_unwrap]: /static/images/readme/chair_uv_unwrap.png
 [chair_model_complete]: /static/images/readme/chair_model_complete.png
 [sphere_boolean_anim]: /static/images/readme/sphere_animation.gif
 [ui_manipulation]: /static/images/readme/ui_manipulation.png
