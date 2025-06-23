@@ -144,10 +144,6 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
-| ![lego_grid_cycles][lego_grid_cycles] |
-| :-----------------------------------: |
-|                                       |
-
 | ![lego_geometry_nodes][lego_geometry_nodes] |
 | :-----------------------------------------: |
 |  meshes from scratch using geometry nodes.  |
@@ -260,7 +256,6 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[lego_grid_cycles]: /static/images/readme/lego_grid_cycles.gif
 [lego_geometry_nodes]: /static/images/readme/lego_geometry_nodes.png
 [soborg_chair_anim]: /static/images/readme/soborg_chair.gif
 [profiling_gpu_performance]: /static/images/readme/profiling_gpu_performance.png
