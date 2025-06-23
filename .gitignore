@@ -25,6 +25,7 @@ Poliigon
 static/models/*
 static/hdris/*
 static/textures/*
+static/fonts/*
 
 # Beginner tutorial series process files
 experiments/30_*/renders/donut_anim*
