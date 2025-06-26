@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|   ![read_variables][read_variables]    |
+| :------------------------------------: |
+| Reading variables with geometry nodes. |
+
 | ![lego_geometry_nodes][lego_geometry_nodes] |
 | :-----------------------------------------: |
 |  meshes from scratch using geometry nodes.  |
@@ -256,6 +260,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[read_variables]: /static/images/readme/read_variables.gif
 [lego_geometry_nodes]: /static/images/readme/lego_geometry_nodes.png
 [soborg_chair_anim]: /static/images/readme/soborg_chair.gif
 [profiling_gpu_performance]: /static/images/readme/profiling_gpu_performance.png
