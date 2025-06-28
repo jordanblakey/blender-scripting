@@ -144,6 +144,14 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|           ![geo_node_drivers][geo_node_drivers]           |
+| :-------------------------------------------------------: |
+| Using a driver to control a value with a named attribute. |
+
+|          ![geo_node_random_value][geo_node_random_value]          |
+| :---------------------------------------------------------------: |
+| Getting collection instances by random index with geometry nodes. |
+
 |   ![read_variables][read_variables]    |
 | :------------------------------------: |
 | Reading variables with geometry nodes. |
@@ -260,6 +268,9 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[geo_node_random_value]:
+  /static/images/readme/geo_nodes_random_value_from_collection.gif
+[geo_node_drivers]: /static/images/readme/geo_nodes_drivers.gif
 [read_variables]: /static/images/readme/read_variables.gif
 [lego_geometry_nodes]: /static/images/readme/lego_geometry_nodes.png
 [soborg_chair_anim]: /static/images/readme/soborg_chair.gif
