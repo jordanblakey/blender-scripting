@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|          ![photogrammetry_experiment][photogrammetry_experiment]          |
+| :-----------------------------------------------------------------------: |
+| Photogrammetry experiment in [Meshroom](github.com/alicevision/Meshroom). |
+
 | ![hdri_transform_test_2][hdri_transform_test_2] |
 | :---------------------------------------------: |
 |       Hyperspace effect w/ HDRI scaling.        |
@@ -280,6 +284,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[photogrammetry_experiment]:
+  /static/images/readme/captioned_photogrammetry_images.png
 [hdri_transform_test_2]: /static/images/readme/hdri_transform_test_2.gif
 [geo_nodes_cube_grid]: /static/images/readme/geo_nodes_cube_grid.gif
 [simple_lighting_experiments]:

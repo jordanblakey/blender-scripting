@@ -26,6 +26,7 @@ static/models/*
 static/hdris/*
 static/textures/*
 static/fonts/*
+static/images/photogrammetry/*
 
 # Beginner tutorial series process files
 experiments/30_*/renders/donut_anim*
@@ -35,3 +36,7 @@ experiments/30_*/part*.blend
 
 # theme files
 # experiments/31_*/themes/*.{xml,toml}
+
+# Meshroom cache
+MeshroomCache
+Meshroom-*
