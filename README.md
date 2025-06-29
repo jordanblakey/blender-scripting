@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|  ![geo_nodes_cube_grid][geo_nodes_cube_grid]   |
+| :--------------------------------------------: |
+| Animating instance scale with a noise texture. |
+
 | ![simple_lighting_experiments][simple_lighting_experiments] |
 | :---------------------------------------------------------: |
 |             Exploring basic lighting concepts.              |
@@ -272,6 +276,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[geo_nodes_cube_grid]: /static/images/readme/geo_nodes_cube_grid.gif
 [simple_lighting_experiments]:
   /static/images/readme/simple_lighting_experiments.jpg
 [geo_node_random_value]:
