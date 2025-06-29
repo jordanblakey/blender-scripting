@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![simple_lighting_experiments][simple_lighting_experiments] |
+| :---------------------------------------------------------: |
+|             Exploring basic lighting concepts.              |
+
 |           ![geo_node_drivers][geo_node_drivers]           |
 | :-------------------------------------------------------: |
 | Using a driver to control a value with a named attribute. |
@@ -268,6 +272,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[simple_lighting_experiments]:
+  /static/images/readme/simple_lighting_experiments.jpg
 [geo_node_random_value]:
   /static/images/readme/geo_nodes_random_value_from_collection.gif
 [geo_node_drivers]: /static/images/readme/geo_nodes_drivers.gif
