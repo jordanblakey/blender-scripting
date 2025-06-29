@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![hdri_transform_test_2][hdri_transform_test_2] |
+| :---------------------------------------------: |
+|       Hyperspace effect w/ HDRI scaling.        |
+
 |  ![geo_nodes_cube_grid][geo_nodes_cube_grid]   |
 | :--------------------------------------------: |
 | Animating instance scale with a noise texture. |
@@ -276,6 +280,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[hdri_transform_test_2]: /static/images/readme/hdri_transform_test_2.gif
 [geo_nodes_cube_grid]: /static/images/readme/geo_nodes_cube_grid.gif
 [simple_lighting_experiments]:
   /static/images/readme/simple_lighting_experiments.jpg
