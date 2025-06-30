@@ -144,12 +144,6 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
-grease_pencil_test
-
-| ![grease_pencil_test][grease_pencil_test] |
-| :---------------------------------------: |
-|    Drawn animation with grease pencil.    |
-
 |          ![photogrammetry_experiment][photogrammetry_experiment]          |
 | :-----------------------------------------------------------------------: |
 | Photogrammetry experiment in [Meshroom](github.com/alicevision/Meshroom). |
