@@ -144,6 +144,12 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+grease_pencil_test
+
+| ![grease_pencil_test][grease_pencil_test] |
+| :---------------------------------------: |
+|    Drawn animation with grease pencil.    |
+
 |          ![photogrammetry_experiment][photogrammetry_experiment]          |
 | :-----------------------------------------------------------------------: |
 | Photogrammetry experiment in [Meshroom](github.com/alicevision/Meshroom). |
@@ -284,6 +290,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[grease_pencil_test]: /static/images/readme/grease_pencil_anim_test1.gif
 [photogrammetry_experiment]:
   /static/images/readme/captioned_photogrammetry_images.png
 [hdri_transform_test_2]: /static/images/readme/hdri_transform_test_2.gif
