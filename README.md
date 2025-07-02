@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|      ![realistic_earth][realistic_earth]      |
+| :-------------------------------------------: |
+| Rendering Earth using NASA satellite imagery. |
+
 |          ![photogrammetry_experiment][photogrammetry_experiment]          |
 | :-----------------------------------------------------------------------: |
 | Photogrammetry experiment in [Meshroom](github.com/alicevision/Meshroom). |
@@ -284,7 +288,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[grease_pencil_test]: /static/images/readme/grease_pencil_anim_test1.gif
+[realistic_earth]: /static/images/readme/earth_render_3.png
 [photogrammetry_experiment]:
   /static/images/readme/captioned_photogrammetry_images.png
 [hdri_transform_test_2]: /static/images/readme/hdri_transform_test_2.gif

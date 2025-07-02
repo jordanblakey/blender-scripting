@@ -34,6 +34,8 @@ experiments/30_*/renders/render*
 experiments/30_*/renders/viewport*
 experiments/30_*/part*.blend
 
+experiments/38_*/reference/*
+
 # theme files
 # experiments/31_*/themes/*.{xml,toml}
 
