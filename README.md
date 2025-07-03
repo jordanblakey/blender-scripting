@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|             ![nikon_photogrammetry][nikon_photogrammetry]             |
+| :-------------------------------------------------------------------: |
+| Improving Meshroom results: low ISO, small aperature, tripod, remote. |
+
 |      ![realistic_earth][realistic_earth]      |
 | :-------------------------------------------: |
 | Rendering Earth using NASA satellite imagery. |
@@ -288,6 +292,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[nikon_photogrammetry]:
+  /static/images/readme/nikon_photogrammetry_process_improvements.png
 [realistic_earth]: /static/images/readme/earth_render_3.png
 [photogrammetry_experiment]:
   /static/images/readme/captioned_photogrammetry_images.png
