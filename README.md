@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|              ![nikon_metashape][nikon_metashape]              |
+| :-----------------------------------------------------------: |
+| Exploring alternative photogrammetry workflow with Metashape. |
+
 |             ![nikon_photogrammetry][nikon_photogrammetry]             |
 | :-------------------------------------------------------------------: |
 | Improving Meshroom results: low ISO, small aperature, tripod, remote. |
@@ -292,6 +296,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[nikon_metashape]:
+  /static/images/readme/nikon_metashape_photogrammetry_workflow.png
 [nikon_photogrammetry]:
   /static/images/readme/nikon_photogrammetry_process_improvements.png
 [realistic_earth]: /static/images/readme/earth_render_3.png
