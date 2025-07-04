@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|         ![anvil_normal_map][anvil_normal_map]         |
+| :---------------------------------------------------: |
+| Learning more about normal maps and texture painting. |
+
 |              ![nikon_metashape][nikon_metashape]              |
 | :-----------------------------------------------------------: |
 | Exploring alternative photogrammetry workflow with Metashape. |
@@ -296,6 +300,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[anvil_normal_map]: /static/images/readme/anvil_material_experiments.png
 [nikon_metashape]:
   /static/images/readme/nikon_metashape_photogrammetry_workflow.png
 [nikon_photogrammetry]:

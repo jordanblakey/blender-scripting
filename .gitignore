@@ -34,7 +34,11 @@ experiments/30_*/renders/render*
 experiments/30_*/renders/viewport*
 experiments/30_*/part*.blend
 
+experiments/36_*/*.tar.gz
+experiments/36_*/Agisoft*
 experiments/38_*/reference/*
+experiments/39_*/Reference/*
+experiments/40_*/images/*
 
 # theme files
 # experiments/31_*/themes/*.{xml,toml}
