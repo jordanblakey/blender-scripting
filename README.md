@@ -102,7 +102,7 @@ butils/
 
 This project uses the `pre-commit` python module to ensure code quality and
 consistency. These hooks are automatically installed when you run `poe install`,
-and can be run on demand with `poe pre-commit`.
+and can be run on demand withnormal maps and texture painting `poe pre-commit`.
 
 - lint and format using `ruff`, `shfmt`, `shellcheck`, and `markdownlint`,
   `yamllint`, `actionlint`.
@@ -143,6 +143,10 @@ There are several ways to run the tests:
   ```
 
 ## Visual Notes and Renders
+
+|           ![scifi_crate][scifi_crate]            |
+| :----------------------------------------------: |
+| Learning more about procedural texture creation. |
 
 |         ![anvil_normal_map][anvil_normal_map]         |
 | :---------------------------------------------------: |
@@ -300,6 +304,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[scifi_crate]: /static/images/readme/scifi_crate.jpg
 [anvil_normal_map]: /static/images/readme/anvil_material_experiments.png
 [nikon_metashape]:
   /static/images/readme/nikon_metashape_photogrammetry_workflow.png
