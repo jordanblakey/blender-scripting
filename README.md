@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|          ![brick_wall_render][brick_wall_render]           |
+| :--------------------------------------------------------: |
+| Learning more about displacement maps and vertex painting. |
+
 |           ![scifi_crate][scifi_crate]            |
 | :----------------------------------------------: |
 | Learning more about procedural texture creation. |
@@ -304,6 +308,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[brick_wall_render]: /static/images/readme/brick_wall_render.gif
 [scifi_crate]: /static/images/readme/scifi_crate.jpg
 [anvil_normal_map]: /static/images/readme/anvil_material_experiments.png
 [nikon_metashape]:
