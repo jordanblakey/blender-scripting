@@ -144,6 +144,14 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|   ![low_poly_pc_process][low_poly_pc_process]    |
+| :----------------------------------------------: |
+| Sourcing low res/poly textures from ebay photos. |
+
+|       ![low_poly_pc_anim][low_poly_pc_anim]       |
+| :-----------------------------------------------: |
+| Finished animation with pixelate compositor node. |
+
 |          ![brick_wall_render][brick_wall_render]           |
 | :--------------------------------------------------------: |
 | Learning more about displacement maps and vertex painting. |
@@ -308,6 +316,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[low_poly_pc_anim]: /static/images/readme/low_poly_pc_loading_anim.gif
+[low_poly_pc_process]: /static/images/readme/low_poly_pc_process.png
 [brick_wall_render]: /static/images/readme/brick_wall_render.gif
 [scifi_crate]: /static/images/readme/scifi_crate.jpg
 [anvil_normal_map]: /static/images/readme/anvil_material_experiments.png
