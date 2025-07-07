@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|   ![laptop_modeling][laptop_modeling]    |
+| :--------------------------------------: |
+| Started product design exercise - Laptop |
+
 |   ![low_poly_pc_process][low_poly_pc_process]    |
 | :----------------------------------------------: |
 | Sourcing low res/poly textures from ebay photos. |
@@ -316,6 +320,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[laptop_modeling]: /static/images/readme/laptop_modeling.png
 [low_poly_pc_anim]: /static/images/readme/low_poly_pc_loading_anim.gif
 [low_poly_pc_process]: /static/images/readme/low_poly_pc_process.png
 [brick_wall_render]: /static/images/readme/brick_wall_render.gif
