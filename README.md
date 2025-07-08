@@ -324,7 +324,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[laptop_animation]: /static/images/readme/laptop_animation.png
+[laptop_animation]: /static/images/readme/laptop_animation.gif
 [laptop_modeling]: /static/images/readme/laptop_modeling.png
 [low_poly_pc_anim]: /static/images/readme/low_poly_pc_loading_anim.gif
 [low_poly_pc_process]: /static/images/readme/low_poly_pc_process.png
