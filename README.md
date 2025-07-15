@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![geo_nodes_proximity_1][geo_nodes_proximity_1] |
+| :---------------------------------------------: |
+|             Geometry proximity node             |
+
 |           ![laptop_animation][laptop_animation]           |
 | :-------------------------------------------------------: |
 | Emissive image textures for screen and keyboard backlight |
@@ -324,6 +328,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[geo_nodes_proximity_1]: /static/images/readme/geo_nodes_proximity_1.gif
 [laptop_animation]: /static/images/readme/laptop_animation.gif
 [laptop_modeling]: /static/images/readme/laptop_modeling.png
 [low_poly_pc_anim]: /static/images/readme/low_poly_pc_loading_anim.gif
