@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![fracture_effect][fracture_effect] |
+| :---------------------------------: |
+|  Proximity plus fracture modifier`  |
+
 | ![geo_nodes_proximity_1][geo_nodes_proximity_1] |
 | :---------------------------------------------: |
 |             Geometry proximity node             |
@@ -328,6 +332,7 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[fracture_effect]: /static/images/readme/fracture_effect_3.gif
 [geo_nodes_proximity_1]: /static/images/readme/geo_nodes_proximity_1.gif
 [laptop_animation]: /static/images/readme/laptop_animation.gif
 [laptop_modeling]: /static/images/readme/laptop_modeling.png
