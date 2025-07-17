@@ -144,9 +144,13 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|  ![manitou_topography][manitou_topo]  | ![ny_orbit_viewport][ny_orbit_view] |
+| :-----------------------------------: | :---------------------------------: |
+| Shuttle Radar Topography Mission data | Open Street Map data via BlenderGIS |
+
 | ![fracture_effect][fracture_effect] |
 | :---------------------------------: |
-|  Proximity plus fracture modifier`  |
+|  Proximity plus fracture modifier   |
 
 | ![geo_nodes_proximity_1][geo_nodes_proximity_1] |
 | :---------------------------------------------: |
@@ -300,9 +304,9 @@ There are several ways to run the tests:
 | :--------------------------------------------------------------------: |
 |                     Iterative Material Experiments                     |
 
-| ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom] |
-| :-----------------------------------------------------------------------: |
-|        Exploring Fresnel node and adding bloom with the compositor        |
+iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
+| | :-----------------------------------------------------------------------: |
+| Exploring Fresnel node and adding bloom with the compositor |
 
 | ![Wave -> Voronoi -> Displace][material_wave_texture_voronoi_displacement] |
 | :------------------------------------------------------------------------: |
@@ -332,6 +336,8 @@ There are several ways to run the tests:
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[manitou_topo]: /static/images/readme/manitou_orbit_open_topography.gif
+[ny_orbit_view]: /static/images/readme/ny_orbit_viewport.gif
 [fracture_effect]: /static/images/readme/fracture_effect_3.gif
 [geo_nodes_proximity_1]: /static/images/readme/geo_nodes_proximity_1.gif
 [laptop_animation]: /static/images/readme/laptop_animation.gif
