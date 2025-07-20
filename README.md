@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![product_design_phone][product_design_phone] |
+| :-------------------------------------------: |
+|    Learning product design motion graphics    |
+
 |  ![manitou_topography][manitou_topo]  | ![ny_orbit_viewport][ny_orbit_view] |
 | :-----------------------------------: | :---------------------------------: |
 | Shuttle Radar Topography Mission data | Open Street Map data via BlenderGIS |
@@ -336,6 +340,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[product_design_phone]: /static/images/readme/product_design_phone.gif
 [manitou_topo]: /static/images/readme/manitou_orbit_open_topography.gif
 [ny_orbit_view]: /static/images/readme/ny_orbit_viewport.gif
 [fracture_effect]: /static/images/readme/fracture_effect_3.gif
