@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![geo_nodes_proximity2][geo_nodes_proximity2] |
+| :-------------------------------------------: |
+|      Proximity based geo nodes exercise       |
+
 | ![metaball_geo_nodes][metaball_geo_nodes] |
 | :---------------------------------------: |
 |   Metaball effect using geometry nodes    |
@@ -344,6 +348,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[geo_nodes_proximity2]: /static/images/readme/geo_nodes_proximity2.gif
 [metaball_geo_nodes]: /static/images/readme/metaball_geo_nodes.gif
 [product_design_phone]: /static/images/readme/product_design_phone.gif
 [manitou_topo]: /static/images/readme/manitou_orbit_open_topography.gif
