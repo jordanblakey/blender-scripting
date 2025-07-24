@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|              ![led_matrix][led_matrix]               |
+| :--------------------------------------------------: |
+| LED matrix using ray casting to calc text collisions |
+
 | ![geo_nodes_proximity2][geo_nodes_proximity2] |
 | :-------------------------------------------: |
 |      Proximity based geo nodes exercise       |
@@ -256,9 +260,9 @@ There are several ways to run the tests:
 | :-------------------------------------------: |
 |             Chair model complete.             |
 
-|      ![sphere_boolean_anim][sphere_boolean_anim]      |
-| :---------------------------------------------------: |
-| `brew install gifski && gifski -o file.gif img0*.png` |
+|                ![sphere_boolean_anim][sphere_boolean_anim]                |
+| :-----------------------------------------------------------------------: |
+| `brew install gifski && gifski -ogeo_nodes_proximity2 file.gif img0*.png` |
 
 | ![ui_manipulation][ui_manipulation] |
 | :---------------------------------: |
@@ -348,6 +352,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[led_matrix]: /static/images/readme/led_matrix.gif
 [geo_nodes_proximity2]: /static/images/readme/geo_nodes_proximity2.gif
 [metaball_geo_nodes]: /static/images/readme/metaball_geo_nodes.gif
 [product_design_phone]: /static/images/readme/product_design_phone.gif
