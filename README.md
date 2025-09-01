@@ -144,6 +144,18 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![cloth_sim_1_gif][cloth_sim_1_gif] |
+| :---------------------------------: |
+|  Cloth sim + Hair particle system   |
+
+| ![cloth_sim_1_png][cloth_sim_1_png] |
+| :---------------------------------: |
+|  Cloth sim + Hair particle system   |
+
+| ![distribute_points_in_volume][distribute_points_in_volume] |
+| :---------------------------------------------------------: |
+|        Experiments with Distribute Points in Volume         |
+
 |              ![led_matrix][led_matrix]               |
 | :--------------------------------------------------: |
 | LED matrix using ray casting to calc text collisions |
@@ -352,6 +364,10 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[cloth_sim_1_gif]: /static/images/readme/cloth_sim_1.gif
+[cloth_sim_1_png]: /static/images/readme/cloth_sim_1.png
+[distribute_points_in_volume]:
+  /static/images/readme/distribute_points_in_volume.gif
 [led_matrix]: /static/images/readme/led_matrix.gif
 [geo_nodes_proximity2]: /static/images/readme/geo_nodes_proximity2.gif
 [metaball_geo_nodes]: /static/images/readme/metaball_geo_nodes.gif
