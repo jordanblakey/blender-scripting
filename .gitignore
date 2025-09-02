@@ -58,3 +58,6 @@ experiments/47_3d_terrain_google_maps/source_files/*
 
 # audio files
 static/audio/*
+
+# physics cache files
+blendcache_*

@@ -144,9 +144,13 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
-| ![cloth_sim_1_gif][cloth_sim_1_gif] |
-| :---------------------------------: |
-|  Cloth sim + Hair particle system   |
+|  ![cloth_sim_hires_solidify][cloth_sim_hires_solidify]  |
+| :-----------------------------------------------------: |
+| Testing subdiv -> cloth -> solidify -> subdiv mod stack |
+
+| ![cloth_sim_hires_presets][cloth_sim_hires_presets] |
+| :-------------------------------------------------: |
+|              Cloth sim preset testing               |
 
 | ![cloth_sim_1_png][cloth_sim_1_png] |
 | :---------------------------------: |
@@ -364,7 +368,8 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
-[cloth_sim_1_gif]: /static/images/readme/cloth_sim_1.gif
+[cloth_sim_hires_solidify]: /static/images/readme/cloth_sim_hires_solidify.gif
+[cloth_sim_hires_presets]: /static/images/readme/cloth_sim_hires_presets.gif
 [cloth_sim_1_png]: /static/images/readme/cloth_sim_1.png
 [distribute_points_in_volume]:
   /static/images/readme/distribute_points_in_volume.gif
