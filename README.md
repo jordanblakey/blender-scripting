@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|         ![cloth_pinning_tests][cloth_pinning_tests]          |
+| :----------------------------------------------------------: |
+| Cloth pinning tests using hook mod and vertex weight mix mod |
+
 |  ![cloth_sim_hires_solidify][cloth_sim_hires_solidify]  |
 | :-----------------------------------------------------: |
 | Testing subdiv -> cloth -> solidify -> subdiv mod stack |
@@ -368,6 +372,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[cloth_pinning_tests]: /static/images/readme/cloth_pinning_tests.gif
 [cloth_sim_hires_solidify]: /static/images/readme/cloth_sim_hires_solidify.gif
 [cloth_sim_hires_presets]: /static/images/readme/cloth_sim_hires_presets.gif
 [cloth_sim_1_png]: /static/images/readme/cloth_sim_1.png
