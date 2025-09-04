@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![particles_test1][particles_test1] |
+| :---------------------------------: |
+|  Learning about particle emitters   |
+
 |         ![cloth_pinning_tests][cloth_pinning_tests]          |
 | :----------------------------------------------------------: |
 | Cloth pinning tests using hook mod and vertex weight mix mod |
@@ -372,6 +376,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[particles_test1]: /static/images/readme/particles_test1.gif
 [cloth_pinning_tests]: /static/images/readme/cloth_pinning_tests.gif
 [cloth_sim_hires_solidify]: /static/images/readme/cloth_sim_hires_solidify.gif
 [cloth_sim_hires_presets]: /static/images/readme/cloth_sim_hires_presets.gif
