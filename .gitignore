@@ -61,3 +61,4 @@ static/audio/*
 
 # physics cache files
 blendcache_*
+blender-*/
