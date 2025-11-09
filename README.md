@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|        ![glass_cell_division][glass_cell_division]        |
+| :-------------------------------------------------------: |
+| Geometry nodes glass metaball exercise - Blender 5.0 beta |
+
 | ![particles_turbulence][particles_turbulence] |
 | :-------------------------------------------: |
 | Particle system using turbulence force field  |
@@ -380,6 +384,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[glass_cell_division]: /static/images/readme/glass_cell_division.gif
 [particles_turbulence]: /static/images/readme/particles_turbulence.gif
 [particles_test1]: /static/images/readme/particles_test1.gif
 [cloth_pinning_tests]: /static/images/readme/cloth_pinning_tests.gif
