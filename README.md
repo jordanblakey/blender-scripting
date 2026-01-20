@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+|        ![after_effects_1][after_effects_1]        |
+| :-------------------------------------------------------: |
+| Geometry nodes aftereffects like effect |
+
 |        ![glass_cell_division][glass_cell_division]        |
 | :-------------------------------------------------------: |
 | Geometry nodes glass metaball exercise - Blender 5.0 beta |
@@ -384,6 +388,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[after_effects_1]: /static/images/readme/after_effects_1.gif
 [glass_cell_division]: /static/images/readme/glass_cell_division.gif
 [particles_turbulence]: /static/images/readme/particles_turbulence.gif
 [particles_test1]: /static/images/readme/particles_test1.gif
