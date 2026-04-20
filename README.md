@@ -144,6 +144,14 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![animate_procedural_texture][animate_procedural_texture] |
+| :-------------------------------------------------------: |
+| Animated procedural texture |
+
+| ![light_trails_exercise][light_trails_exercise] |
+| :---------------------------------------------: |
+| Light trails exercise |
+
 |        ![after_effects_1][after_effects_1]        |
 | :-------------------------------------------------------: |
 | Geometry nodes aftereffects like effect |
@@ -388,6 +396,8 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[animate_procedural_texture]: /static/images/readme/animate_procedural_texture.gif
+[light_trails_exercise]: /static/images/readme/light_trails_exercise.gif
 [after_effects_1]: /static/images/readme/after_effects_1.gif
 [glass_cell_division]: /static/images/readme/glass_cell_division.gif
 [particles_turbulence]: /static/images/readme/particles_turbulence.gif
