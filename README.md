@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![30_days_modeling_practice][30_days_modeling_practice] |
+| :-----------------------------------------------------: |
+| 30 days modeling practice |
+
 | ![animate_procedural_texture][animate_procedural_texture] |
 | :-------------------------------------------------------: |
 | Animated procedural texture |
@@ -396,6 +400,7 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 | :----------------------------------------: |
 |        Procedural Animation Example        |
 
+[30_days_modeling_practice]: /static/images/readme/30_days_modeling_practice.png
 [animate_procedural_texture]: /static/images/readme/animate_procedural_texture.gif
 [light_trails_exercise]: /static/images/readme/light_trails_exercise.gif
 [after_effects_1]: /static/images/readme/after_effects_1.gif
