@@ -19,7 +19,7 @@ def run_conversion():
         'ffmpeg',
         '-i', input_file,
         '-vcodec', 'libwebp',
-        '-filter:v', 'fps=24,scale=720:-1',
+        '-filter:v', 'fps=24,scale=960:-1',
         '-lossless', '0',
         '-q:v', '40',
         '-loop', '0',
