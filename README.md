@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![camera_animation_practice2][camera_animation_practice2] |
+| :-------------------------------------------------------: |
+| Camera animation practice 2 |
+
 | ![camera_animation_practice][camera_animation_practice] |
 | :-----------------------------------------------------: |
 | Camera animation practice |
@@ -482,3 +486,4 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 [cycles_render_hq]: /static/images/readme/cycles_render_hq.png
 [interface]: /static/images/readme/interface.png
 [camera_animation_practice]: /static/images/readme/camera_animation_practice.webp
+[camera_animation_practice2]: /static/images/readme/camera_animation_practice2.webp
