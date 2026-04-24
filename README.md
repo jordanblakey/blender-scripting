@@ -144,6 +144,10 @@ There are several ways to run the tests:
 
 ## Visual Notes and Renders
 
+| ![magnet_time][magnet_time] |
+| :-------------------------: |
+| Playing with force fields |
+
 | ![camera_animation_practice3][camera_animation_practice3] |
 | :-------------------------------------------------------: |
 | Camera animation practice 3 |
@@ -492,3 +496,4 @@ iew | ![Exploring Fresnel and adding bloom with compositor][fresnel_node_bloom]
 [camera_animation_practice]: /static/images/readme/camera_animation_practice.webp
 [camera_animation_practice2]: /static/images/readme/camera_animation_practice2.webp
 [camera_animation_practice3]: /static/images/readme/camera_animation_practice3.webp
+[magnet_time]: /static/images/readme/magnet_time.webp
